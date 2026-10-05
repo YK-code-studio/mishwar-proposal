@@ -337,8 +337,14 @@ table.t tr:last-child td{border-bottom:0}
 .price-main{padding:34px;border-radius:24px;position:relative;overflow:hidden;background:linear-gradient(160deg,rgba(124,92,255,.18),rgba(34,211,238,.06) 60%,var(--card));border:1px solid rgba(124,92,255,.35)}
 .price-main .tag-top{display:inline-block;padding:5px 12px;border-radius:99px;background:rgba(255,255,255,.08);font-size:12.5px;font-weight:600;margin-bottom:12px}
 .price-main .amount{font-family:var(--head);font-size:64px;font-weight:700;line-height:1;display:flex;align-items:baseline;gap:8px;margin:8px 0 6px}
-.price-main .was{font-family:'JetBrains Mono',monospace;font-size:22px;color:var(--dim);text-decoration:line-through;text-decoration-color:var(--red);font-weight:500}
-.save{display:inline-block;margin-right:8px;padding:5px 12px;border-radius:99px;background:rgba(52,211,153,.14);color:var(--ok);font-size:12.5px;font-weight:600}
+.terms{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.term{padding:20px;border-radius:16px;border:1px solid var(--line);background:var(--card);display:flex;gap:14px;align-items:flex-start}
+.term .icon{flex-shrink:0;width:40px;height:40px;border-radius:12px}
+.term .icon svg{width:19px;height:19px}
+.term b{display:block;font-size:15px;margin-bottom:4px}
+.term p{font-size:13.5px;color:var(--muted);line-height:1.7}
+@media (max-width:1040px){.terms{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:680px){.terms{grid-template-columns:1fr}}
 .price-main .amount small{font-size:18px;color:var(--muted);font-weight:500}
 .price-main>p{color:var(--muted)}
 .breakdown{margin-top:24px;display:grid;gap:10px}
@@ -787,12 +793,12 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
     <div class="sec-head rv">
       <div class="kicker">التكلفة</div>
       <h2>استثمار واحد، منظومة كاملة</h2>
-      <p>المبلغ يشمل تطبيقين (iOS و Android) ولوحة إدارة ومنصة ويب وخادماً متكاملاً — وليس تطبيقاً فقط. وبسعر خاص لهذا المشروع دون حذف أي ميزة.</p>
+      <p>المبلغ يشمل تطبيقين (iOS و Android) ولوحة إدارة ومنصة ويب وخادماً متكاملاً — وليس تطبيقاً فقط.</p>
     </div>
     <div class="price-wrap">
       <div class="price-main rv">
-        <span class="tag-top">الباقة الكاملة · سعر خاص · تسليم خلال 30 يوماً</span><span class="save">توفير <span class="mono">$500</span></span>
-        <div class="amount"><span class="mono">$2,500</span><span class="was">$3,000</span><small>مرة واحدة</small></div>
+        <span class="tag-top">الباقة الكاملة · تسليم خلال 30 يوماً</span>
+        <div class="amount"><span class="mono">$2,500</span><small>مرة واحدة</small></div>
         <p>تصميم، برمجة، اختبار، ونشر — مع ملكية كاملة للكود والبيانات لجهتكم.</p>
         <div class="breakdown" id="breakdown"></div>
         <div class="pay">
@@ -833,6 +839,28 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
     </div>
 
     <div class="note rv"><svg><use href="#i-info"/></svg><div><b>رسوم المتاجر تُدفع مباشرة لحساب جهتكم:</b> Google Play بمبلغ <span class="mono">$25</span> لمرة واحدة، و Apple Developer بمبلغ <span class="mono">$99</span> سنوياً. نتولّى نحن إعداد الحسابات والنشر بالكامل.</div></div>
+  </div>
+</section>
+
+<!-- WORKFLOW / SCOPE -->
+<section id="workflow">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="kicker">آلية العمل</div>
+      <h2>كيف نضمن التسليم في الموعد وبالجودة المتفق عليها</h2>
+      <p>إطار عمل واضح من البداية يحمي جودة المنتج وجدوله الزمني، ويجعل كل طرف يعرف ما المطلوب منه ومتى.</p>
+    </div>
+    <div class="terms">
+      <div class="term rv"><span class="icon"><svg style="color:#a593ff"><use href="#i-grid"/></svg></span><div><b>جولتا تعديل على التصميم</b><p>تُراجَع التصاميم في الأسبوع الأول مع جولتي تعديل. بعد اعتمادها تُعامَل التعديلات الجوهرية كطلب تحديث.</p></div></div>
+      <div class="term rv"><span class="icon c"><svg style="color:var(--p2)"><use href="#i-inbox"/></svg></span><div><b>المحتوى من جهتكم</b><p>الشعار والألوان وقائمة الجامعات والمناطق تُسلَّم خلال 3 أيام من البدء، ويُحتسب موعد التسليم من تاريخ استلامها.</p></div></div>
+      <div class="term rv"><span class="icon k"><svg style="color:var(--ok)"><use href="#i-plus"/></svg></span><div><b>إدخال البيانات</b><p>بيانات السواق والسكن والصور الحقيقية يُدخلها فريقكم عبر لوحة الإدارة، ونجهّز بيانات تجريبية للاختبار والتدريب.</p></div></div>
+      <div class="term rv"><span class="icon g"><svg style="color:var(--gold)"><use href="#i-refresh"/></svg></span><div><b>سرعة الملاحظات</b><p>الرد على الملاحظات خلال يومي عمل يحافظ على الجدول، وأي تأخير في الردود أو الدفعات يُضاف إلى مدة التسليم.</p></div></div>
+      <div class="term rv"><span class="icon p"><svg style="color:var(--pink)"><use href="#i-pin"/></svg></span><div><b>نطاق محدد وواضح</b><p>الخريطة تعرض موقع السكن مع فتحه في خرائط Google. التتبع المباشر وأي ميزة غير مذكورة في هذا العرض تُعدّ تطويراً إضافياً.</p></div></div>
+      <div class="term rv"><span class="icon"><svg style="color:#a593ff"><use href="#i-shield"/></svg></span><div><b>الدعم الفني المجاني</b><p>30 يوماً بعد الإطلاق لإصلاح الأخطاء البرمجية. الميزات الجديدة وتغيير المحتوى ليست ضمن الدعم المجاني.</p></div></div>
+      <div class="term rv"><span class="icon c"><svg style="color:var(--p2)"><use href="#i-lock"/></svg></span><div><b>الحسابات باسم جهتكم</b><p>حسابات المتاجر والنطاق تُفتح باسم جهتكم ورسومها عليها، ونحن نتولى الإعداد والنشر بالكامل.</p></div></div>
+      <div class="term rv"><span class="icon k"><svg style="color:var(--ok)"><use href="#i-check"/></svg></span><div><b>تسليم الكود المصدري</b><p>يُسلَّم الكود المصدري وكامل صلاحيات الخادم بعد إتمام الدفعة الأخيرة.</p></div></div>
+      <div class="term rv"><span class="icon g"><svg style="color:var(--gold)"><use href="#i-server"/></svg></span><div><b>الاستضافة</b><p>تبدأ من تاريخ الإطلاق وتُدفع مقدماً شهرياً أو سنوياً، لضمان استمرار عمل الخادم والنسخ الاحتياطي دون انقطاع.</p></div></div>
+    </div>
   </div>
 </section>
 
@@ -878,7 +906,7 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
       <div class="dv rv"><span class="icon"><svg style="color:#a593ff"><use href="#i-phone"/></svg></span><div><b>تطبيق منشور على المتجرين</b><small>Google Play و App Store باسم جهتكم.</small></div></div>
       <div class="dv rv"><span class="icon c"><svg style="color:var(--p2)"><use href="#i-grid"/></svg></span><div><b>لوحة إدارة جاهزة</b><small>مع حسابات المشرفين وصلاحياتهم.</small></div></div>
       <div class="dv rv"><span class="icon k"><svg style="color:var(--ok)"><use href="#i-globe"/></svg></span><div><b>منصة ويب على نطاقكم</b><small>صفحة تعريفية + عرض المحتوى للزوار.</small></div></div>
-      <div class="dv rv"><span class="icon g"><svg style="color:var(--gold)"><use href="#i-lock"/></svg></span><div><b>الكود المصدري كاملاً</b><small>ملكية كاملة للكود وقاعدة البيانات.</small></div></div>
+      <div class="dv rv"><span class="icon g"><svg style="color:var(--gold)"><use href="#i-lock"/></svg></span><div><b>الكود المصدري كاملاً</b><small>ملكية كاملة للكود وقاعدة البيانات بعد إتمام الدفعات.</small></div></div>
       <div class="dv rv"><span class="icon p"><svg style="color:var(--pink)"><use href="#i-cap"/></svg></span><div><b>جلسة تدريب</b><small>شرح استخدام لوحة الإدارة لفريقكم.</small></div></div>
       <div class="dv rv"><span class="icon"><svg style="color:#a593ff"><use href="#i-shield"/></svg></span><div><b>30 يوماً دعم فني</b><small>إصلاح أي خلل بعد الإطلاق مجاناً.</small></div></div>
     </div>
