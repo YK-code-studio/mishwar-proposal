@@ -1285,7 +1285,7 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
 
   /* ---------- price breakdown ---------- */
   const parts = [['تصميم واجهات وتجربة المستخدم (UI/UX)', 350], ['تطبيق Flutter لنظامي iOS و Android', 950], ['الخادم و API وقاعدة البيانات (Laravel · MySQL)', 650], ['لوحة الإدارة (Vue.js)', 400], ['الاختبار والنشر على المتاجر والخادم', 150]];
-  $('#breakdown').innerHTML = parts.map(([l, v]) => `<div class="bd"><span>${l}</span><b>$${fmt(v)}</b><div class="bar"><i style="width:${v / 9.5}%"></i></div></div>`).join('');
+  $('#breakdown').innerHTML = parts.map(([l, v]) => `<div class="bd"><span>${l}</span><div class="bar"><i style="width:${v / 9.5}%"></i></div></div>`).join('');
 
   /* ---------- reveal ---------- */
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
