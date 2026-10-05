@@ -232,6 +232,8 @@ ul.checks li::before{content:"";flex-shrink:0;width:18px;height:18px;margin-top:
 .seg button.on{background:#fff;color:#151a2d;box-shadow:0 1px 4px rgba(0,0,0,.08)}
 .map-mini{height:110px;border-radius:16px;margin-bottom:12px;position:relative;overflow:hidden;background:#e6ebf5}
 .map-mini svg{width:100%;height:100%}
+.map-mini .open{position:absolute;bottom:8px;left:8px;background:#fff;border-radius:9px;padding:5px 10px;font-size:10.5px;font-weight:600;color:#5b47f5;box-shadow:0 2px 8px rgba(20,25,60,.12)}
+.soon button{flex-shrink:0;padding:8px 12px;border-radius:12px;background:#fff;border:1px solid #e3e6f0;font-size:11.5px;color:#5c6380;font-weight:500}
 
 /* ===== dashboard (Vue-style admin) ===== */
 .browser{border-radius:18px;overflow:hidden;border:1px solid var(--line2);background:#0b1020;box-shadow:0 40px 100px rgba(0,0,0,.55)}
@@ -585,7 +587,7 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
             <button data-go="housing"><span class="num">04</span><div><b>السكن الطلابي</b><span>نوع السكن، المنطقة، الجامعات القريبة</span></div></button>
             <button data-go="house:1"><span class="num">05</span><div><b>تفاصيل السكن</b><span>معرض صور، مزايا، خريطة، تواصل</span></div></button>
           </div>
-          <div class="hint"><svg width="16" height="16"><use href="#i-info"/></svg> جميع البيانات في المحاكي تجريبية لأغراض العرض.</div>
+          <div class="hint"><svg width="16" height="16"><use href="#i-info"/></svg> الأسماء والأرقام والأسعار بيانات تجريبية للعرض فقط، أما كل زر ووظيفة تراها في المحاكي فهي مشمولة فعلياً ضمن السعر.</div>
         </div>
       </div>
     </div>
@@ -603,6 +605,7 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
             <button data-d="drivers"><svg><use href="#i-bus"/></svg>السواق</button>
             <button data-d="housing"><svg><use href="#i-building"/></svg>السكن</button>
             <button data-d="requests"><svg><use href="#i-inbox"/></svg>طلبات الانضمام <span class="badge" id="reqBadge">4</span></button>
+            <button data-d="bookings"><svg><use href="#i-check"/></svg>طلبات الحجز</button>
             <div class="sep">الإدارة</div>
             <button data-d="add"><svg><use href="#i-plus"/></svg>إضافة إعلان</button>
             <button data-d="notify"><svg><use href="#i-bell"/></svg>الإشعارات</button>
@@ -611,6 +614,7 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
           <main class="d-main" id="dMain"></main>
         </div>
       </div>
+      <div class="hint" style="justify-content:center"><svg width="16" height="16"><use href="#i-info"/></svg> الأرقام والإحصائيات تجريبية للعرض، وكل الأقسام والوظائف الظاهرة في لوحة الإدارة مشمولة ضمن السعر.</div>
     </div>
   </div>
 </section>
@@ -812,9 +816,9 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
           <span class="icon c"><svg style="color:var(--p2)"><use href="#i-server"/></svg></span>
           <h3>استضافة لوحة الإدارة والخادم</h3>
           <div class="mini-price"><span class="mono">$25</span><small>/ شهرياً</small></div>
-          <p>أو <b style="color:var(--text)"><span class="mono">$270</span> سنوياً</b> (توفير شهرين ونصف). خادم VPS مخصص بأداء ثابت — وليس استضافة مشتركة.</p>
+          <p>أو <b style="color:var(--text)"><span class="mono">$270</span> سنوياً</b> (توفير شهرين ونصف). خادم VPS مخصص على <b style="color:var(--text)">DigitalOcean</b> (مركز بيانات فرانكفورت، الأقرب للعراق) بأداء ثابت — وليس استضافة مشتركة.</p>
           <ul class="checks">
-            <li>خادم مخصص لـ Laravel + MySQL + لوحة Vue</li>
+            <li>خادم 2GB RAM · 50GB NVMe لـ Laravel + MySQL + لوحة Vue</li>
             <li>نطاق (Domain) وشهادة SSL</li>
             <li>نسخ احتياطي يومي ومراقبة على مدار الساعة</li>
             <li>تحديثات أمنية للخادم</li>
@@ -855,7 +859,7 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
       <div class="term rv"><span class="icon c"><svg style="color:var(--p2)"><use href="#i-inbox"/></svg></span><div><b>المحتوى من جهتكم</b><p>الشعار والألوان وقائمة الجامعات والمناطق تُسلَّم خلال 3 أيام من البدء، ويُحتسب موعد التسليم من تاريخ استلامها.</p></div></div>
       <div class="term rv"><span class="icon k"><svg style="color:var(--ok)"><use href="#i-plus"/></svg></span><div><b>إدخال البيانات</b><p>بيانات السواق والسكن والصور الحقيقية يُدخلها فريقكم عبر لوحة الإدارة، ونجهّز بيانات تجريبية للاختبار والتدريب.</p></div></div>
       <div class="term rv"><span class="icon g"><svg style="color:var(--gold)"><use href="#i-refresh"/></svg></span><div><b>سرعة الملاحظات</b><p>الرد على الملاحظات خلال يومي عمل يحافظ على الجدول، وأي تأخير في الردود أو الدفعات يُضاف إلى مدة التسليم.</p></div></div>
-      <div class="term rv"><span class="icon p"><svg style="color:var(--pink)"><use href="#i-pin"/></svg></span><div><b>نطاق محدد وواضح</b><p>الخريطة تعرض موقع السكن مع فتحه في خرائط Google. التتبع المباشر وأي ميزة غير مذكورة في هذا العرض تُعدّ تطويراً إضافياً.</p></div></div>
+      <div class="term rv"><span class="icon p"><svg style="color:var(--pink)"><use href="#i-pin"/></svg></span><div><b>نطاق محدد وواضح</b><p>الخريطة تعرض موقع السكن والمسافة المباشرة مع فتحه في خرائط Google. تسجيل الطلاب برقم الهاتف وكلمة مرور (رسائل SMS للتحقق غير مشمولة لأنها برسوم). التتبع المباشر وأي ميزة غير مذكورة تُعدّ تطويراً إضافياً.</p></div></div>
       <div class="term rv"><span class="icon"><svg style="color:#a593ff"><use href="#i-shield"/></svg></span><div><b>الدعم الفني المجاني</b><p>30 يوماً بعد الإطلاق لإصلاح الأخطاء البرمجية. الميزات الجديدة وتغيير المحتوى ليست ضمن الدعم المجاني.</p></div></div>
       <div class="term rv"><span class="icon c"><svg style="color:var(--p2)"><use href="#i-lock"/></svg></span><div><b>الحسابات باسم جهتكم</b><p>حسابات المتاجر والنطاق تُفتح باسم جهتكم ورسومها عليها، ونحن نتولى الإعداد والنشر بالكامل.</p></div></div>
       <div class="term rv"><span class="icon k"><svg style="color:var(--ok)"><use href="#i-check"/></svg></span><div><b>تسليم الكود المصدري</b><p>يُسلَّم الكود المصدري وكامل صلاحيات الخادم بعد إتمام الدفعة الأخيرة.</p></div></div>
@@ -991,8 +995,8 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
             <button class="s1" data-a="rides"><span>${ic('bus', 24)}</span><span><b>خطوط النقل</b><small>${drivers.length * 21}+ سائق موثّق</small></span><svg class="bgi"><use href="#i-bus"/></svg></button>
             <button class="s2" data-a="housing"><span>${ic('building', 24)}</span><span><b>السكن الطلابي</b><small>${housing.length * 17}+ سكن قريب</small></span><svg class="bgi"><use href="#i-building"/></svg></button>
           </div>
-          <div class="a-title"><b>خدمات قادمة</b></div>
-          <div class="soon"><div><i>قريباً</i>سوق الكتب</div><div><i>قريباً</i>مكاتب الطباعة</div><div><i>قريباً</i>دروس خصوصية</div><div><i>قريباً</i>عمل جزئي</div></div>
+          <div class="a-title"><b>تصفّح حسب جامعتك</b></div>
+          <div class="soon">${unis.slice(1).map(u => `<button data-uni-go="${u}">${u}</button>`).join('')}</div>
           <div class="a-title"><b>الأقرب لجامعتك</b><span data-a="rides">عرض الكل</span></div>
           ${near}`;
       },
@@ -1021,14 +1025,13 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
             <div><small>المقاعد المتاحة</small><b>${d.free} من ${d.seats}</b></div>
           </div>
           <div class="feat">${d.female ? '<span>خط طالبات فقط</span>' : ''}<span>سائق موثّق</span><span>تبريد</span><span>ذهاب وإياب</span></div>
-          <div class="cta-row"><button class="sq" data-toast="جارٍ الاتصال بـ ${d.name}…">${ic('phone', 18)}</button><button class="wa" data-toast="فتح محادثة واتساب">${ic('chat', 18)}</button><button class="main" data-toast="✓ تم إرسال طلب حجز مقعد">احجز مقعدك</button></div>`;
+          <div class="cta-row"><button class="sq" data-toast="يفتح شاشة الاتصال برقم ${d.name}">${ic('phone', 18)}</button><button class="wa" data-toast="يفتح واتساب برسالة جاهزة">${ic('chat', 18)}</button><button class="main" data-toast="✓ وصل طلب الحجز للإدارة وستتواصل معك">احجز مقعدك</button></div>`;
       },
       housing() {
         const types = ['الكل', 'سكن طالبات', 'سكن طلاب', 'شقة مشتركة'];
         const list = housing.filter(h => st.htype === 'الكل' || h.type === st.htype);
         return `
           <div class="a-back"><b>السكن الطلابي</b></div>
-          <div class="seg">${['قائمة', 'خريطة'].map((x, i) => `<button class="${i === 0 ? 'on' : ''}" data-toast="${i ? 'عرض الخريطة متاح في التطبيق النهائي' : ''}">${x}</button>`).join('')}</div>
           <div class="chips">${types.map(u => `<button class="${u === st.htype ? 'on' : ''}" data-ht="${u}">${u}</button>`).join('')}</div>
           <div class="a-title"><b>${list.length} أماكن سكن</b><span>الأقرب أولاً</span></div>
           ${list.map(houseRow).join('')}`;
@@ -1053,9 +1056,9 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
             <div><small>الجامعات القريبة</small><b>${h.unis.join('، ')}</b></div>
             <div><small>الأماكن الشاغرة</small><b>${h.vacant}</b></div>
           </div>
-          <div class="map-mini"><svg viewBox="0 0 270 110"><path d="M0 70 Q60 50 120 72 T270 60" stroke="#c9d3ea" stroke-width="10" fill="none"/><path d="M90 0 L110 110" stroke="#d6deef" stroke-width="7"/><path d="M200 0 L180 110" stroke="#d6deef" stroke-width="5"/><path d="M60 40 C 120 20, 170 30, 205 52" stroke="#5b47f5" stroke-width="2.5" stroke-dasharray="5 4" fill="none"/><circle cx="60" cy="40" r="7" fill="#5b47f5"/><circle cx="60" cy="40" r="14" fill="#5b47f5" opacity=".18"/><rect x="190" y="42" width="30" height="20" rx="5" fill="#151a2d"/><text x="205" y="56" font-size="9" fill="#fff" text-anchor="middle" font-family="IBM Plex Sans Arabic">جامعة</text><text x="130" y="22" font-size="10" fill="#5b47f5" text-anchor="middle" font-weight="700" font-family="IBM Plex Sans Arabic">${h.dist}</text></svg></div>
+          <div class="map-mini"><svg viewBox="0 0 270 110"><path d="M0 70 Q60 50 120 72 T270 60" stroke="#c9d3ea" stroke-width="10" fill="none"/><path d="M90 0 L110 110" stroke="#d6deef" stroke-width="7"/><path d="M200 0 L180 110" stroke="#d6deef" stroke-width="5"/><path d="M60 40 L 190 52" stroke="#5b47f5" stroke-width="2" stroke-dasharray="3 4" fill="none"/><circle cx="60" cy="40" r="7" fill="#5b47f5"/><circle cx="60" cy="40" r="14" fill="#5b47f5" opacity=".18"/><rect x="190" y="42" width="30" height="20" rx="5" fill="#151a2d"/><text x="205" y="56" font-size="9" fill="#fff" text-anchor="middle" font-family="IBM Plex Sans Arabic">جامعة</text><text x="130" y="22" font-size="10" fill="#5b47f5" text-anchor="middle" font-weight="700" font-family="IBM Plex Sans Arabic">${h.dist} · مسافة مباشرة</text></svg><button class="open" data-toast="يفتح الموقع في خرائط Google">فتح في الخرائط ↗</button></div>
           <div class="feat">${h.feats.map(f => `<span>${f}</span>`).join('')}</div>
-          <div class="cta-row"><button class="sq" data-toast="جارٍ الاتصال بصاحب السكن…">${ic('phone', 18)}</button><button class="wa" data-toast="فتح محادثة واتساب">${ic('chat', 18)}</button><button class="main" data-toast="✓ تم إرسال طلب حجز زيارة">احجز زيارة</button></div>`;
+          <div class="cta-row"><button class="sq" data-toast="يفتح شاشة الاتصال برقم صاحب السكن">${ic('phone', 18)}</button><button class="wa" data-toast="يفتح واتساب برسالة جاهزة">${ic('chat', 18)}</button><button class="main" data-toast="✓ وصل طلب الزيارة للإدارة وستتواصل معك">احجز زيارة</button></div>`;
       },
       favs() {
         const fd = drivers.filter(d => st.favs.has('d' + d.id)), fh = housing.filter(h => st.favs.has('h' + h.id));
@@ -1101,6 +1104,7 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
       if (d.a === 'back') return go(st.tab);
       if (d.a) return go(d.a);
       if (d.tabA) return go(d.tabA);
+      if (d.uniGo) { st.uni = d.uniGo; return go('rides'); }
       if (d.uni) { st.uni = d.uni; return render(); }
       if (d.ht) { st.htype = d.ht; return render(); }
       if (d.gal) { st.gal = (st.gal + +d.gal + 3) % 3; return render(); }
@@ -1159,7 +1163,7 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
       <div class="d-row">
         <div class="panel"><div class="panel-h"><b>نمو المستخدمين</b><small>آخر 6 أشهر</small></div>
           <div class="bars">${months.map(([m, v], i) => `<div class="col"><div class="b ${i < 4 ? 'alt' : ''}" style="height:${v}%;animation-delay:${i * 80}ms"></div><small>${m}</small></div>`).join('')}</div></div>
-        <div class="panel"><div class="panel-h"><b>توزيع البحث حسب الجامعة</b></div>
+        <div class="panel"><div class="panel-h"><b>الإعلانات حسب الجامعة</b></div>
           <div class="donut-wrap">
             <svg width="120" height="120" viewBox="0 0 42 42"><circle cx="21" cy="21" r="15.9" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="6"/>
               <circle cx="21" cy="21" r="15.9" fill="none" stroke="#7c5cff" stroke-width="6" stroke-dasharray="38 62" stroke-dashoffset="25"/>
@@ -1185,6 +1189,11 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
     requests: () => `
       <div class="d-top"><div><h4>طلبات الانضمام</h4><small>راجع وثّق السواق وأصحاب السكن قبل ظهورهم في التطبيق</small></div></div>
       <div class="panel">${reqTable(requests)}</div>`,
+    bookings: () => `
+      <div class="d-top"><div><h4>طلبات الحجز</h4><small>كل طلب حجز مقعد أو زيارة سكن يصل هنا مع رقم الطالب للمتابعة</small></div></div>
+      <div class="panel"><div class="t-wrap"><table class="t"><thead><tr><th>الطالب</th><th>الطلب</th><th>الجامعة</th><th>الوقت</th><th>الحالة</th><th></th></tr></thead><tbody>
+      ${[['زينب علي', 'مقعد · أبو حسين · الدورة ← الجادرية', 'جامعة بغداد', 'منذ 10 دقائق', 'wait'], ['مريم حسن', 'زيارة · سكن طالبات النخيل', 'النهرين', 'منذ ساعة', 'wait'], ['علي كريم', 'مقعد · أبو علي · السيدية ← الصناعة', 'التكنولوجية', 'أمس', 'ok']].map(([n, r, u, t, st], i) => `<tr><td><div class="who"><span class="av" style="background:${['#5b47f5', '#e11d74', '#0ea5c6'][i]}">${n[0]}</span><div>${n}<small class="mono" style="text-align:right">07XX XXX XXXX</small></div></div></td><td>${r}</td><td>${u}</td><td style="color:var(--dim)">${t}</td><td><span class="pill ${st}">${st === 'ok' ? 'تم التواصل' : 'جديد'}</span></td><td>${st === 'wait' ? '<div class="act"><button class="e" data-t="يفتح واتساب مع الطالب">تواصل</button><button class="y" data-t="✓ تم تحديد الطلب كمكتمل">تم</button></div>' : '<span style="color:var(--dim)">—</span>'}</td></tr>`).join('')}
+      </tbody></table></div></div>`,
     add: () => `
       <div class="d-top"><div><h4>إضافة إعلان جديد</h4><small>يظهر فوراً في التطبيق بعد الحفظ</small></div></div>
       <div class="panel"><div class="form-grid">
