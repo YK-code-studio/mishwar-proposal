@@ -303,6 +303,96 @@ table.t tr:last-child td{border-bottom:0}
 .switch{width:38px;height:22px;border-radius:99px;background:var(--ok);position:relative;display:inline-block;vertical-align:middle}
 .switch::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff}
 .switch.offs{background:#39415f}.switch.offs::after{left:auto;right:3px}
+/* ===== public web platform (light) ===== */
+.sim-tabs .opt-tag{font-family:'JetBrains Mono',monospace;font-size:11px;padding:2px 7px;border-radius:99px;background:rgba(251,191,36,.15);color:var(--gold);margin-right:6px}
+.sim-tabs button.on .opt-tag{background:rgba(255,255,255,.22);color:#fff}
+.web{background:#f5f6fb;color:#151a2d;min-height:600px;font-family:var(--font);font-size:14px;line-height:1.7}
+.w-nav{display:flex;align-items:center;justify-content:space-between;padding:12px 26px;background:#fff;border-bottom:1px solid #eceef5;gap:14px}
+.w-logo{display:flex;align-items:center;gap:8px;font-family:var(--head);font-weight:700;font-size:18px}
+.w-logo i{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,#5b47f5,#22d3ee);display:grid;place-items:center;color:#fff}
+.w-links{display:flex;gap:2px}
+.w-links button{padding:8px 12px;border-radius:10px;font-size:13.5px;color:#5c6380;white-space:nowrap}
+.w-links button:hover{background:#f3f4fa}
+.w-links button.on{background:#eef0ff;color:#4b3ad8;font-weight:600}
+.w-dl{padding:9px 14px;border-radius:11px;background:#151a2d;color:#fff;font-size:13px;font-weight:600;white-space:nowrap}
+.w-hero{padding:46px 26px 38px;text-align:center;background:radial-gradient(500px 220px at 50% 0%,rgba(91,71,245,.12),transparent 70%)}
+.w-hero h5{font-family:var(--head);font-size:30px;line-height:1.4;margin-bottom:6px}
+.w-hero h5 span{color:#5b47f5}
+.w-hero p{color:#6b7290;margin-bottom:22px}
+.w-search{max-width:660px;margin:0 auto;background:#fff;border-radius:18px;padding:8px;display:flex;gap:8px;box-shadow:0 10px 30px rgba(20,25,60,.08);border:1px solid #eceef5;align-items:stretch}
+.w-type{display:flex;background:#f1f2f8;border-radius:12px;padding:3px}
+.w-type button{padding:8px 14px;border-radius:10px;font-size:13px;color:#6b7290;font-weight:600}
+.w-type button.on{background:#fff;color:#151a2d;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.w-search select{flex:1;border:0;background:#f7f8fc;border-radius:12px;padding:0 12px;font-family:inherit;font-size:13.5px;color:#151a2d;min-height:40px}
+.w-go{padding:0 20px;border-radius:12px;background:#5b47f5;color:#fff;font-weight:600;font-size:13.5px;min-height:40px}
+.w-stats{display:flex;justify-content:center;gap:26px;margin-top:20px;font-size:12.5px;color:#8a91a8;flex-wrap:wrap}
+.w-stats b{color:#151a2d;font-family:'JetBrains Mono',monospace}
+.w-sec{padding:22px 26px}
+.w-sec-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;gap:12px;flex-wrap:wrap}
+.w-sec-h b{font-family:var(--head);font-size:18px}
+.w-sec-h button{color:#5b47f5;font-size:13px;font-weight:600}
+.w-chips{display:flex;gap:6px;flex-wrap:wrap}
+.w-chips button{padding:6px 12px;border-radius:99px;background:#fff;border:1px solid #e3e6f0;font-size:12.5px;color:#5c6380}
+.w-chips button.on{background:#151a2d;color:#fff;border-color:#151a2d}
+.w-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.w-card{background:#fff;border:1px solid #eceef5;border-radius:16px;overflow:hidden;text-align:right;transition:transform .2s,box-shadow .2s;display:block;width:100%}
+.w-card:hover{transform:translateY(-3px);box-shadow:0 12px 24px rgba(20,25,60,.08)}
+.w-card .img{height:104px;display:grid;place-items:center;color:#fff;position:relative}
+.w-card .img svg{width:44px;height:44px;opacity:.9}
+.w-card .img em{position:absolute;top:10px;right:10px;font-style:normal;font-size:11px;font-weight:600;padding:2px 8px;border-radius:7px;background:rgba(255,255,255,.9);color:#151a2d}
+.w-card .bd2{padding:12px 14px}
+.w-card .bd2 b{display:block;font-size:14.5px}
+.w-card .bd2 small{display:block;color:#8a91a8;font-size:12px}
+.w-card .ft{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+.w-card .ft span{font-weight:700;color:#5b47f5;font-size:13.5px}
+.w-card .ft i{font-style:normal;font-size:11.5px;color:#b97700;background:#fff7e6;padding:2px 7px;border-radius:7px;font-weight:700}
+.w-app{margin:6px 26px 24px;border-radius:18px;background:linear-gradient(135deg,#151a2d,#2d2a6e);color:#fff;padding:20px 22px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.w-app b{font-family:var(--head);font-size:17px;display:block}
+.w-app small{opacity:.75}
+.w-stores{display:flex;gap:8px}
+.w-stores button{padding:9px 14px;border-radius:11px;background:rgba(255,255,255,.12);font-size:12.5px;font-weight:600;color:#fff}
+.w-crumb{font-size:12.5px;color:#8a91a8;margin-bottom:12px}
+.w-crumb button{color:#5b47f5}
+.w-detail{display:grid;grid-template-columns:1.4fr 1fr;gap:18px;align-items:start}
+.w-box{background:#fff;border:1px solid #eceef5;border-radius:18px;padding:18px}
+.w-big{height:220px;border-radius:14px;display:grid;place-items:center;color:#fff;margin-bottom:14px}
+.w-big svg{width:80px;height:80px}
+.w-thumbs{display:flex;gap:8px;margin:-4px 0 14px}
+.w-thumbs i{flex:1;height:52px;border-radius:10px;opacity:.75}
+.w-box h6{font-family:var(--head);font-size:21px;margin-bottom:2px}
+.w-kv{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0}
+.w-kv div{background:#f7f8fc;border-radius:12px;padding:9px 12px}
+.w-kv small{display:block;color:#9aa1b8;font-size:11.5px}
+.w-kv b{font-size:13.5px}
+.w-feat{display:flex;flex-wrap:wrap;gap:6px}
+.w-feat span{padding:5px 10px;border-radius:9px;background:#eef0ff;color:#4b3ad8;font-size:12px;font-weight:500}
+.w-price{font-family:var(--head);font-size:26px;font-weight:700;color:#5b47f5}
+.w-price small{font-size:13px;color:#8a91a8;font-weight:500}
+.w-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:11px;border-radius:12px;font-weight:600;font-size:13.5px;margin-top:8px}
+.w-btn.p{background:#5b47f5;color:#fff}
+.w-btn.g{background:#e8fbf3;color:#0f9f6e}
+.w-btn.o{background:#fff;border:1px solid #e3e6f0;color:#151a2d}
+.w-share{margin-top:12px;padding:10px 12px;border-radius:12px;background:#f7f8fc;font-size:12px;color:#6b7290;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.w-share span{font-family:'JetBrains Mono',monospace;direction:ltr;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.w-share button{color:#5b47f5;font-weight:600;flex-shrink:0}
+.w-form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.w-form label{display:block;font-size:12px;color:#6b7290;margin-bottom:5px}
+.w-form .in{height:40px;border-radius:10px;background:#f7f8fc;border:1px solid #e7e9f2;display:flex;align-items:center;padding:0 12px;font-size:13px;color:#151a2d}
+.w-form .full{grid-column:1/-1}
+.w-up{height:80px;border-radius:12px;border:1.5px dashed #d4d8e6;display:grid;place-items:center;color:#8a91a8;font-size:13px}
+.w-seo{margin-top:14px;padding:12px 14px;border-radius:12px;border:1px solid #eceef5;background:#fff}
+.w-seo small{display:block;font-size:11.5px;color:#0f9f6e;direction:ltr;text-align:right;font-family:'JetBrains Mono',monospace}
+.w-seo b{display:block;color:#1a0dab;font-size:15px;font-weight:500}
+.w-seo p{font-size:12.5px;color:#545b70}
+.w-foot{padding:16px 26px;border-top:1px solid #eceef5;color:#9aa1b8;font-size:12px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;background:#fff}
+@media (max-width:1040px){.w-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:680px){
+  .w-nav{flex-wrap:wrap;padding:12px 14px}.w-links{order:3;width:100%;overflow-x:auto}
+  .w-hero{padding:30px 14px}.w-hero h5{font-size:22px}.w-search{flex-direction:column}
+  .w-sec{padding:18px 14px}.w-grid,.w-detail,.w-form{grid-template-columns:1fr}.w-app{margin:6px 14px 18px}
+  .sim-tabs{flex-wrap:wrap;justify-content:center}
+}
+#tab-web .browser{scroll-margin-top:84px}
 .d-toast{position:fixed;bottom:24px;left:24px;z-index:99;padding:12px 18px;border-radius:12px;background:var(--card2);border:1px solid rgba(52,211,153,.4);color:var(--text);font-size:14px;box-shadow:0 20px 40px rgba(0,0,0,.4);transform:translateY(80px);opacity:0;transition:.3s}
 .d-toast.show{transform:none;opacity:1}
 
@@ -597,6 +687,7 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
       <div class="sim-tabs" role="tablist">
         <button class="on" data-tab="app">تطبيق الطالب · Flutter</button>
         <button data-tab="dash">لوحة الإدارة · Vue.js</button>
+        <button data-tab="web">منصة الويب<span class="opt-tag">$3,000</span></button>
       </div>
     </div>
 
@@ -641,6 +732,17 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
         </div>
       </div>
       <div class="hint" style="justify-content:center"><svg width="16" height="16"><use href="#i-info"/></svg> الأرقام والإحصائيات تجريبية للعرض، وكل الأقسام والوظائف الظاهرة في لوحة الإدارة مشمولة ضمن السعر.</div>
+    </div>
+
+    <div class="sim-panel" id="tab-web">
+      <div class="browser">
+        <div class="browser-bar">
+          <div class="dots"><i></i><i></i><i></i></div>
+          <div class="url"><svg width="12" height="12"><use href="#i-lock"/></svg><span class="mono" id="webUrl">mishwar.iq</span></div>
+        </div>
+        <div class="web" id="webMain"></div>
+      </div>
+      <div class="hint" style="justify-content:center"><svg width="16" height="16"><use href="#i-info"/></svg> منصة الويب ضمن الخيار الثاني بقيمة <span class="mono">$3,000</span> ومدة 40 يوماً. البيانات تجريبية، وكل صفحة ووظيفة ظاهرة هنا مشمولة فعلياً.</div>
     </div>
   </div>
 </section>
@@ -1184,6 +1286,7 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
     $$('.sim-tabs button').forEach(x => x.classList.toggle('on', x === b));
     $$('.sim-panel').forEach(p => p.classList.toggle('on', p.id === 'tab-' + b.dataset.tab));
     if (b.dataset.tab === 'dash') renderDash();
+    if (b.dataset.tab === 'web') renderWeb();
   }));
 
   /* ---------- dashboard simulator ---------- */
@@ -1294,6 +1397,95 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
     if (d.t) dToast(d.t);
   });
   renderDash();
+
+  /* ---------- public web platform simulator ---------- */
+  const wst = { page: 'home', type: 'rides', uni: 'الكل', id: null };
+  const wImg = (kind, x) => kind === 'ride' ? `background:linear-gradient(135deg,${x.color},${x.color}aa)` : `background:linear-gradient(135deg,${x.g[0]},${x.g[1]})`;
+  const wCard = (kind, x) => kind === 'ride'
+    ? `<button class="w-card" data-w-open="ride:${x.id}"><div class="img" style="${wImg('ride', x)}"><svg><use href="#i-bus"/></svg><em>${x.female ? 'طالبات فقط' : 'موثّق ✓'}</em></div><div class="bd2"><b>${x.name} · ${x.car}</b><small>${x.route} · ${x.uni}</small><div class="ft"><span>${fmt(x.price)} د.ع / شهر</span><i>★ ${x.rating}</i></div></div></button>`
+    : `<button class="w-card" data-w-open="house:${x.id}"><div class="img" style="${wImg('house', x)}"><svg><use href="#i-building"/></svg><em>${x.type}</em></div><div class="bd2"><b>${x.title}</b><small>${x.area} · ${x.dist} عن ${x.unis[0]}</small><div class="ft"><span>${fmt(x.price)} د.ع / شهر</span><i>★ ${x.rating}</i></div></div></button>`;
+  const wApp = `<div class="w-app"><div><b>حمّل تطبيق مشوار</b><small>احجز مقعدك، احفظ المفضلة، وقيّم السواق والسكن.</small></div><div class="w-stores"><button data-w-t="يفتح صفحة التطبيق في App Store">App Store</button><button data-w-t="يفتح صفحة التطبيق في Google Play">Google Play</button></div></div>`;
+  const wFilter = list => list.filter(x => wst.uni === 'الكل' || x.uni === wst.uni || (x.unis && x.unis.includes(wst.uni)));
+  const wPages = {
+    home: () => `
+      <div class="w-hero"><h5>خطوط النقل والسكن الطلابي<br><span>لجامعات بغداد</span> في مكان واحد</h5><p>ابحث حسب جامعتك ومنطقتك، وتواصل مباشرة مع السائق أو صاحب السكن.</p>
+        <div class="w-search"><div class="w-type"><button class="${wst.type === 'rides' ? 'on' : ''}" data-w-type="rides">خطوط</button><button class="${wst.type === 'housing' ? 'on' : ''}" data-w-type="housing">سكن</button></div>
+          <select id="wUni">${unis.map(u => `<option ${u === wst.uni ? 'selected' : ''}>${u === 'الكل' ? 'كل الجامعات' : u}</option>`).join('')}</select>
+          <button class="w-go" data-w-page="list">بحث</button></div>
+        <div class="w-stats"><span><b>${drivers.length}</b> خطوط</span><span><b>${housing.length}</b> أماكن سكن</span><span><b>${unis.length - 1}</b> جامعات</span></div></div>
+      <div class="w-sec"><div class="w-sec-h"><b>أحدث الخطوط</b><button data-w-list="rides">عرض الكل ←</button></div><div class="w-grid">${drivers.slice(0, 3).map(d => wCard('ride', d)).join('')}</div></div>
+      <div class="w-sec"><div class="w-sec-h"><b>سكن قريب من الجامعات</b><button data-w-list="housing">عرض الكل ←</button></div><div class="w-grid">${housing.slice(0, 3).map(h => wCard('house', h)).join('')}</div></div>
+      ${wApp}`,
+    list: () => {
+      const isR = wst.type === 'rides', list = wFilter(isR ? drivers : housing);
+      return `<div class="w-sec"><div class="w-crumb"><button data-w-page="home">الرئيسية</button> / ${isR ? 'خطوط النقل' : 'السكن الطلابي'}</div>
+        <div class="w-sec-h"><b>${isR ? 'خطوط النقل' : 'السكن الطلابي'} · ${list.length} نتيجة</b><div class="w-chips">${unis.map(u => `<button class="${u === wst.uni ? 'on' : ''}" data-w-uni="${u}">${u}</button>`).join('')}</div></div>
+        <div class="w-grid">${list.map(x => wCard(isR ? 'ride' : 'house', x)).join('') || '<p style="color:#8a91a8">لا توجد نتائج لهذه الجامعة حالياً.</p>'}</div></div>${wApp}`;
+    },
+    ride: () => {
+      const d = drivers.find(x => x.id === wst.id);
+      return `<div class="w-sec"><div class="w-crumb"><button data-w-page="home">الرئيسية</button> / <button data-w-list="rides">خطوط النقل</button> / ${d.name}</div>
+        <div class="w-detail"><div class="w-box"><div class="w-big" style="${wImg('ride', d)}"><svg><use href="#i-bus"/></svg></div>
+          <h6>${d.name} · ${d.car}</h6><small style="color:#8a91a8">${d.route}</small>
+          <div class="w-kv"><div><small>الجامعة</small><b>${d.uni}</b></div><div><small>المنطقة</small><b>${d.area}</b></div><div><small>وقت الانطلاق</small><b>${d.time}</b></div><div><small>المقاعد المتاحة</small><b>${d.free} من ${d.seats}</b></div></div>
+          <div class="w-feat">${d.female ? '<span>خط طالبات فقط</span>' : ''}<span>سائق موثّق</span><span>ذهاب وإياب</span></div></div>
+        <div><div class="w-box"><div class="w-price">${fmt(d.price)} <small>د.ع / شهرياً</small></div><small style="color:#b97700;font-weight:700">★ ${d.rating} · ${d.reviews} تقييم</small>
+          <button class="w-btn p" data-w-t="يفتح شاشة الاتصال برقم ${d.name}">${ic('phone', 16)} اتصال</button>
+          <button class="w-btn g" data-w-t="يفتح واتساب برسالة جاهزة">${ic('chat', 16)} واتساب</button>
+          <button class="w-btn o" data-w-t="يفتح التطبيق أو صفحة التحميل لإكمال الحجز">احجز من التطبيق</button>
+          <div class="w-share"><span>mishwar.iq/rides/${d.id}</span><button data-w-t="✓ تم نسخ رابط المشاركة">نسخ الرابط</button></div></div>
+          <div class="w-seo"><small>mishwar.iq › rides › ${d.area}</small><b>خط ${d.area} ← ${d.uni} | ${d.car} | مشوار</b><p>خط يومي من ${d.area} إلى ${d.uni}، ${d.free} مقاعد متاحة، ${fmt(d.price)} د.ع شهرياً…</p></div></div></div></div>${wApp}`;
+    },
+    house: () => {
+      const h = housing.find(x => x.id === wst.id);
+      return `<div class="w-sec"><div class="w-crumb"><button data-w-page="home">الرئيسية</button> / <button data-w-list="housing">السكن الطلابي</button> / ${h.title}</div>
+        <div class="w-detail"><div class="w-box"><div class="w-big" style="${wImg('house', h)}"><svg><use href="#i-building"/></svg></div>
+          <div class="w-thumbs">${[0, 1, 2, 3].map(i => `<i style="background:linear-gradient(${135 + i * 40}deg,${h.g[0]},${h.g[1]})"></i>`).join('')}</div>
+          <h6>${h.title}</h6><small style="color:#8a91a8">${h.area} · ${h.type}</small>
+          <div class="w-kv"><div><small>نوع الغرفة</small><b>${h.room}</b></div><div><small>الأماكن الشاغرة</small><b>${h.vacant}</b></div><div><small>الجامعات القريبة</small><b>${h.unis.join('، ')}</b></div><div><small>المسافة</small><b>${h.dist}</b></div></div>
+          <div class="w-feat">${h.feats.map(f => `<span>${f}</span>`).join('')}</div></div>
+        <div><div class="w-box"><div class="w-price">${fmt(h.price)} <small>د.ع / شهرياً</small></div><small style="color:#b97700;font-weight:700">★ ${h.rating}</small>
+          <button class="w-btn p" data-w-t="يفتح شاشة الاتصال برقم صاحب السكن">${ic('phone', 16)} اتصال</button>
+          <button class="w-btn g" data-w-t="يفتح واتساب برسالة جاهزة">${ic('chat', 16)} واتساب</button>
+          <button class="w-btn o" data-w-t="يفتح الموقع في خرائط Google">${ic('pin', 16)} الموقع على الخريطة</button>
+          <div class="w-share"><span>mishwar.iq/housing/${h.id}</span><button data-w-t="✓ تم نسخ رابط المشاركة">نسخ الرابط</button></div></div>
+          <div class="w-seo"><small>mishwar.iq › housing › ${h.area}</small><b>${h.title} – ${h.type} قرب ${h.unis[0]} | مشوار</b><p>${h.room} في ${h.area}، ${h.dist} عن ${h.unis[0]}، ${fmt(h.price)} د.ع شهرياً…</p></div></div></div></div>${wApp}`;
+    },
+    join: () => `
+      <div class="w-sec"><div class="w-crumb"><button data-w-page="home">الرئيسية</button> / انضم إلينا</div>
+        <div class="w-detail"><div class="w-box"><h6>انضم كسائق خط أو أضف سكنك</h6><p style="color:#6b7290;font-size:13px;margin-bottom:14px">يصل طلبك إلى الإدارة للمراجعة والتوثيق، ثم يظهر في التطبيق والمنصة.</p>
+          <div class="w-form"><div><label>نوع الطلب</label><div class="in">سائق خط ▾</div></div><div><label>الاسم الكامل</label><div class="in">—</div></div>
+            <div><label>رقم الهاتف</label><div class="in mono" style="justify-content:flex-end">07XX XXX XXXX</div></div><div><label>المنطقة</label><div class="in">اختر المنطقة ▾</div></div>
+            <div><label>الجامعة</label><div class="in">اختر الجامعة ▾</div></div><div><label>نوع السيارة</label><div class="in">—</div></div>
+            <div class="full"><label>صور المستمسكات والسيارة</label><div class="w-up">اسحب الصور هنا أو اضغط للرفع</div></div></div>
+          <button class="w-btn p" style="max-width:220px" data-w-t="✓ وصل طلبك للإدارة للمراجعة">إرسال الطلب</button></div>
+        <div class="w-box"><b style="font-family:var(--head)">لماذا تنضم إلى مشوار؟</b><ul class="checks" style="margin-top:10px">${['يصلك الطلاب من جامعتك ومنطقتك مباشرة', 'شارة «موثّق» تزيد ثقة الطلاب بك', 'صفحة خاصة بك برابط تشاركه في واتساب', 'تواصل مباشر دون وسيط'].map(t => `<li style="color:#3d445e">${t}</li>`).join('')}</ul></div></div></div>`,
+  };
+  const wUrls = { home: 'mishwar.iq', list: () => `mishwar.iq/${wst.type}`, ride: () => `mishwar.iq/rides/${wst.id}`, house: () => `mishwar.iq/housing/${wst.id}`, join: 'mishwar.iq/join' };
+  function renderWeb() {
+    const navOn = { home: 'home', list: wst.type, ride: 'rides', house: 'housing', join: 'join' }[wst.page];
+    $('#webMain').innerHTML = `<div class="w-nav"><div class="w-logo"><i>${ic('cap', 17)}</i>مشوار</div>
+      <div class="w-links">${[['home', 'الرئيسية'], ['rides', 'خطوط النقل'], ['housing', 'السكن الطلابي'], ['join', 'انضم إلينا']].map(([k, l]) => `<button class="${navOn === k ? 'on' : ''}" data-w-nav="${k}">${l}</button>`).join('')}</div>
+      <button class="w-dl" data-w-t="ينقل الزائر لتحميل التطبيق حسب نوع جهازه">حمّل التطبيق</button></div>
+      ${wPages[wst.page]()}
+      <div class="w-foot"><span>© مشوار · منصة طلاب جامعات بغداد</span><span>تواصل · سياسة الخصوصية</span></div>`;
+    const u = wUrls[wst.page]; $('#webUrl').textContent = typeof u === 'function' ? u() : u;
+  }
+  $('#webMain').addEventListener('change', e => { if (e.target.id === 'wUni') wst.uni = unis[e.target.selectedIndex]; });
+  $('#webMain').addEventListener('click', e => {
+    const el = e.target.closest('button'); if (!el) return;
+    const d = el.dataset;
+    if (d.wT) return dToast(d.wT);
+    if (d.wType) { wst.type = d.wType; return renderWeb(); }
+    if (d.wUni) { wst.uni = d.wUni; return renderWeb(); }
+    if (d.wList) { wst.type = d.wList; wst.page = 'list'; }
+    else if (d.wNav) { if (d.wNav === 'rides' || d.wNav === 'housing') { wst.type = d.wNav; wst.page = 'list'; } else wst.page = d.wNav; }
+    else if (d.wPage) wst.page = d.wPage;
+    else if (d.wOpen) { const [k, id] = d.wOpen.split(':'); wst.page = k; wst.id = +id; }
+    else return;
+    renderWeb();
+    $('#tab-web .browser').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
 
   /* ---------- gantt ---------- */
   const phases = [
