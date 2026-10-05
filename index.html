@@ -339,6 +339,21 @@ table.t tr:last-child td{border-bottom:0}
 .price-main{padding:34px;border-radius:24px;position:relative;overflow:hidden;background:linear-gradient(160deg,rgba(124,92,255,.18),rgba(34,211,238,.06) 60%,var(--card));border:1px solid rgba(124,92,255,.35)}
 .price-main .tag-top{display:inline-block;padding:5px 12px;border-radius:99px;background:rgba(255,255,255,.08);font-size:12.5px;font-weight:600;margin-bottom:12px}
 .price-main .amount{font-family:var(--head);font-size:64px;font-weight:700;line-height:1;display:flex;align-items:baseline;gap:8px;margin:8px 0 6px}
+.opts{margin-top:18px;display:grid;grid-template-columns:1fr 1.35fr;gap:18px}
+.opt{padding:28px;border-radius:var(--radius);border:1px solid var(--line);background:var(--card);position:relative}
+.opt.hl{border-color:rgba(34,211,238,.35);background:linear-gradient(160deg,rgba(34,211,238,.08),transparent 55%),var(--card)}
+.opt .lbl{font-size:12.5px;font-weight:600;color:var(--muted)}
+.opt.hl .lbl{color:var(--p2)}
+.opt h3{font-family:var(--head);font-size:20px;margin:6px 0 4px}
+.opt .pr{font-family:'JetBrains Mono',monospace;font-size:40px;font-weight:700;margin:6px 0 2px;direction:ltr;text-align:right}
+.opt .pr small{font-family:var(--font);font-size:14px;color:var(--muted);font-weight:500}
+.opt>p{color:var(--muted);font-size:14.5px}
+.why{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.why div{padding:14px;border-radius:14px;background:rgba(255,255,255,.03);border:1px solid var(--line)}
+.why b{display:block;font-size:14px;margin-bottom:3px}
+.why small{display:block;font-size:12.5px;color:var(--muted);line-height:1.65}
+@media (max-width:1040px){.opts{grid-template-columns:1fr}}
+@media (max-width:680px){.why{grid-template-columns:1fr}.opt{padding:22px}}
 .terms{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .term{padding:20px;border-radius:16px;border:1px solid var(--line);background:var(--card);display:flex;gap:14px;align-items:flex-start}
 .term .icon{flex-shrink:0;width:40px;height:40px;border-radius:12px}
@@ -512,9 +527,9 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
       </div>
       <div class="hero-stats">
         <div class="hstat"><div class="n">30</div><div class="l">يوم للإطلاق</div></div>
-        <div class="hstat"><div class="n">3</div><div class="l">منصات متكاملة</div></div>
+        <div class="hstat"><div class="n">2<span style="font-size:15px;color:var(--muted)"> +1</span></div><div class="l">تطبيق · إدارة · ويب</div></div>
         <div class="hstat"><div class="n">iOS</div><div class="l">+ Android</div></div>
-        <div class="hstat"><div class="n mono">$2,500</div><div class="l">تكلفة كاملة</div></div>
+        <div class="hstat"><div class="n mono">$2,500</div><div class="l">التطبيق + الإدارة</div></div>
       </div>
     </div>
     <div class="hero-visual rv">
@@ -666,7 +681,7 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
       </div>
       <div class="card rv">
         <span class="icon k"><svg style="color:var(--ok)"><use href="#i-globe"/></svg></span>
-        <h3>منصة ويب خاصة بالتطبيق</h3>
+        <h3>منصة ويب خاصة بالتطبيق <span class="pill wait" style="font-size:11px;vertical-align:middle">خيار الـ <span class="mono">$3,000</span></span></h3>
         <p>واجهة ويب تعريفية مرتبطة بنفس قاعدة البيانات.</p>
         <ul class="checks">
           <li>صفحة تعريفية احترافية بروابط تحميل التطبيق</li>
@@ -797,13 +812,13 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
     <div class="sec-head rv">
       <div class="kicker">التكلفة</div>
       <h2>استثمار واحد، منظومة كاملة</h2>
-      <p>المبلغ يشمل تطبيقين (iOS و Android) ولوحة إدارة ومنصة ويب وخادماً متكاملاً — وليس تطبيقاً فقط.</p>
+      <p>خياران واضحان: التطبيق مع لوحة الإدارة، أو المنظومة الكاملة مع منصة ويب على نطاقكم.</p>
     </div>
     <div class="price-wrap">
       <div class="price-main rv">
-        <span class="tag-top">الباقة الكاملة · تسليم خلال 30 يوماً</span>
+        <span class="tag-top">التطبيق + لوحة الإدارة · تسليم خلال 30 يوماً</span>
         <div class="amount"><span class="mono">$2,500</span><small>مرة واحدة</small></div>
-        <p>تصميم، برمجة، اختبار، ونشر — مع ملكية كاملة للكود والبيانات لجهتكم.</p>
+        <p>تطبيق iOS و Android + لوحة إدارة + خادم وقاعدة بيانات — تصميم، برمجة، اختبار، ونشر، مع ملكية كاملة للكود والبيانات.</p>
         <div class="breakdown" id="breakdown"></div>
         <div class="pay">
           <div><b>40%</b><small>عند البدء</small></div>
@@ -832,6 +847,32 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
             <li>30 يوماً دعم مجاني بعد الإطلاق لإصلاح أي خلل</li>
             <li>تسعير شفاف لكل طلب قبل التنفيذ</li>
           </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="opts">
+      <div class="opt rv">
+        <div class="lbl">الخيار الأول</div>
+        <h3>التطبيق + لوحة الإدارة</h3>
+        <div class="pr">$2,500</div>
+        <p>تطبيق iOS و Android بكل المزايا، ولوحة إدارة كاملة على نطاق فرعي للإدارة. مناسب إذا كان التطبيق هو قناة الوصول الوحيدة للطلاب.</p>
+        <ul class="checks">
+          <li>كل مزايا التطبيق المعروضة في المحاكي</li>
+          <li>لوحة الإدارة بكل أقسامها</li>
+          <li>الخادم وقاعدة البيانات والنشر على المتاجر</li>
+        </ul>
+      </div>
+      <div class="opt hl rv">
+        <div class="lbl">الخيار الثاني · المنظومة الكاملة</div>
+        <h3>التطبيق + لوحة الإدارة + منصة ويب على نطاقكم</h3>
+        <div class="pr">$3,000</div>
+        <p>كل ما في الخيار الأول، مع منصة ويب عامة مرتبطة بنفس قاعدة البيانات. <b style="color:var(--text)">ما الهدف منها؟</b></p>
+        <div class="why">
+          <div><b>الظهور في Google</b><small>من يبحث عن «سكن طالبات قرب جامعة بغداد» أو «خط من الدورة للجادرية» يصل إليكم مباشرة، ثم يحمّل التطبيق.</small></div>
+          <div><b>الوصول دون تحميل</b><small>أولياء الأمور وطلاب المحافظات قبل قدومهم لبغداد يتصفحون السكن والخطوط من أي متصفح.</small></div>
+          <div><b>روابط قابلة للمشاركة</b><small>لكل سائق وسكن رابط خاص يُنشر في واتساب وفيسبوك ويفتح عند الجميع، حتى من لا يملك التطبيق.</small></div>
+          <div><b>واجهة رسمية للجهة</b><small>هوية ومصداقية أمام الطلاب والمعلنين، مع صفحة «انضم كسائق / أضف سكنك» وروابط تحميل التطبيق.</small></div>
         </div>
       </div>
     </div>
@@ -909,7 +950,7 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
     <div class="deliv">
       <div class="dv rv"><span class="icon"><svg style="color:#a593ff"><use href="#i-phone"/></svg></span><div><b>تطبيق منشور على المتجرين</b><small>Google Play و App Store باسم جهتكم.</small></div></div>
       <div class="dv rv"><span class="icon c"><svg style="color:var(--p2)"><use href="#i-grid"/></svg></span><div><b>لوحة إدارة جاهزة</b><small>مع حسابات المشرفين وصلاحياتهم.</small></div></div>
-      <div class="dv rv"><span class="icon k"><svg style="color:var(--ok)"><use href="#i-globe"/></svg></span><div><b>منصة ويب على نطاقكم</b><small>صفحة تعريفية + عرض المحتوى للزوار.</small></div></div>
+      <div class="dv rv"><span class="icon k"><svg style="color:var(--ok)"><use href="#i-globe"/></svg></span><div><b>منصة ويب على نطاقكم</b><small>صفحة تعريفية + عرض المحتوى للزوار (ضمن خيار <span class="mono">$3,000</span>).</small></div></div>
       <div class="dv rv"><span class="icon g"><svg style="color:var(--gold)"><use href="#i-lock"/></svg></span><div><b>الكود المصدري كاملاً</b><small>ملكية كاملة للكود وقاعدة البيانات بعد إتمام الدفعات.</small></div></div>
       <div class="dv rv"><span class="icon p"><svg style="color:var(--pink)"><use href="#i-cap"/></svg></span><div><b>جلسة تدريب</b><small>شرح استخدام لوحة الإدارة لفريقكم.</small></div></div>
       <div class="dv rv"><span class="icon"><svg style="color:#a593ff"><use href="#i-shield"/></svg></span><div><b>30 يوماً دعم فني</b><small>إصلاح أي خلل بعد الإطلاق مجاناً.</small></div></div>
@@ -1233,7 +1274,7 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
     ['قاعدة البيانات و API', 'Laravel · MySQL', 0.7, 2.2, '#ef4444'],
     ['لوحة الإدارة', 'Vue.js 3', 1.2, 2.2, '#10b981'],
     ['تطبيق الجوال', 'Flutter · iOS / Android', 1.5, 3.4, '#0ea5c6'],
-    ['منصة الويب', 'صفحة تعريفية + عرض المحتوى', 2.4, 3.3, '#8b5cf6'],
+    ['منصة الويب', 'ضمن خيار $3,000', 2.4, 3.3, '#8b5cf6'],
     ['اختبار ونشر', 'QA · المتاجر · الخادم', 3.2, 4, '#f59e0b'],
   ];
   $('#gantt').insertAdjacentHTML('beforeend', phases.map(([t, s, a, b, c]) => `
@@ -1243,8 +1284,8 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
   setLw(); addEventListener('resize', setLw);
 
   /* ---------- price breakdown ---------- */
-  const parts = [['تصميم واجهات وتجربة المستخدم (UI/UX)', 350], ['تطبيق Flutter لنظامي iOS و Android', 900], ['الخادم و API وقاعدة البيانات (Laravel · MySQL)', 600], ['لوحة الإدارة (Vue.js) + منصة الويب', 450], ['الاختبار والنشر على المتاجر والخادم', 200]];
-  $('#breakdown').innerHTML = parts.map(([l, v]) => `<div class="bd"><span>${l}</span><b>$${fmt(v)}</b><div class="bar"><i style="width:${v / 9}%"></i></div></div>`).join('');
+  const parts = [['تصميم واجهات وتجربة المستخدم (UI/UX)', 350], ['تطبيق Flutter لنظامي iOS و Android', 950], ['الخادم و API وقاعدة البيانات (Laravel · MySQL)', 650], ['لوحة الإدارة (Vue.js)', 400], ['الاختبار والنشر على المتاجر والخادم', 150]];
+  $('#breakdown').innerHTML = parts.map(([l, v]) => `<div class="bd"><span>${l}</span><b>$${fmt(v)}</b><div class="bar"><i style="width:${v / 9.5}%"></i></div></div>`).join('');
 
   /* ---------- reveal ---------- */
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
