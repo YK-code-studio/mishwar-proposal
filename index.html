@@ -337,6 +337,8 @@ table.t tr:last-child td{border-bottom:0}
 .price-main{padding:34px;border-radius:24px;position:relative;overflow:hidden;background:linear-gradient(160deg,rgba(124,92,255,.18),rgba(34,211,238,.06) 60%,var(--card));border:1px solid rgba(124,92,255,.35)}
 .price-main .tag-top{display:inline-block;padding:5px 12px;border-radius:99px;background:rgba(255,255,255,.08);font-size:12.5px;font-weight:600;margin-bottom:12px}
 .price-main .amount{font-family:var(--head);font-size:64px;font-weight:700;line-height:1;display:flex;align-items:baseline;gap:8px;margin:8px 0 6px}
+.price-main .was{font-family:'JetBrains Mono',monospace;font-size:22px;color:var(--dim);text-decoration:line-through;text-decoration-color:var(--red);font-weight:500}
+.save{display:inline-block;margin-right:8px;padding:5px 12px;border-radius:99px;background:rgba(52,211,153,.14);color:var(--ok);font-size:12.5px;font-weight:600}
 .price-main .amount small{font-size:18px;color:var(--muted);font-weight:500}
 .price-main>p{color:var(--muted)}
 .breakdown{margin-top:24px;display:grid;gap:10px}
@@ -350,24 +352,6 @@ table.t tr:last-child td{border-bottom:0}
 .mini-price small{font-size:14px;color:var(--muted);font-weight:500}
 .note{display:flex;gap:12px;padding:16px 18px;border-radius:16px;background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.2);font-size:14px;color:#e6d8b5;margin-top:18px}
 .note svg{flex-shrink:0;width:20px;height:20px;color:var(--gold);margin-top:3px}
-.plans{margin-top:18px;border-radius:var(--radius);border:1px solid var(--line);background:var(--card);overflow:hidden}
-.plans-h{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:22px 24px;border-bottom:1px solid var(--line)}
-.plans-h b{font-family:var(--head);font-size:19px}
-.plans-h span{font-size:13.5px;color:var(--muted)}
-table.pl{width:100%;border-collapse:collapse;font-size:14.5px}
-table.pl th,table.pl td{padding:13px 18px;border-bottom:1px solid var(--line);text-align:center}
-table.pl th:first-child,table.pl td:first-child{text-align:right}
-table.pl thead th{font-weight:600;font-size:14px;color:var(--muted);background:rgba(255,255,255,.02)}
-table.pl thead th b{display:block;font-family:var(--head);font-size:20px;color:var(--text);margin-top:2px}
-table.pl thead th.hl{color:var(--p2);background:rgba(124,92,255,.1)}
-table.pl td.hl{background:rgba(124,92,255,.05)}
-table.pl tr.grp td{font-size:12.5px;color:var(--p2);font-weight:600;background:rgba(255,255,255,.015);padding:9px 18px}
-table.pl tr:last-child td{border-bottom:0}
-table.pl td small{display:block;color:var(--dim);font-size:12px}
-.y-i{color:var(--ok);font-weight:700}
-.n-i{color:var(--dim)}
-.p-i{color:var(--gold);font-size:12.5px;font-weight:600}
-.pl-wrap{overflow-x:auto}
 .compare{margin-top:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .cmp{padding:20px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.02)}
 .cmp small{color:var(--muted);font-size:12.5px}
@@ -522,7 +506,7 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
         <div class="hstat"><div class="n">30</div><div class="l">يوم للإطلاق</div></div>
         <div class="hstat"><div class="n">3</div><div class="l">منصات متكاملة</div></div>
         <div class="hstat"><div class="n">iOS</div><div class="l">+ Android</div></div>
-        <div class="hstat"><div class="n mono">$1,950</div><div class="l">تبدأ التكلفة من</div></div>
+        <div class="hstat"><div class="n mono">$2,500</div><div class="l">تكلفة كاملة</div></div>
       </div>
     </div>
     <div class="hero-visual rv">
@@ -595,7 +579,7 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
             <button data-go="housing"><span class="num">04</span><div><b>السكن الطلابي</b><span>نوع السكن، المنطقة، الجامعات القريبة</span></div></button>
             <button data-go="house:1"><span class="num">05</span><div><b>تفاصيل السكن</b><span>معرض صور، مزايا، خريطة، تواصل</span></div></button>
           </div>
-          <div class="hint"><svg width="16" height="16"><use href="#i-info"/></svg> البيانات تجريبية · المحاكي يعرض الباقة الكاملة (الحجز، التقييمات، الخريطة، الإشعارات).</div>
+          <div class="hint"><svg width="16" height="16"><use href="#i-info"/></svg> جميع البيانات في المحاكي تجريبية لأغراض العرض.</div>
         </div>
       </div>
     </div>
@@ -672,7 +656,7 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
       </div>
       <div class="card rv">
         <span class="icon k"><svg style="color:var(--ok)"><use href="#i-globe"/></svg></span>
-        <h3>منصة ويب خاصة بالتطبيق <span class="pill wait" style="font-size:11px;vertical-align:middle">الباقة الكاملة</span></h3>
+        <h3>منصة ويب خاصة بالتطبيق</h3>
         <p>واجهة ويب تعريفية مرتبطة بنفس قاعدة البيانات.</p>
         <ul class="checks">
           <li>صفحة تعريفية احترافية بروابط تحميل التطبيق</li>
@@ -802,14 +786,14 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
   <div class="wrap">
     <div class="sec-head rv">
       <div class="kicker">التكلفة</div>
-      <h2>ابدأ بالأساس، وتوسّع حين تحتاج</h2>
-      <p>صمّمنا باقة أساسية بتكلفة أقل تغطي كل ما طلبتموه بالضبط، مع إمكانية إضافة المزايا المتقدمة لاحقاً دون إعادة بناء أي شيء.</p>
+      <h2>استثمار واحد، منظومة كاملة</h2>
+      <p>المبلغ يشمل تطبيقين (iOS و Android) ولوحة إدارة ومنصة ويب وخادماً متكاملاً — وليس تطبيقاً فقط. وبسعر خاص لهذا المشروع دون حذف أي ميزة.</p>
     </div>
     <div class="price-wrap">
       <div class="price-main rv">
-        <span class="tag-top">الباقة الأساسية · الأنسب للانطلاق · 30 يوماً</span>
-        <div class="amount"><span class="mono">$1,950</span><small>مرة واحدة</small></div>
-        <p>تطبيق iOS و Android + لوحة إدارة + خادم وقاعدة بيانات — تغطي كل متطلباتكم، مع ملكية كاملة للكود والبيانات.</p>
+        <span class="tag-top">الباقة الكاملة · سعر خاص · تسليم خلال 30 يوماً</span><span class="save">توفير <span class="mono">$500</span></span>
+        <div class="amount"><span class="mono">$2,500</span><span class="was">$3,000</span><small>مرة واحدة</small></div>
+        <p>تصميم، برمجة، اختبار، ونشر — مع ملكية كاملة للكود والبيانات لجهتكم.</p>
         <div class="breakdown" id="breakdown"></div>
         <div class="pay">
           <div><b>40%</b><small>عند البدء</small></div>
@@ -835,20 +819,11 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
           <h3>طلبات التحديث والتطوير</h3>
           <p>أي ميزة جديدة أو تعديل خارج النطاق المتفق عليه بعد الإطلاق — مثل إضافة خدمة جديدة أو تغيير جوهري في التصميم — يُنفَّذ بمبلغ يُتفق عليه مسبقاً حسب حجم الطلب ومدته، مع تقدير واضح قبل البدء.</p>
           <ul class="checks">
-            <li>دعم مجاني بعد الإطلاق لإصلاح أي خلل (15 يوماً للأساسية، 30 للكاملة)</li>
-            <li>أي ميزة من الباقة الكاملة تُضاف لاحقاً بسعرها المحدد أدناه</li>
+            <li>30 يوماً دعم مجاني بعد الإطلاق لإصلاح أي خلل</li>
             <li>تسعير شفاف لكل طلب قبل التنفيذ</li>
           </ul>
         </div>
       </div>
-    </div>
-
-    <div class="plans rv" id="plans">
-      <div class="plans-h"><b>مقارنة الباقات — ما الذي يتضمنه كل خيار؟</b><span>المزايا غير المضمّنة يمكن إضافتها لاحقاً كتحديث مستقل</span></div>
-      <div class="pl-wrap"><table class="pl">
-        <thead><tr><th>الميزة</th><th class="hl">الأساسية<b class="mono">$1,950</b></th><th>الكاملة<b class="mono">$3,000</b></th><th>إضافة لاحقاً</th></tr></thead>
-        <tbody id="plansBody"></tbody>
-      </table></div>
     </div>
 
     <div class="compare">
@@ -902,7 +877,7 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
     <div class="deliv">
       <div class="dv rv"><span class="icon"><svg style="color:#a593ff"><use href="#i-phone"/></svg></span><div><b>تطبيق منشور على المتجرين</b><small>Google Play و App Store باسم جهتكم.</small></div></div>
       <div class="dv rv"><span class="icon c"><svg style="color:var(--p2)"><use href="#i-grid"/></svg></span><div><b>لوحة إدارة جاهزة</b><small>مع حسابات المشرفين وصلاحياتهم.</small></div></div>
-      <div class="dv rv"><span class="icon k"><svg style="color:var(--ok)"><use href="#i-globe"/></svg></span><div><b>منصة ويب على نطاقكم</b><small>صفحة تعريفية + عرض المحتوى للزوار (الباقة الكاملة).</small></div></div>
+      <div class="dv rv"><span class="icon k"><svg style="color:var(--ok)"><use href="#i-globe"/></svg></span><div><b>منصة ويب على نطاقكم</b><small>صفحة تعريفية + عرض المحتوى للزوار.</small></div></div>
       <div class="dv rv"><span class="icon g"><svg style="color:var(--gold)"><use href="#i-lock"/></svg></span><div><b>الكود المصدري كاملاً</b><small>ملكية كاملة للكود وقاعدة البيانات.</small></div></div>
       <div class="dv rv"><span class="icon p"><svg style="color:var(--pink)"><use href="#i-cap"/></svg></span><div><b>جلسة تدريب</b><small>شرح استخدام لوحة الإدارة لفريقكم.</small></div></div>
       <div class="dv rv"><span class="icon"><svg style="color:#a593ff"><use href="#i-shield"/></svg></span><div><b>30 يوماً دعم فني</b><small>إصلاح أي خلل بعد الإطلاق مجاناً.</small></div></div>
@@ -1245,38 +1220,8 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
   setLw(); addEventListener('resize', setLw);
 
   /* ---------- price breakdown ---------- */
-  const parts = [['تصميم واجهات وتجربة المستخدم (UI/UX)', 300], ['تطبيق Flutter لنظامي iOS و Android', 750], ['الخادم و API وقاعدة البيانات (Laravel · MySQL)', 450], ['لوحة الإدارة (Vue.js)', 300], ['الاختبار والنشر على المتاجر والخادم', 150]];
-  $('#breakdown').innerHTML = parts.map(([l, v]) => `<div class="bd"><span>${l}</span><b>$${fmt(v)}</b><div class="bar"><i style="width:${v / 7.5}%"></i></div></div>`).join('');
-
-  /* ---------- plans comparison ---------- */
-  // [feature, note, basic, full, add-later price]
-  const Y = '<span class="y-i">✓</span>', N = '<span class="n-i">—</span>';
-  const plans = [
-    ['grp', 'المتطلبات الأساسية'],
-    ['تطبيق iOS و Android (Flutter)', '', Y, Y, ''],
-    ['سواق الخطوط: السيارة، المنطقة، الجامعة، السعر', '', Y, Y, ''],
-    ['السكن الطلابي: النوع، المنطقة، الجامعات القريبة، الصور', '', Y, Y, ''],
-    ['بحث وفلترة حسب الجامعة والمنطقة والنوع', '', Y, Y, ''],
-    ['اتصال مباشر وواتساب من داخل التطبيق', '', Y, Y, ''],
-    ['المفضلة وشارة «موثّق» و«طالبات فقط»', '', Y, Y, ''],
-    ['لوحة إدارة: إضافة وتعديل وحذف السواق والسكن مع الصور', '', Y, Y, ''],
-    ['إدارة الجامعات والمناطق', '', Y, Y, ''],
-    ['grp', 'المزايا المتقدمة'],
-    ['منصة ويب للزوار + صفحة تعريفية (SEO)', 'الأساسية: التطبيق ولوحة الإدارة فقط', N, Y, '$300'],
-    ['طلب حجز مقعد / زيارة سكن', 'الأساسية: التواصل بالاتصال وواتساب', N, Y, '$150'],
-    ['التقييمات والمراجعات من الطلاب', '', N, Y, '$150'],
-    ['إشعارات فورية من لوحة الإدارة', '', N, Y, '$150'],
-    ['تسجيل السواق وأصحاب السكن ذاتياً + مراجعة الطلبات', 'الأساسية: الإدارة تُدخل البيانات بنفسها', N, Y, '$200'],
-    ['خريطة الموقع والمسافة عن الجامعة', 'الأساسية: اسم المنطقة والمسافة نصاً', N, Y, '$100'],
-    ['إحصائيات ورسوم بيانية متقدمة', 'الأساسية: عدّادات بسيطة', N, Y, '$100'],
-    ['صلاحيات متعددة للمشرفين', 'الأساسية: حساب مدير واحد', N, Y, '$50'],
-    ['grp', 'الخدمة'],
-    ['الدعم الفني المجاني بعد الإطلاق', '', '15 يوماً', '30 يوماً', ''],
-    ['جلسة تدريب على لوحة الإدارة', '', 'فيديو شرح', 'جلسة مباشرة', ''],
-  ];
-  $('#plansBody').innerHTML = plans.map(r => r[0] === 'grp'
-    ? `<tr class="grp"><td colspan="4">${r[1]}</td></tr>`
-    : `<tr><td>${r[0]}${r[1] ? `<small>${r[1]}</small>` : ''}</td><td class="hl">${r[2]}</td><td>${r[3]}</td><td>${r[4] ? `<span class="p-i mono">${r[4]}</span>` : N}</td></tr>`).join('');
+  const parts = [['تصميم واجهات وتجربة المستخدم (UI/UX)', 350], ['تطبيق Flutter لنظامي iOS و Android', 900], ['الخادم و API وقاعدة البيانات (Laravel · MySQL)', 600], ['لوحة الإدارة (Vue.js) + منصة الويب', 450], ['الاختبار والنشر على المتاجر والخادم', 200]];
+  $('#breakdown').innerHTML = parts.map(([l, v]) => `<div class="bd"><span>${l}</span><b>$${fmt(v)}</b><div class="bar"><i style="width:${v / 9}%"></i></div></div>`).join('');
 
   /* ---------- reveal ---------- */
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
