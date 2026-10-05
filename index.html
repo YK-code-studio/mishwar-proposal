@@ -1,0 +1,1230 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>مشوار — عرض المشروع</title>
+<meta name="description" content="عرض تقديمي لمنصة مشوار: تطبيق ولوحة إدارة لطلاب جامعات بغداد — خطوط النقل والسكن الطلابي.">
+<meta name="theme-color" content="#060914">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Readex+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#060914; --bg2:#0a1020; --card:#0e1529; --card2:#121b33;
+  --line:rgba(255,255,255,.08); --line2:rgba(255,255,255,.14);
+  --text:#e9edf8; --muted:#8e98b4; --dim:#5f6a88;
+  --p1:#7c5cff; --p2:#22d3ee; --gold:#fbbf24; --ok:#34d399; --pink:#f472b6; --red:#fb7185;
+  --grad:linear-gradient(135deg,#7c5cff 0%,#22d3ee 100%);
+  --radius:20px;
+  --font:'IBM Plex Sans Arabic',system-ui,sans-serif;
+  --head:'Readex Pro','IBM Plex Sans Arabic',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.75;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.mono{font-family:'JetBrains Mono',monospace;direction:ltr;unicode-bidi:isolate}
+
+/* ambient background */
+.bg-fx{position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+   radial-gradient(800px 500px at 85% -10%,rgba(124,92,255,.22),transparent 60%),
+   radial-gradient(700px 500px at -10% 30%,rgba(34,211,238,.12),transparent 60%),
+   radial-gradient(600px 400px at 50% 110%,rgba(124,92,255,.12),transparent 60%),var(--bg)}
+.bg-fx::after{content:"";position:absolute;inset:0;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:64px 64px;mask-image:radial-gradient(ellipse at 50% 0%,#000 20%,transparent 70%);opacity:.5}
+
+/* nav */
+nav.top{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px);background:rgba(6,9,20,.7);border-bottom:1px solid var(--line)}
+nav.top .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--head);font-weight:700;font-size:20px}
+.brand-mark{width:36px;height:36px;border-radius:11px;background:var(--grad);display:grid;place-items:center;box-shadow:0 8px 24px rgba(124,92,255,.4)}
+.brand small{font-family:var(--font);font-weight:400;font-size:12px;color:var(--muted);display:block;line-height:1}
+.nav-links{display:flex;gap:4px}
+.nav-links a{padding:8px 14px;border-radius:10px;font-size:14px;color:var(--muted);transition:.2s}
+.nav-links a:hover{color:var(--text);background:rgba(255,255,255,.05)}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:14px;font-weight:600;font-size:15px;transition:transform .2s,box-shadow .2s}
+.btn-primary{background:var(--grad);color:#fff;box-shadow:0 10px 30px rgba(124,92,255,.35)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(124,92,255,.5)}
+.btn-ghost{border:1px solid var(--line2);background:rgba(255,255,255,.03)}
+.btn-ghost:hover{background:rgba(255,255,255,.07)}
+.btn-sm{padding:9px 16px;font-size:14px;border-radius:12px}
+
+/* hero */
+.hero{padding:80px 0 60px}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 14px 6px 6px;border:1px solid var(--line2);border-radius:99px;font-size:13px;color:var(--muted);background:rgba(255,255,255,.03)}
+.eyebrow b{background:var(--grad);color:#fff;font-weight:600;padding:2px 10px;border-radius:99px;font-size:12px}
+h1{font-family:var(--head);font-size:clamp(36px,5.4vw,64px);line-height:1.2;font-weight:700;margin:22px 0 18px;letter-spacing:-.5px}
+.grad-text{display:inline-block;padding-bottom:.18em;margin-bottom:-.18em;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:18px;color:var(--muted);max-width:560px}
+.hero-ctas{display:flex;gap:12px;margin-top:30px;flex-wrap:wrap}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:44px;max-width:600px}
+.hstat{padding:14px 16px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.02)}
+.hstat .n{font-family:var(--head);font-size:24px;font-weight:700}
+.hstat .l{font-size:12px;color:var(--muted)}
+
+.hero-visual{position:relative;height:560px;display:grid;place-items:center}
+.glow{position:absolute;width:380px;height:380px;border-radius:50%;background:var(--grad);filter:blur(90px);opacity:.35}
+.float-card{position:absolute;z-index:3;display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:14px;background:rgba(14,21,41,.85);border:1px solid var(--line2);backdrop-filter:blur(10px);font-size:13px;box-shadow:0 20px 40px rgba(0,0,0,.4);animation:bob 6s ease-in-out infinite}
+.float-card .ic{width:32px;height:32px;border-radius:10px;display:grid;place-items:center}
+.float-card small{display:block;color:var(--muted);font-size:11px;line-height:1.3}
+.fc1{top:70px;right:-10px}
+.fc2{bottom:110px;left:-20px;animation-delay:-2s}
+.fc3{bottom:40px;right:20px;animation-delay:-4s}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+/* phone frame (shared) */
+.phone{position:relative;width:300px;height:620px;border-radius:48px;padding:12px;background:linear-gradient(145deg,#2a3150,#0d1224);box-shadow:0 0 0 1px rgba(255,255,255,.12),0 40px 80px rgba(0,0,0,.6),inset 0 0 0 2px rgba(255,255,255,.04);flex-shrink:0}
+.phone .screen{position:relative;width:100%;height:100%;border-radius:38px;overflow:hidden;background:#f5f6fb;color:#151a2d}
+.phone .notch{position:absolute;top:10px;left:50%;transform:translateX(-50%);width:96px;height:28px;border-radius:20px;background:#05070f;z-index:20}
+.hero .phone{transform:rotate(-4deg)}
+
+/* sections */
+section{padding:90px 0;position:relative}
+.sec-head{max-width:720px;margin-bottom:48px}
+.sec-head.center{margin-inline:auto;text-align:center}
+.kicker{font-size:13px;font-weight:600;color:var(--p2);letter-spacing:.5px;display:flex;align-items:center;gap:8px}
+.sec-head.center .kicker{justify-content:center}
+.kicker::before{content:"";width:22px;height:2px;background:var(--grad);border-radius:2px}
+h2{font-family:var(--head);font-size:clamp(28px,3.6vw,42px);line-height:1.3;margin:10px 0 14px;font-weight:700}
+.sec-head p{color:var(--muted);font-size:17px}
+
+.grid{display:grid;gap:18px}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+.card{padding:26px;border-radius:var(--radius);background:linear-gradient(180deg,var(--card),rgba(14,21,41,.6));border:1px solid var(--line);position:relative;overflow:hidden;transition:border-color .25s,transform .25s}
+.card:hover{border-color:var(--line2);transform:translateY(-3px)}
+.card h3{font-family:var(--head);font-size:19px;margin:14px 0 8px;font-weight:600}
+.card p{color:var(--muted);font-size:15px}
+.icon{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:rgba(124,92,255,.12);border:1px solid rgba(124,92,255,.25)}
+.icon svg{width:22px;height:22px}
+.icon.c{background:rgba(34,211,238,.1);border-color:rgba(34,211,238,.25)}
+.icon.g{background:rgba(251,191,36,.1);border-color:rgba(251,191,36,.25)}
+.icon.k{background:rgba(52,211,153,.1);border-color:rgba(52,211,153,.25)}
+.icon.p{background:rgba(244,114,182,.1);border-color:rgba(244,114,182,.25)}
+ul.checks{list-style:none;margin-top:14px;display:grid;gap:8px}
+ul.checks li{display:flex;gap:10px;font-size:14.5px;color:#c6cde0}
+ul.checks li::before{content:"";flex-shrink:0;width:18px;height:18px;margin-top:4px;border-radius:6px;background:rgba(52,211,153,.15) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2334d399' stroke-width='3'%3E%3Cpath d='M5 12l5 5L20 7'/%3E%3C/svg%3E") center/12px no-repeat}
+
+/* problem/solution */
+.ps{display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:stretch}
+.ps .arrow{display:grid;place-items:center;color:var(--p2)}
+.ps .card.bad{border-color:rgba(251,113,133,.2)}
+.ps .card.good{border-color:rgba(52,211,153,.25);background:linear-gradient(180deg,rgba(52,211,153,.06),var(--card))}
+.ps .card ul{list-style:none;display:grid;gap:10px;margin-top:12px}
+.ps .card li{font-size:15px;color:#c6cde0;padding-right:18px;position:relative}
+.ps .bad li::before{content:"×";position:absolute;right:0;color:var(--red);font-weight:700}
+.ps .good li::before{content:"✓";position:absolute;right:0;color:var(--ok);font-weight:700}
+
+/* simulator */
+.sim-tabs{display:inline-flex;padding:5px;border-radius:16px;background:var(--card);border:1px solid var(--line);margin:0 auto 34px;gap:4px}
+.sim-tabs button{padding:10px 20px;border-radius:12px;font-size:14.5px;font-weight:600;color:var(--muted);transition:.2s}
+.sim-tabs button.on{background:var(--grad);color:#fff}
+.sim-panel{display:none}
+.sim-panel.on{display:block;animation:fade .4s ease}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.sim-app{display:grid;grid-template-columns:300px minmax(0,500px);gap:56px;align-items:center;justify-content:center}
+.sim-side h3{font-family:var(--head);font-size:24px;margin-bottom:8px}
+.sim-side>p{color:var(--muted);margin-bottom:22px}
+.jump{display:grid;gap:10px}
+.jump button{display:flex;align-items:center;gap:14px;text-align:right;padding:14px 16px;border-radius:16px;border:1px solid var(--line);background:var(--card);transition:.2s}
+.jump button:hover,.jump button.on{border-color:rgba(124,92,255,.5);background:var(--card2)}
+.jump button.on{box-shadow:inset -3px 0 0 var(--p1)}
+.jump b{display:block;font-size:15px;font-weight:600}
+.jump span{font-size:13px;color:var(--muted)}
+.jump .num{width:30px;height:30px;border-radius:10px;display:grid;place-items:center;background:rgba(255,255,255,.05);font-family:'JetBrains Mono';font-size:13px;flex-shrink:0}
+.hint{margin-top:18px;font-size:13px;color:var(--dim);display:flex;gap:8px;align-items:center}
+
+/* ===== mobile app UI (light) ===== */
+.app{position:absolute;inset:0;display:flex;flex-direction:column;font-size:13px;font-family:var(--font)}
+.app-status{height:44px;flex-shrink:0;display:flex;justify-content:space-between;align-items:center;padding:6px 26px 0;font-size:12px;font-weight:600;direction:ltr}
+.app-body{flex:1;overflow-y:auto;overflow-x:hidden;padding:4px 16px 16px;scrollbar-width:none}
+.app-body::-webkit-scrollbar{display:none}
+.app-nav{height:66px;flex-shrink:0;display:flex;justify-content:space-around;align-items:center;background:#fff;border-top:1px solid #e9ebf3;padding-bottom:8px}
+.app-nav button{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:10.5px;color:#9aa1b8;padding:6px 8px;border-radius:12px}
+.app-nav button.on{color:#5b47f5}
+.app-nav svg{width:21px;height:21px}
+.a-hello{display:flex;justify-content:space-between;align-items:center;margin:4px 0 14px}
+.a-hello small{color:#8a91a8;font-size:11.5px;display:block}
+.a-hello b{font-family:var(--head);font-size:17px}
+.avatar{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,#7c5cff,#22d3ee);display:grid;place-items:center;color:#fff;font-weight:700}
+.a-search{display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #e7e9f2;border-radius:14px;padding:10px 12px;color:#9aa1b8;margin-bottom:16px;box-shadow:0 2px 8px rgba(20,25,60,.04)}
+.a-svc{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+.a-svc button{text-align:right;padding:14px;border-radius:18px;color:#fff;position:relative;overflow:hidden;min-height:118px;display:flex;flex-direction:column;justify-content:space-between}
+.a-svc button b{font-family:var(--head);font-size:15px;display:block}
+.a-svc button small{opacity:.85;font-size:11px}
+.a-svc .s1{background:linear-gradient(140deg,#5b47f5,#8b6dff)}
+.a-svc .s2{background:linear-gradient(140deg,#0ea5c6,#22d3ee)}
+.a-svc svg.bgi{position:absolute;left:-8px;bottom:-8px;width:70px;height:70px;opacity:.22}
+.a-title{display:flex;justify-content:space-between;align-items:center;margin:6px 0 10px}
+.a-title b{font-family:var(--head);font-size:14.5px}
+.a-title span{color:#5b47f5;font-size:11.5px;font-weight:600}
+.soon{display:flex;gap:8px;overflow-x:auto;margin-bottom:16px;scrollbar-width:none}
+.soon::-webkit-scrollbar{display:none}
+.soon div{flex-shrink:0;padding:8px 12px;border-radius:12px;background:#fff;border:1px dashed #d4d8e6;font-size:11.5px;color:#6b7290}
+.soon div i{font-style:normal;color:#f59e0b;font-weight:600;margin-right:4px;font-size:10px}
+.chips{display:flex;gap:6px;overflow-x:auto;margin:0 -16px 12px;padding:0 16px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chips button{flex-shrink:0;padding:7px 12px;border-radius:99px;background:#fff;border:1px solid #e3e6f0;font-size:11.5px;color:#5c6380;font-weight:500}
+.chips button.on{background:#151a2d;color:#fff;border-color:#151a2d}
+.li{display:flex;gap:11px;padding:11px;background:#fff;border-radius:16px;margin-bottom:9px;border:1px solid #eef0f6;text-align:right;width:100%;align-items:center;box-shadow:0 2px 6px rgba(20,25,60,.03);transition:transform .15s}
+.li:active{transform:scale(.98)}
+.li .th{width:54px;height:54px;border-radius:13px;flex-shrink:0;display:grid;place-items:center}
+.li .th svg{width:28px;height:28px}
+.li .mid{flex:1;min-width:0}
+.li .mid b{display:block;font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.li .mid small{color:#8a91a8;font-size:11px;display:block}
+.li .end{text-align:left;flex-shrink:0}
+.li .price{font-weight:700;color:#5b47f5;font-size:12.5px;display:block}
+.li .end small{color:#9aa1b8;font-size:10px}
+.tag{display:inline-flex;align-items:center;gap:3px;padding:2px 7px;border-radius:6px;font-size:10px;font-weight:600;margin-top:3px}
+.tag.v{background:#e8fbf3;color:#0f9f6e}
+.tag.f{background:#fdeef6;color:#d63384}
+.tag.s{background:#fff7e6;color:#c47f00}
+.a-back{display:flex;align-items:center;gap:10px;margin:2px 0 12px}
+.a-back button{width:34px;height:34px;border-radius:11px;background:#fff;border:1px solid #e7e9f2;display:grid;place-items:center}
+.a-back b{font-family:var(--head);font-size:16px}
+.hero-img{height:150px;border-radius:20px;position:relative;overflow:hidden;margin-bottom:14px;display:grid;place-items:center}
+.hero-img svg.big{width:90px;height:90px;opacity:.9}
+.hero-img .dots{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);display:flex;gap:5px}
+.hero-img .dots i{width:6px;height:6px;border-radius:9px;background:rgba(255,255,255,.5)}
+.hero-img .dots i.on{width:16px;background:#fff}
+.hero-img .nav-g{position:absolute;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.85);display:grid;place-items:center;color:#151a2d;font-weight:700}
+.hero-img .nav-g.l{left:8px}.hero-img .nav-g.r{right:8px}
+.hero-img .cap{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.35);color:#fff;font-size:10px;padding:3px 8px;border-radius:8px}
+.d-title{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
+.d-title b{font-family:var(--head);font-size:16px;display:block}
+.d-title small{color:#8a91a8}
+.rate{display:inline-flex;align-items:center;gap:3px;background:#fff7e6;color:#b97700;padding:3px 8px;border-radius:8px;font-weight:700;font-size:11px}
+.info{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.info div{background:#fff;border:1px solid #eef0f6;border-radius:13px;padding:9px 11px}
+.info small{color:#9aa1b8;font-size:10.5px;display:block}
+.info b{font-size:12.5px;font-weight:600}
+.feat{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.feat span{padding:5px 10px;border-radius:9px;background:#eef0ff;color:#4b3ad8;font-size:11px;font-weight:500}
+.cta-row{display:grid;grid-template-columns:auto auto 1fr;gap:8px}
+.cta-row button{height:44px;border-radius:14px;display:grid;place-items:center;font-weight:600;font-size:13px}
+.cta-row .sq{width:44px;background:#fff;border:1px solid #e3e6f0}
+.cta-row .wa{width:44px;background:#e8fbf3;color:#0f9f6e}
+.cta-row .main{background:#5b47f5;color:#fff;box-shadow:0 8px 18px rgba(91,71,245,.35)}
+.fav-btn{width:34px;height:34px;border-radius:11px;background:#fff;border:1px solid #e7e9f2;display:grid;place-items:center}
+.fav-btn.on{color:#e11d74;background:#fdeef6;border-color:#f9cde3}
+.empty{text-align:center;color:#9aa1b8;padding:40px 10px}
+.empty svg{width:48px;height:48px;opacity:.4;margin-bottom:8px}
+.prof-card{background:linear-gradient(140deg,#151a2d,#2d2a6e);color:#fff;border-radius:20px;padding:16px;margin-bottom:14px}
+.prof-card small{opacity:.7}
+.set-li{display:flex;justify-content:space-between;align-items:center;background:#fff;padding:12px 14px;border-radius:14px;margin-bottom:8px;border:1px solid #eef0f6;font-size:12.5px}
+.set-li i{font-style:normal;color:#9aa1b8}
+.toast{position:absolute;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);background:#151a2d;color:#fff;padding:10px 16px;border-radius:12px;font-size:12px;opacity:0;transition:.3s;z-index:30;white-space:nowrap;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.splash{position:absolute;inset:0;z-index:25;background:linear-gradient(160deg,#5b47f5,#22d3ee);display:grid;place-items:center;color:#fff;text-align:center;transition:opacity .6s}
+.splash.hide{opacity:0;pointer-events:none}
+.splash b{font-family:var(--head);font-size:30px;display:block}
+.splash .mk{width:72px;height:72px;border-radius:22px;background:rgba(255,255,255,.2);display:grid;place-items:center;margin:0 auto 14px;backdrop-filter:blur(4px)}
+.seg{display:flex;background:#eceef6;border-radius:12px;padding:3px;margin-bottom:12px}
+.seg button{flex:1;padding:7px;border-radius:10px;font-size:11.5px;color:#6b7290;font-weight:600}
+.seg button.on{background:#fff;color:#151a2d;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.map-mini{height:110px;border-radius:16px;margin-bottom:12px;position:relative;overflow:hidden;background:#e6ebf5}
+.map-mini svg{width:100%;height:100%}
+
+/* ===== dashboard (Vue-style admin) ===== */
+.browser{border-radius:18px;overflow:hidden;border:1px solid var(--line2);background:#0b1020;box-shadow:0 40px 100px rgba(0,0,0,.55)}
+.browser-bar{height:42px;display:flex;align-items:center;gap:14px;padding:0 16px;background:#0f1630;border-bottom:1px solid var(--line)}
+.browser-bar .dots{display:flex;gap:7px;direction:ltr}
+.browser-bar .dots i{width:11px;height:11px;border-radius:50%;background:#2a3355}
+.browser-bar .dots i:nth-child(1){background:#ff5f57}.browser-bar .dots i:nth-child(2){background:#febc2e}.browser-bar .dots i:nth-child(3){background:#28c840}
+.url{flex:1;max-width:420px;margin:0 auto;height:26px;border-radius:8px;background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;gap:6px;font-size:12px;color:var(--muted)}
+.dash{display:grid;grid-template-columns:220px 1fr;min-height:600px}
+.d-side{background:#0a0f1f;border-left:1px solid var(--line);padding:18px 12px;display:flex;flex-direction:column;gap:4px}
+.d-side .brand{font-size:16px;margin:0 8px 18px}
+.d-side .brand-mark{width:30px;height:30px;border-radius:9px}
+.d-side button{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:11px;font-size:13.5px;color:var(--muted);text-align:right;transition:.15s}
+.d-side button:hover{background:rgba(255,255,255,.04);color:var(--text)}
+.d-side button.on{background:rgba(124,92,255,.14);color:#fff}
+.d-side button svg{width:18px;height:18px}
+.d-side .badge{margin-right:auto;background:var(--red);color:#fff;font-size:10.5px;padding:1px 7px;border-radius:99px;font-weight:600}
+.d-side .sep{font-size:11px;color:var(--dim);margin:14px 12px 4px}
+.d-main{padding:22px 26px;overflow:hidden}
+.d-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;gap:12px}
+.d-top h4{font-family:var(--head);font-size:20px;font-weight:600}
+.d-top small{color:var(--muted);font-size:12.5px}
+.d-search{display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:11px;background:rgba(255,255,255,.04);border:1px solid var(--line);color:var(--dim);font-size:13px;width:220px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+.kpi{padding:16px;border-radius:16px;background:var(--card);border:1px solid var(--line)}
+.kpi small{color:var(--muted);font-size:12px}
+.kpi b{display:block;font-family:var(--head);font-size:24px;margin:4px 0 2px}
+.kpi .up{color:var(--ok);font-size:11.5px}
+.d-row{display:grid;grid-template-columns:1.5fr 1fr;gap:12px;margin-bottom:12px}
+.panel{padding:18px;border-radius:16px;background:var(--card);border:1px solid var(--line)}
+.panel-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.panel-h b{font-size:14.5px;font-weight:600}
+.panel-h small{color:var(--muted);font-size:12px}
+.bars{display:flex;align-items:flex-end;gap:10px;height:160px;padding-top:10px}
+.bars .col{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end}
+.bars .b{width:100%;max-width:30px;border-radius:8px 8px 4px 4px;background:var(--grad);transform-origin:bottom;animation:grow 1s cubic-bezier(.2,.8,.2,1) both}
+.bars .b.alt{background:rgba(124,92,255,.25)}
+.bars .col small{font-size:10.5px;color:var(--dim)}
+@keyframes grow{from{transform:scaleY(0)}}
+.donut-wrap{display:flex;align-items:center;gap:16px}
+.legend{display:grid;gap:8px;font-size:12.5px}
+.legend div{display:flex;align-items:center;gap:8px;color:var(--muted)}
+.legend i{width:10px;height:10px;border-radius:3px}
+.legend b{color:var(--text);margin-right:auto;padding-right:10px}
+table.t{width:100%;border-collapse:collapse;font-size:13px}
+table.t th{text-align:right;font-weight:500;color:var(--dim);font-size:12px;padding:8px 10px;border-bottom:1px solid var(--line)}
+table.t td{padding:11px 10px;border-bottom:1px solid var(--line);color:#c6cde0;vertical-align:middle}
+table.t tr:last-child td{border-bottom:0}
+.who{display:flex;align-items:center;gap:10px}
+.who .av{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;font-weight:700;font-size:13px;color:#fff;flex-shrink:0}
+.who small{display:block;color:var(--dim);font-size:11.5px}
+.pill{display:inline-block;padding:3px 10px;border-radius:99px;font-size:11.5px;font-weight:600}
+.pill.ok{background:rgba(52,211,153,.12);color:var(--ok)}
+.pill.wait{background:rgba(251,191,36,.12);color:var(--gold)}
+.pill.off{background:rgba(251,113,133,.12);color:var(--red)}
+.act{display:flex;gap:6px}
+.act button{padding:5px 10px;border-radius:8px;font-size:12px;font-weight:600}
+.act .y{background:rgba(52,211,153,.14);color:var(--ok)}
+.act .n{background:rgba(251,113,133,.12);color:var(--red)}
+.act .e{background:rgba(255,255,255,.06);color:var(--muted)}
+.t-wrap{overflow-x:auto}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fld label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
+.fld .in{height:40px;border-radius:10px;background:rgba(255,255,255,.04);border:1px solid var(--line2);display:flex;align-items:center;padding:0 12px;font-size:13px;color:#c6cde0}
+.fld.full{grid-column:1/-1}
+.upload{height:90px;border-radius:12px;border:1.5px dashed var(--line2);display:grid;place-items:center;color:var(--muted);font-size:13px}
+.switch{width:38px;height:22px;border-radius:99px;background:var(--ok);position:relative;display:inline-block;vertical-align:middle}
+.switch::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff}
+.switch.offs{background:#39415f}.switch.offs::after{left:auto;right:3px}
+.d-toast{position:fixed;bottom:24px;left:24px;z-index:99;padding:12px 18px;border-radius:12px;background:var(--card2);border:1px solid rgba(52,211,153,.4);color:var(--text);font-size:14px;box-shadow:0 20px 40px rgba(0,0,0,.4);transform:translateY(80px);opacity:0;transition:.3s}
+.d-toast.show{transform:none;opacity:1}
+
+/* tech */
+.tech{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.tech .card{text-align:right}
+.tlogo{width:52px;height:52px;border-radius:15px;display:grid;place-items:center;font-family:'JetBrains Mono';font-weight:700;font-size:15px}
+.tech .role{font-size:12px;color:var(--p2);font-weight:600;margin-top:2px}
+.arch{margin-top:28px;padding:28px;border-radius:var(--radius);border:1px solid var(--line);background:var(--card)}
+.arch svg{width:100%;height:auto;display:block}
+.arch-cap{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;flex-wrap:wrap;gap:10px}
+.arch-cap b{font-family:var(--head);font-size:17px}
+.arch-cap span{font-size:13px;color:var(--muted)}
+
+/* timeline */
+.gantt{border-radius:var(--radius);border:1px solid var(--line);background:var(--card);overflow:hidden}
+.g-head,.g-row{display:grid;grid-template-columns:260px repeat(4,1fr)}
+.g-head div{padding:14px 16px;font-size:13px;color:var(--muted);border-bottom:1px solid var(--line);font-weight:600}
+.g-head div+div{border-right:1px solid var(--line);text-align:center}
+.g-row{position:relative;border-bottom:1px solid var(--line)}
+.g-row:last-child{border-bottom:0}
+.g-row .lab{padding:16px;font-size:14px}
+.g-row .lab small{display:block;color:var(--muted);font-size:12px}
+.g-row .cell{border-right:1px solid var(--line)}
+.g-bar{position:absolute;top:50%;transform:translateY(-50%);height:34px;border-radius:10px;display:flex;align-items:center;padding:0 12px;font-size:12px;font-weight:600;color:#fff;white-space:nowrap;overflow:hidden}
+.milestones{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
+.ms{padding:18px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.02)}
+.ms .w{font-family:'JetBrains Mono';font-size:12px;color:var(--p2)}
+.ms b{display:block;margin:6px 0 4px;font-family:var(--head);font-size:15px}
+.ms p{font-size:13px;color:var(--muted)}
+
+/* pricing */
+.price-wrap{display:grid;grid-template-columns:1.25fr 1fr;gap:18px}
+.price-main{padding:34px;border-radius:24px;position:relative;overflow:hidden;background:linear-gradient(160deg,rgba(124,92,255,.18),rgba(34,211,238,.06) 60%,var(--card));border:1px solid rgba(124,92,255,.35)}
+.price-main .tag-top{display:inline-block;padding:5px 12px;border-radius:99px;background:rgba(255,255,255,.08);font-size:12.5px;font-weight:600;margin-bottom:12px}
+.price-main .amount{font-family:var(--head);font-size:64px;font-weight:700;line-height:1;display:flex;align-items:baseline;gap:8px;margin:8px 0 6px}
+.price-main .amount small{font-size:18px;color:var(--muted);font-weight:500}
+.price-main>p{color:var(--muted)}
+.breakdown{margin-top:24px;display:grid;gap:10px}
+.bd{display:grid;grid-template-columns:1fr auto;gap:6px 14px;align-items:center}
+.bd span{font-size:14px}
+.bd b{font-family:'JetBrains Mono';font-size:14px;direction:ltr}
+.bd .bar{grid-column:1/-1;height:6px;border-radius:9px;background:rgba(255,255,255,.06);overflow:hidden}
+.bd .bar i{display:block;height:100%;border-radius:9px;background:var(--grad)}
+.price-side{display:grid;gap:18px}
+.mini-price{display:flex;align-items:baseline;gap:6px;font-family:var(--head);font-size:34px;font-weight:700;margin:6px 0}
+.mini-price small{font-size:14px;color:var(--muted);font-weight:500}
+.note{display:flex;gap:12px;padding:16px 18px;border-radius:16px;background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.2);font-size:14px;color:#e6d8b5;margin-top:18px}
+.note svg{flex-shrink:0;width:20px;height:20px;color:var(--gold);margin-top:3px}
+.compare{margin-top:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.cmp{padding:20px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.02)}
+.cmp small{color:var(--muted);font-size:12.5px}
+.cmp b{display:block;font-family:var(--head);font-size:22px;margin:4px 0}
+.cmp p{font-size:13px;color:var(--muted)}
+.cmp.me{border-color:rgba(52,211,153,.35);background:rgba(52,211,153,.05)}
+.cmp.me b{color:var(--ok)}
+.pay{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+.pay div{padding:12px;border-radius:14px;background:rgba(255,255,255,.04);text-align:center}
+.pay b{display:block;font-family:var(--head);font-size:20px}
+.pay small{font-size:12px;color:var(--muted)}
+
+/* roadmap / extras */
+.extra .card .soon-b{position:absolute;top:18px;left:18px;font-size:11px;padding:3px 10px;border-radius:99px;background:rgba(251,191,36,.12);color:var(--gold);font-weight:600}
+.money{margin-top:18px;padding:28px;border-radius:var(--radius);border:1px solid rgba(52,211,153,.25);background:linear-gradient(135deg,rgba(52,211,153,.07),transparent 60%),var(--card);display:grid;grid-template-columns:1fr 2fr;gap:28px;align-items:center}
+.money h3{font-family:var(--head);font-size:22px;margin-bottom:6px}
+.money p{color:var(--muted);font-size:15px}
+.money .grid{grid-template-columns:repeat(3,1fr)}
+.money .m{padding:16px;border-radius:14px;background:rgba(255,255,255,.03);border:1px solid var(--line)}
+.money .m b{display:block;font-size:14.5px;margin-bottom:4px}
+.money .m small{color:var(--muted);font-size:13px;line-height:1.6;display:block}
+
+/* deliverables */
+.deliv{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.dv{display:flex;gap:14px;padding:18px;border-radius:16px;border:1px solid var(--line);background:var(--card);align-items:flex-start}
+.dv b{display:block;font-size:15px;margin-bottom:2px}
+.dv small{color:var(--muted);font-size:13px}
+
+/* final */
+.final{padding:60px;border-radius:28px;text-align:center;position:relative;overflow:hidden;background:radial-gradient(600px 300px at 50% 0%,rgba(124,92,255,.35),transparent 70%),var(--card);border:1px solid var(--line2)}
+.final h2{margin-top:0}
+.final p{color:var(--muted);max-width:620px;margin:0 auto 26px;font-size:17px}
+footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
+
+/* responsive */
+@media (max-width:1040px){
+  .hero .wrap{grid-template-columns:1fr}
+  .hero-visual{height:520px}
+  .g4,.tech,.kpis,.milestones{grid-template-columns:repeat(2,1fr)}
+  .g3,.deliv{grid-template-columns:repeat(2,1fr)}
+  .price-wrap,.money{grid-template-columns:1fr}
+  .sim-app{grid-template-columns:1fr;justify-items:center;gap:32px}
+  .sim-side{max-width:560px;width:100%}
+  .dash{grid-template-columns:1fr}
+  .d-side{flex-direction:row;overflow-x:auto;border-left:0;border-bottom:1px solid var(--line);padding:10px}
+  .d-side .brand,.d-side .sep{display:none}
+  .d-side button{flex-shrink:0}
+  .nav-links{display:none}
+}
+@media (max-width:680px){
+  .wrap{padding:0 16px}
+  section{padding:64px 0}
+  .hero{padding:50px 0 30px}
+  .hero-stats{grid-template-columns:repeat(2,1fr)}
+  .g2,.g3,.g4,.tech,.deliv,.compare,.money .grid,.milestones{grid-template-columns:1fr}
+  .ps{grid-template-columns:1fr}.ps .arrow{transform:rotate(90deg)}
+  .d-row,.form-grid{grid-template-columns:1fr}
+  .kpis{grid-template-columns:repeat(2,1fr)}
+  .d-main{padding:16px}
+  .d-search{display:none}
+  .g-head,.g-row{grid-template-columns:120px repeat(4,1fr)}
+  .g-row .lab{padding:12px 10px;font-size:12.5px}
+  .g-row .lab small{display:none}
+  .g-bar{font-size:0;padding:0}
+  .price-main{padding:24px}.price-main .amount{font-size:50px}
+  .final{padding:36px 20px}
+  .fc1{right:0}.fc2{left:0}
+  .hero-visual{height:500px;overflow:hidden}
+  .sim-tabs button{padding:9px 12px;font-size:13px}
+  .pay{grid-template-columns:1fr}
+  .arch{padding:18px;overflow-x:auto}.arch svg{min-width:680px}
+}
+@media (max-width:360px){.phone{transform:scale(.9)}}
+</style>
+</head>
+<body>
+<div class="bg-fx"></div>
+
+<!-- SVG icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-bus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="3"/><path d="M3 11h18M7 17v2M17 17v2"/><circle cx="7.5" cy="14" r=".6" fill="currentColor"/><circle cx="16.5" cy="14" r=".6" fill="currentColor"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></symbol>
+    <symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 7h1M14 7h1M9 11h1M14 11h1M9 15h1M14 15h1M10 21v-3h4v3"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M12 20s-7-4.4-9-9a4.8 4.8 0 0 1 9-3 4.8 4.8 0 0 1 9 3c-2 4.6-9 9-9 9z"/></symbol>
+    <symbol id="i-heart-f" viewBox="0 0 24 24" fill="currentColor"><path d="M12 20s-7-4.4-9-9a4.8 4.8 0 0 1 9-3 4.8 4.8 0 0 1 9 3c-2 4.6-9 9-9 9z"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 6 6 6-6 6"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+    <symbol id="i-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></symbol>
+    <symbol id="i-inbox" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 13h5l1.5 3h5L16 13h5"/><path d="M5 5h14l2 8v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-6z"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 21h4"/></symbol>
+    <symbol id="i-gear" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></symbol>
+    <symbol id="i-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
+    <symbol id="i-server" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11a8 8 0 0 0-14.5-4.5L4 8M4 4v4h4M4 13a8 8 0 0 0 14.5 4.5L20 16M20 20v-4h-4"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M4 5a2 2 0 0 1 2-2h14v16H6a2 2 0 0 0-2 2z"/><path d="M4 21V5"/></symbol>
+    <symbol id="i-print" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M6 9V3h12v6M6 18H4v-7h16v7h-2M7 14h10v7H7z"/></symbol>
+    <symbol id="i-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></symbol>
+    <symbol id="i-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.5 3 14.5 0 18M12 3c-3 3.5-3 14.5 0 18"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></symbol>
+  </defs>
+</svg>
+
+<nav class="top">
+  <div class="wrap">
+    <a href="#" class="brand">
+      <span class="brand-mark"><svg width="20" height="20" style="color:#fff"><use href="#i-cap"/></svg></span>
+      <span>مشوار<small>Mishwar · منصة الطالب</small></span>
+    </a>
+    <div class="nav-links">
+      <a href="#idea">الفكرة</a>
+      <a href="#simulator">المحاكي</a>
+      <a href="#features">المزايا</a>
+      <a href="#tech">التقنيات</a>
+      <a href="#timeline">مدة التنفيذ</a>
+      <a href="#pricing">التكلفة</a>
+      <a href="#extras">مقترحات</a>
+    </div>
+    <a href="#simulator" class="btn btn-primary btn-sm">جرّب المحاكي</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow"><b>عرض مشروع</b> تطبيق جوال + منصة ويب + لوحة إدارة</span>
+      <h1>كل ما يحتاجه طالب بغداد<br><span class="grad-text">في تطبيق واحد.</span></h1>
+      <p class="lead">«مشوار» منصة رقمية تربط طلاب جامعات بغداد بسواق الخطوط الموثّقين والسكن الطلابي القريب من جامعاتهم — بتجربة سريعة وواضحة، ولوحة إدارة كاملة تمنحكم السيطرة على كل شيء.</p>
+      <div class="hero-ctas">
+        <a href="#simulator" class="btn btn-primary">شاهد المحاكي التفاعلي <svg width="18" height="18"><use href="#i-arrow"/></svg></a>
+        <a href="#pricing" class="btn btn-ghost">التكلفة والمدة</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hstat"><div class="n">30</div><div class="l">يوم للإطلاق</div></div>
+        <div class="hstat"><div class="n">3</div><div class="l">منصات متكاملة</div></div>
+        <div class="hstat"><div class="n">iOS</div><div class="l">+ Android</div></div>
+        <div class="hstat"><div class="n mono">$3K</div><div class="l">تكلفة كاملة</div></div>
+      </div>
+    </div>
+    <div class="hero-visual rv">
+      <div class="glow"></div>
+      <div class="float-card fc1"><span class="ic" style="background:rgba(52,211,153,.15);color:var(--ok)"><svg width="18" height="18"><use href="#i-shield"/></svg></span><div>سائق موثّق<small>هوية + إجازة سوق</small></div></div>
+      <div class="float-card fc2"><span class="ic" style="background:rgba(34,211,238,.15);color:var(--p2)"><svg width="18" height="18"><use href="#i-building"/></svg></span><div>سكن طالبات · الجادرية<small>1.2 كم عن جامعة بغداد</small></div></div>
+      <div class="float-card fc3"><span class="ic" style="background:rgba(251,191,36,.15);color:var(--gold)"><svg width="18" height="18"><use href="#i-star"/></svg></span><div>4.9 تقييم<small>من 128 طالب</small></div></div>
+      <div class="phone"><div class="notch"></div><div class="screen" id="heroScreen"></div></div>
+    </div>
+  </div>
+</header>
+
+<!-- IDEA -->
+<section id="idea">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="kicker">الفكرة</div>
+      <h2>من «اسأل بالكروبات» إلى منصة منظّمة وموثوقة</h2>
+      <p>اليوم يبحث الطالب عن خط أو سكن عبر مجموعات التواصل والمعارف، بلا تفاصيل واضحة ولا ضمان. «مشوار» يحوّل هذا إلى دليل منظّم، قابل للبحث والفلترة، تديره جهتكم بالكامل.</p>
+    </div>
+    <div class="ps rv">
+      <div class="card bad">
+        <h3>الوضع الحالي</h3>
+        <ul>
+          <li>معلومات مبعثرة في مجموعات واتساب وتليغرام</li>
+          <li>لا يوجد تحقق من هوية السائق أو صاحب السكن</li>
+          <li>أسعار غير واضحة وصعوبة المقارنة</li>
+          <li>الطالب الجديد من المحافظات لا يعرف من أين يبدأ</li>
+        </ul>
+      </div>
+      <div class="arrow"><svg width="34" height="34"><use href="#i-arrow"/></svg></div>
+      <div class="card good">
+        <h3>مع «مشوار»</h3>
+        <ul>
+          <li>بحث حسب الجامعة والمنطقة والسعر بلمسة واحدة</li>
+          <li>سواق وسكن موثّقون بعلامة تحقق من الإدارة</li>
+          <li>تفاصيل كاملة وصور وتقييمات من الطلاب</li>
+          <li>تواصل مباشر بالاتصال أو واتساب من داخل التطبيق</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIMULATOR -->
+<section id="simulator">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <div class="kicker">المحاكي التفاعلي</div>
+      <h2>جرّب التطبيق ولوحة الإدارة قبل أن نبدأ</h2>
+      <p>نموذج تفاعلي حي يوضّح شكل وتجربة المنتج النهائي. اضغط، تنقّل، فلتر، وجرّب الموافقة على الطلبات من لوحة الإدارة.</p>
+    </div>
+    <div style="text-align:center" class="rv">
+      <div class="sim-tabs" role="tablist">
+        <button class="on" data-tab="app">تطبيق الطالب · Flutter</button>
+        <button data-tab="dash">لوحة الإدارة · Vue.js</button>
+      </div>
+    </div>
+
+    <div class="sim-panel on" id="tab-app">
+      <div class="sim-app">
+        <div class="phone"><div class="notch"></div><div class="screen" id="appScreen"></div></div>
+        <div class="sim-side">
+          <h3>تطبيق الطالب</h3>
+          <p>واجهة عربية بالكامل، خفيفة وسريعة، مصممة للاستخدام بيد واحدة. اختر شاشة للانتقال إليها مباشرة أو تفاعل مع الهاتف.</p>
+          <div class="jump" id="jump">
+            <button data-go="home"><span class="num">01</span><div><b>الرئيسية</b><span>الخدمات والأقرب لجامعتك</span></div></button>
+            <button data-go="rides"><span class="num">02</span><div><b>سواق الخطوط</b><span>فلترة حسب الجامعة، نوع السيارة، السعر</span></div></button>
+            <button data-go="ride:1"><span class="num">03</span><div><b>تفاصيل السائق</b><span>السيارة، المنطقة، المقاعد، التواصل والحجز</span></div></button>
+            <button data-go="housing"><span class="num">04</span><div><b>السكن الطلابي</b><span>نوع السكن، المنطقة، الجامعات القريبة</span></div></button>
+            <button data-go="house:1"><span class="num">05</span><div><b>تفاصيل السكن</b><span>معرض صور، مزايا، خريطة، تواصل</span></div></button>
+          </div>
+          <div class="hint"><svg width="16" height="16"><use href="#i-info"/></svg> جميع البيانات في المحاكي تجريبية لأغراض العرض.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sim-panel" id="tab-dash">
+      <div class="browser">
+        <div class="browser-bar">
+          <div class="dots"><i></i><i></i><i></i></div>
+          <div class="url"><svg width="12" height="12"><use href="#i-lock"/></svg><span class="mono">admin.mishwar.iq</span></div>
+        </div>
+        <div class="dash">
+          <aside class="d-side" id="dSide">
+            <div class="brand"><span class="brand-mark"><svg width="16" height="16" style="color:#fff"><use href="#i-cap"/></svg></span>مشوار</div>
+            <button class="on" data-d="overview"><svg><use href="#i-grid"/></svg>نظرة عامة</button>
+            <button data-d="drivers"><svg><use href="#i-bus"/></svg>السواق</button>
+            <button data-d="housing"><svg><use href="#i-building"/></svg>السكن</button>
+            <button data-d="requests"><svg><use href="#i-inbox"/></svg>طلبات الانضمام <span class="badge" id="reqBadge">4</span></button>
+            <div class="sep">الإدارة</div>
+            <button data-d="add"><svg><use href="#i-plus"/></svg>إضافة إعلان</button>
+            <button data-d="notify"><svg><use href="#i-bell"/></svg>الإشعارات</button>
+            <button data-d="settings"><svg><use href="#i-gear"/></svg>الإعدادات</button>
+          </aside>
+          <main class="d-main" id="dMain"></main>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="kicker">نطاق العمل</div>
+      <h2>ماذا يتضمن المشروع؟</h2>
+      <p>كل متطلباتكم مغطاة، مع إضافات احترافية تجعل المنصة جاهزة للنمو من اليوم الأول.</p>
+    </div>
+    <div class="grid g2">
+      <div class="card rv">
+        <span class="icon"><svg style="color:#a593ff"><use href="#i-bus"/></svg></span>
+        <h3>قسم سواق الخطوط</h3>
+        <p>دليل شامل لسواق خطوط الجامعات مع كل المعلومات المطلوبة.</p>
+        <ul class="checks">
+          <li>نوع السيارة وعدد المقاعد والمتاح منها</li>
+          <li>المنطقة/خط السير والجامعة المخدومة</li>
+          <li>السعر الشهري ووقت الانطلاق</li>
+          <li>خيار «خط طالبات فقط» وشارة السائق الموثّق</li>
+          <li>اتصال مباشر وواتساب وطلب حجز مقعد</li>
+        </ul>
+      </div>
+      <div class="card rv">
+        <span class="icon c"><svg style="color:var(--p2)"><use href="#i-building"/></svg></span>
+        <h3>قسم السكن الطلابي</h3>
+        <p>سكن قريب من الجامعات بتفاصيل كاملة وصور حقيقية.</p>
+        <ul class="checks">
+          <li>نوع السكن (طلاب/طالبات، غرفة، شقة مشتركة، بيت)</li>
+          <li>المنطقة والجامعات القريبة مع المسافة</li>
+          <li>معرض صور متعدد لكل سكن</li>
+          <li>المزايا: إنترنت، مولدة، تبريد، مطبخ، حراسة</li>
+          <li>السعر والسعة والأماكن الشاغرة</li>
+        </ul>
+      </div>
+      <div class="card rv">
+        <span class="icon g"><svg style="color:var(--gold)"><use href="#i-grid"/></svg></span>
+        <h3>لوحة إدارة متكاملة</h3>
+        <p>تحكم كامل بالمحتوى دون الحاجة لأي خبرة تقنية.</p>
+        <ul class="checks">
+          <li>إضافة وتعديل وحذف السواق والسكن مع الصور</li>
+          <li>مراجعة طلبات الانضمام والموافقة أو الرفض</li>
+          <li>إدارة الجامعات والمناطق والتصنيفات</li>
+          <li>إحصائيات الاستخدام والمشاهدات</li>
+          <li>إرسال إشعارات فورية لجميع المستخدمين</li>
+        </ul>
+      </div>
+      <div class="card rv">
+        <span class="icon k"><svg style="color:var(--ok)"><use href="#i-globe"/></svg></span>
+        <h3>منصة ويب خاصة بالتطبيق</h3>
+        <p>واجهة ويب تعريفية مرتبطة بنفس قاعدة البيانات.</p>
+        <ul class="checks">
+          <li>صفحة تعريفية احترافية بروابط تحميل التطبيق</li>
+          <li>عرض السواق والسكن للزوار عبر المتصفح</li>
+          <li>متوافقة مع الجوال ومحركات البحث (SEO)</li>
+          <li>نموذج «انضم كسائق / أضف سكنك»</li>
+          <li>نطاق وشهادة أمان SSL</li>
+        </ul>
+      </div>
+    </div>
+    <div class="grid g4" style="margin-top:18px">
+      <div class="card rv"><span class="icon p"><svg style="color:var(--pink)"><use href="#i-shield"/></svg></span><h3>توثيق وأمان</h3><p>تحقق من هوية السائق وصاحب السكن، وتشفير كامل للبيانات.</p></div>
+      <div class="card rv"><span class="icon"><svg style="color:#a593ff"><use href="#i-search"/></svg></span><h3>بحث وفلترة ذكية</h3><p>حسب الجامعة، المنطقة، السعر، النوع — بنتائج فورية.</p></div>
+      <div class="card rv"><span class="icon c"><svg style="color:var(--p2)"><use href="#i-star"/></svg></span><h3>تقييمات ومفضلة</h3><p>الطلاب يقيّمون ويحفظون ما يعجبهم للرجوع إليه.</p></div>
+      <div class="card rv"><span class="icon g"><svg style="color:var(--gold)"><use href="#i-zap"/></svg></span><h3>قابلية التوسع</h3><p>بنية مرنة لإضافة خدمات جديدة مستقبلاً بسهولة.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TECH -->
+<section id="tech">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="kicker">التقنيات</div>
+      <h2>تقنيات عالمية، أداء موثوق</h2>
+      <p>نفس التقنيات التي تعتمدها شركات كبرى — مختارة لتعطيكم تطبيقاً سريعاً، وتكلفة صيانة منخفضة، وسهولة توسع.</p>
+    </div>
+    <div class="tech">
+      <div class="card rv">
+        <span class="tlogo" style="background:rgba(66,165,245,.12);color:#5ab4ff">Fl</span>
+        <h3>Flutter</h3><div class="role">تطبيق الجوال</div>
+        <p style="margin-top:8px">كود واحد يعمل على iOS و Android بأداء أصلي وتصميم موحّد — يوفّر نصف وقت وتكلفة التطوير.</p>
+      </div>
+      <div class="card rv">
+        <span class="tlogo" style="background:rgba(255,45,32,.1);color:#ff6a5c">Lv</span>
+        <h3>PHP · Laravel</h3><div class="role">الخادم و الـ API</div>
+        <p style="margin-top:8px">واجهة برمجية REST آمنة بمصادقة Sanctum، وإدارة الصور، والإشعارات، وصلاحيات المستخدمين.</p>
+      </div>
+      <div class="card rv">
+        <span class="tlogo" style="background:rgba(66,184,131,.12);color:#42d392">Vue</span>
+        <h3>Vue.js 3</h3><div class="role">لوحة الإدارة</div>
+        <p style="margin-top:8px">لوحة تحكم سريعة وتفاعلية (SPA) بتصميم عصري، تعمل من أي متصفح على الحاسوب أو الجوال.</p>
+      </div>
+      <div class="card rv">
+        <span class="tlogo" style="background:rgba(251,191,36,.1);color:var(--gold)">SQL</span>
+        <h3>MySQL</h3><div class="role">قاعدة البيانات</div>
+        <p style="margin-top:8px">قاعدة بيانات علائقية موثوقة مع نسخ احتياطي يومي تلقائي وفهرسة لسرعة البحث.</p>
+      </div>
+    </div>
+
+    <div class="arch rv">
+      <div class="arch-cap"><b>البنية التقنية للمنصة</b><span>مصدر بيانات واحد يخدم كل الواجهات</span></div>
+      <svg viewBox="0 0 1000 300" role="img" aria-label="مخطط البنية: التطبيق ولوحة الإدارة والموقع تتصل بخادم Laravel الذي يتصل بقاعدة MySQL">
+        <defs>
+          <linearGradient id="lg" x1="0" x2="1"><stop offset="0" stop-color="#7c5cff"/><stop offset="1" stop-color="#22d3ee"/></linearGradient>
+          <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#22d3ee"/></marker>
+        </defs>
+        <g font-family="IBM Plex Sans Arabic" text-anchor="middle">
+          <!-- clients (right side for RTL reading) -->
+          <g>
+            <rect x="760" y="20" width="220" height="70" rx="16" fill="#121b33" stroke="rgba(255,255,255,.14)"/>
+            <text x="870" y="52" fill="#e9edf8" font-size="17" font-weight="600">تطبيق الطالب</text>
+            <text x="870" y="74" fill="#8e98b4" font-size="13">Flutter · iOS / Android</text>
+            <rect x="760" y="115" width="220" height="70" rx="16" fill="#121b33" stroke="rgba(255,255,255,.14)"/>
+            <text x="870" y="147" fill="#e9edf8" font-size="17" font-weight="600">لوحة الإدارة</text>
+            <text x="870" y="169" fill="#8e98b4" font-size="13">Vue.js 3</text>
+            <rect x="760" y="210" width="220" height="70" rx="16" fill="#121b33" stroke="rgba(255,255,255,.14)"/>
+            <text x="870" y="242" fill="#e9edf8" font-size="17" font-weight="600">منصة الويب</text>
+            <text x="870" y="264" fill="#8e98b4" font-size="13">Laravel Blade · SEO</text>
+          </g>
+          <g stroke="#22d3ee" stroke-width="2" fill="none" stroke-dasharray="6 6" marker-end="url(#ar)">
+            <path d="M758 55 C 680 55, 640 150, 572 150"><animate attributeName="stroke-dashoffset" from="24" to="0" dur="1s" repeatCount="indefinite"/></path>
+            <path d="M758 150 L 572 150"><animate attributeName="stroke-dashoffset" from="24" to="0" dur="1s" repeatCount="indefinite"/></path>
+            <path d="M758 245 C 680 245, 640 150, 572 150"><animate attributeName="stroke-dashoffset" from="24" to="0" dur="1s" repeatCount="indefinite"/></path>
+          </g>
+          <text x="665" y="138" fill="#8e98b4" font-size="12">HTTPS · REST API</text>
+          <!-- server -->
+          <rect x="330" y="95" width="240" height="110" rx="20" fill="url(#lg)" opacity=".16"/>
+          <rect x="330" y="95" width="240" height="110" rx="20" fill="none" stroke="url(#lg)" stroke-width="2"/>
+          <text x="450" y="138" fill="#e9edf8" font-size="19" font-weight="700">خادم Laravel</text>
+          <text x="450" y="162" fill="#8e98b4" font-size="13">API · Auth · Media · Push</text>
+          <text x="450" y="184" fill="#8e98b4" font-size="12">VPS · SSL · Nginx</text>
+          <g stroke="#7c5cff" stroke-width="2" fill="none" stroke-dasharray="6 6" marker-end="url(#ar)">
+            <path d="M328 150 L 222 150"><animate attributeName="stroke-dashoffset" from="24" to="0" dur="1s" repeatCount="indefinite"/></path>
+          </g>
+          <!-- db -->
+          <g>
+            <ellipse cx="120" cy="105" rx="98" ry="22" fill="#121b33" stroke="rgba(251,191,36,.5)"/>
+            <path d="M22 105 v90 a98 22 0 0 0 196 0 v-90" fill="#121b33" stroke="rgba(251,191,36,.5)"/>
+            <ellipse cx="120" cy="105" rx="98" ry="22" fill="#16203d" stroke="rgba(251,191,36,.5)"/>
+            <text x="120" y="160" fill="#e9edf8" font-size="18" font-weight="700">MySQL</text>
+            <text x="120" y="182" fill="#8e98b4" font-size="12">نسخ احتياطي يومي</text>
+          </g>
+          <!-- firebase -->
+          <rect x="360" y="235" width="180" height="46" rx="12" fill="#121b33" stroke="rgba(255,255,255,.1)"/>
+          <text x="450" y="264" fill="#8e98b4" font-size="13">Firebase · الإشعارات</text>
+          <path d="M450 207 V 233" stroke="rgba(255,255,255,.25)" stroke-width="2" stroke-dasharray="4 4"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="kicker">مدة التنفيذ</div>
+      <h2>من الفكرة إلى المتجر خلال 30 يوماً</h2>
+      <p>خطة عمل متوازية ومنظّمة، مع عرض تقدّم أسبوعي ونسخة تجريبية تستطيعون استخدامها قبل الإطلاق.</p>
+    </div>
+    <div class="gantt rv" id="gantt">
+      <div class="g-head"><div>المرحلة</div><div>الأسبوع 1</div><div>الأسبوع 2</div><div>الأسبوع 3</div><div>الأسبوع 4</div></div>
+    </div>
+    <div class="milestones">
+      <div class="ms rv"><div class="w">DAY 07</div><b>اعتماد التصميم</b><p>تصاميم كل الشاشات + هيكل قاعدة البيانات للمراجعة والموافقة.</p></div>
+      <div class="ms rv"><div class="w">DAY 14</div><b>لوحة الإدارة تعمل</b><p>تبدأ جهتكم بإدخال السواق والسكن الحقيقيين مبكراً.</p></div>
+      <div class="ms rv"><div class="w">DAY 23</div><b>نسخة تجريبية</b><p>تطبيق تجريبي على هواتفكم للاختبار وإبداء الملاحظات.</p></div>
+      <div class="ms rv"><div class="w">DAY 30</div><b>الإطلاق</b><p>نشر على Google Play و App Store وتشغيل المنصة رسمياً.</p></div>
+    </div>
+    <div class="note rv"><svg><use href="#i-info"/></svg><div>مراجعة متجر Apple قد تستغرق من 1 إلى 3 أيام عمل خارج سيطرة فريق التطوير، لذلك نرفع النسخة للمراجعة مبكراً في الأسبوع الرابع لضمان الإطلاق في الموعد.</div></div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="kicker">التكلفة</div>
+      <h2>استثمار واحد، منظومة كاملة</h2>
+      <p>المبلغ يشمل تطبيقين (iOS و Android) ولوحة إدارة ومنصة ويب وخادماً متكاملاً — وليس تطبيقاً فقط.</p>
+    </div>
+    <div class="price-wrap">
+      <div class="price-main rv">
+        <span class="tag-top">الباقة الكاملة · تسليم خلال 30 يوماً</span>
+        <div class="amount"><span class="mono">$3,000</span><small>مرة واحدة</small></div>
+        <p>تصميم، برمجة، اختبار، ونشر — مع ملكية كاملة للكود والبيانات لجهتكم.</p>
+        <div class="breakdown" id="breakdown"></div>
+        <div class="pay">
+          <div><b>40%</b><small>عند البدء</small></div>
+          <div><b>30%</b><small>عند تسليم لوحة الإدارة</small></div>
+          <div><b>30%</b><small>عند الإطلاق</small></div>
+        </div>
+      </div>
+      <div class="price-side">
+        <div class="card rv">
+          <span class="icon c"><svg style="color:var(--p2)"><use href="#i-server"/></svg></span>
+          <h3>استضافة لوحة الإدارة والخادم</h3>
+          <div class="mini-price"><span class="mono">$25</span><small>/ شهرياً</small></div>
+          <p>أو <b style="color:var(--text)"><span class="mono">$270</span> سنوياً</b> (توفير شهرين ونصف). خادم VPS مخصص بأداء ثابت — وليس استضافة مشتركة.</p>
+          <ul class="checks">
+            <li>خادم مخصص لـ Laravel + MySQL + لوحة Vue</li>
+            <li>نطاق (Domain) وشهادة SSL</li>
+            <li>نسخ احتياطي يومي ومراقبة على مدار الساعة</li>
+            <li>تحديثات أمنية للخادم</li>
+          </ul>
+        </div>
+        <div class="card rv">
+          <span class="icon g"><svg style="color:var(--gold)"><use href="#i-refresh"/></svg></span>
+          <h3>طلبات التحديث والتطوير</h3>
+          <p>أي ميزة جديدة أو تعديل خارج النطاق المتفق عليه بعد الإطلاق — مثل إضافة خدمة جديدة أو تغيير جوهري في التصميم — يُنفَّذ بمبلغ يُتفق عليه مسبقاً حسب حجم الطلب ومدته، مع تقدير واضح قبل البدء.</p>
+          <ul class="checks">
+            <li>30 يوماً دعم مجاني بعد الإطلاق لإصلاح أي خلل</li>
+            <li>تسعير شفاف لكل طلب قبل التنفيذ</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="compare">
+      <div class="cmp rv"><small>تطوير منفصل لكل نظام (Native)</small><b>ضعف الوقت</b><p>تطبيق iOS وآخر Android بفريقين وتكلفتين.</p></div>
+      <div class="cmp rv"><small>منصات جاهزة بالاشتراك</small><b>اشتراك دائم</b><p>رسوم شهرية مستمرة، بلا ملكية للكود، وتخصيص محدود.</p></div>
+      <div class="cmp me rv"><small>عرض «مشوار»</small><b>ملكية كاملة</b><p>كود مملوك لكم، منظومة متكاملة، وتكلفة تشغيل منخفضة.</p></div>
+    </div>
+
+    <div class="note rv"><svg><use href="#i-info"/></svg><div><b>رسوم المتاجر تُدفع مباشرة لحساب جهتكم:</b> Google Play بمبلغ <span class="mono">$25</span> لمرة واحدة، و Apple Developer بمبلغ <span class="mono">$99</span> سنوياً. نتولّى نحن إعداد الحسابات والنشر بالكامل.</div></div>
+  </div>
+</section>
+
+<!-- EXTRAS -->
+<section id="extras" class="extra">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="kicker">مقترحات احترافية</div>
+      <h2>منصة تنمو معكم — خدمات مستقبلية مقترحة</h2>
+      <p>البنية مصممة لتستقبل خدمات جديدة كوحدات مستقلة دون إعادة بناء. هذه أفكار نقترحها لمراحل لاحقة:</p>
+    </div>
+    <div class="grid g3">
+      <div class="card rv"><span class="soon-b">المرحلة 2</span><span class="icon"><svg style="color:#a593ff"><use href="#i-book"/></svg></span><h3>سوق الكتب والملازم المستعملة</h3><p>الطلاب يبيعون ويشترون الكتب والملازم بين بعضهم حسب الكلية والمرحلة.</p></div>
+      <div class="card rv"><span class="soon-b">المرحلة 2</span><span class="icon c"><svg style="color:var(--p2)"><use href="#i-print"/></svg></span><h3>مكاتب الطباعة والقرطاسية</h3><p>دليل مكاتب الاستنساخ القريبة مع الأسعار وإمكانية إرسال ملفات الطباعة مسبقاً.</p></div>
+      <div class="card rv"><span class="soon-b">المرحلة 3</span><span class="icon g"><svg style="color:var(--gold)"><use href="#i-cap"/></svg></span><h3>الدروس الخصوصية</h3><p>مدرّسون ومعيدون حسب المادة والجامعة مع التقييمات.</p></div>
+      <div class="card rv"><span class="soon-b">المرحلة 3</span><span class="icon k"><svg style="color:var(--ok)"><use href="#i-briefcase"/></svg></span><h3>فرص عمل جزئي وتدريب</h3><p>وظائف بدوام جزئي وفرص تدريب صيفي تناسب الطلاب.</p></div>
+      <div class="card rv"><span class="soon-b">المرحلة 2</span><span class="icon p"><svg style="color:var(--pink)"><use href="#i-pin"/></svg></span><h3>تتبع الخط على الخريطة</h3><p>موقع السائق المباشر صباحاً لمعرفة وقت الوصول بدقة.</p></div>
+      <div class="card rv"><span class="soon-b">المرحلة 3</span><span class="icon"><svg style="color:#a593ff"><use href="#i-bell"/></svg></span><h3>تنبيهات ذكية</h3><p>تنبيه الطالب فور توفر مقعد في خط منطقته أو سكن جديد قرب جامعته.</p></div>
+    </div>
+
+    <div class="money rv">
+      <div>
+        <h3>كيف تسترد المنصة تكلفتها؟</h3>
+        <p>نقترح نموذج دخل بسيط يجعل التطبيق مشروعاً مربحاً وليس مصروفاً فقط. البنية التقنية ستكون جاهزة لتفعيله متى ما قررتم.</p>
+      </div>
+      <div class="grid">
+        <div class="m"><b>إعلانات مميزة</b><small>السائق أو صاحب السكن يدفع مبلغاً رمزياً لظهور إعلانه أولاً.</small></div>
+        <div class="m"><b>اشتراك شهري للمعلنين</b><small>رسوم بسيطة للسواق وأصحاب السكن مقابل التوثيق والظهور.</small></div>
+        <div class="m"><b>شراكات وإعلانات</b><small>مساحات إعلانية للمكتبات والمطاعم والمراكز القريبة من الجامعات.</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERABLES -->
+<section id="deliverables">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <div class="kicker">ما الذي تستلمونه</div>
+      <h2>تسليم كامل وواضح</h2>
+    </div>
+    <div class="deliv">
+      <div class="dv rv"><span class="icon"><svg style="color:#a593ff"><use href="#i-phone"/></svg></span><div><b>تطبيق منشور على المتجرين</b><small>Google Play و App Store باسم جهتكم.</small></div></div>
+      <div class="dv rv"><span class="icon c"><svg style="color:var(--p2)"><use href="#i-grid"/></svg></span><div><b>لوحة إدارة جاهزة</b><small>مع حسابات المشرفين وصلاحياتهم.</small></div></div>
+      <div class="dv rv"><span class="icon k"><svg style="color:var(--ok)"><use href="#i-globe"/></svg></span><div><b>منصة ويب على نطاقكم</b><small>صفحة تعريفية + عرض المحتوى للزوار.</small></div></div>
+      <div class="dv rv"><span class="icon g"><svg style="color:var(--gold)"><use href="#i-lock"/></svg></span><div><b>الكود المصدري كاملاً</b><small>ملكية كاملة للكود وقاعدة البيانات.</small></div></div>
+      <div class="dv rv"><span class="icon p"><svg style="color:var(--pink)"><use href="#i-cap"/></svg></span><div><b>جلسة تدريب</b><small>شرح استخدام لوحة الإدارة لفريقكم.</small></div></div>
+      <div class="dv rv"><span class="icon"><svg style="color:#a593ff"><use href="#i-shield"/></svg></span><div><b>30 يوماً دعم فني</b><small>إصلاح أي خلل بعد الإطلاق مجاناً.</small></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL -->
+<section>
+  <div class="wrap">
+    <div class="final rv">
+      <div class="kicker" style="justify-content:center">الخطوة التالية</div>
+      <h2>جاهزون للبدء خلال 48 ساعة من الموافقة</h2>
+      <p>بمجرد اعتماد العرض، نبدأ بجلسة قصيرة لجمع التفاصيل (الشعار، الألوان، قائمة الجامعات والمناطق)، وخلال أسبوع تكون التصاميم بين أيديكم.</p>
+      <div class="hero-ctas" style="justify-content:center">
+        <a href="#simulator" class="btn btn-primary">إعادة تجربة المحاكي</a>
+        <a href="#pricing" class="btn btn-ghost">مراجعة التكلفة</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">مشوار · عرض تقديمي لمشروع تطبيق ومنصة طلاب جامعات بغداد · <span class="mono">2026</span><br>تصميم وتطوير: Flutter · Laravel · Vue.js · MySQL</div>
+</footer>
+
+<div class="d-toast" id="dToast"></div>
+
+<script>
+(() => {
+  const $ = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const ic = (id, s = 18) => `<svg width="${s}" height="${s}"><use href="#i-${id}"/></svg>`;
+  const fmt = n => n.toLocaleString('en-US');
+
+  /* ---------- data ---------- */
+  const unis = ['الكل', 'جامعة بغداد', 'المستنصرية', 'التكنولوجية', 'النهرين', 'العراقية'];
+  const drivers = [
+    { id: 1, name: 'أبو حسين', car: 'كيا بونغو', seats: 11, free: 3, area: 'الدورة', route: 'الدورة ← الجادرية', uni: 'جامعة بغداد', price: 90000, rating: 4.9, reviews: 128, time: '7:00 ص', female: false, color: '#5b47f5' },
+    { id: 2, name: 'أبو زهراء', car: 'هيونداي H1', seats: 9, free: 1, area: 'الكرادة', route: 'الكرادة ← باب المعظم', uni: 'المستنصرية', price: 75000, rating: 4.8, reviews: 96, time: '7:15 ص', female: true, color: '#e11d74' },
+    { id: 3, name: 'أبو علي', car: 'تويوتا هايس', seats: 14, free: 5, area: 'السيدية', route: 'السيدية ← الصناعة', uni: 'التكنولوجية', price: 85000, rating: 4.7, reviews: 74, time: '6:50 ص', female: false, color: '#0ea5c6' },
+    { id: 4, name: 'أبو مصطفى', car: 'هيونداي ستاركس', seats: 11, free: 2, area: 'المنصور', route: 'المنصور ← الجادرية', uni: 'النهرين', price: 100000, rating: 5.0, reviews: 52, time: '7:10 ص', female: true, color: '#f59e0b' },
+    { id: 5, name: 'أبو كرار', car: 'كيا بونغو', seats: 11, free: 4, area: 'الأعظمية', route: 'الأعظمية ← حي الجامعة', uni: 'العراقية', price: 70000, rating: 4.6, reviews: 61, time: '7:20 ص', female: false, color: '#10b981' },
+    { id: 6, name: 'أبو يوسف', car: 'تويوتا هايس', seats: 14, free: 6, area: 'زيونة', route: 'زيونة ← باب المعظم', uni: 'المستنصرية', price: 80000, rating: 4.8, reviews: 88, time: '7:00 ص', female: false, color: '#8b5cf6' },
+  ];
+  const housing = [
+    { id: 1, title: 'سكن طالبات النخيل', type: 'سكن طالبات', area: 'الجادرية', unis: ['جامعة بغداد', 'النهرين'], dist: '1.2 كم', price: 250000, room: 'غرفة لشخصين', vacant: 3, rating: 4.9, feats: ['إنترنت', 'مولدة 24 ساعة', 'تبريد مركزي', 'مطبخ', 'حراسة', 'مشرفة مقيمة'], g: ['#5b47f5', '#22d3ee'] },
+    { id: 2, title: 'شقق الوزيرية للطلاب', type: 'شقة مشتركة', area: 'الوزيرية', unis: ['المستنصرية', 'التكنولوجية'], dist: '800 م', price: 200000, room: 'غرفة مفردة', vacant: 2, rating: 4.7, feats: ['إنترنت', 'مولدة', 'غسالة', 'مطبخ مشترك'], g: ['#0ea5c6', '#34d399'] },
+    { id: 3, title: 'بيت الطالب – حي الجامعة', type: 'سكن طلاب', area: 'حي الجامعة', unis: ['العراقية'], dist: '500 م', price: 175000, room: 'غرفة لثلاثة', vacant: 4, rating: 4.5, feats: ['إنترنت', 'مولدة', 'تبريد'], g: ['#f59e0b', '#f472b6'] },
+    { id: 4, title: 'إقامة الكرادة الحديثة', type: 'سكن طالبات', area: 'الكرادة', unis: ['جامعة بغداد', 'النهرين'], dist: '2.5 كم', price: 300000, room: 'غرفة مفردة', vacant: 1, rating: 4.8, feats: ['إنترنت', 'مولدة 24 ساعة', 'وجبتان يومياً', 'حراسة', 'كاميرات'], g: ['#8b5cf6', '#ec4899'] },
+    { id: 5, title: 'سكن الصناعة', type: 'سكن طلاب', area: 'الصناعة', unis: ['التكنولوجية'], dist: '300 م', price: 160000, room: 'غرفة لشخصين', vacant: 5, rating: 4.4, feats: ['إنترنت', 'مولدة', 'مطبخ'], g: ['#10b981', '#22d3ee'] },
+  ];
+
+  /* ---------- mobile app simulator ---------- */
+  function makeApp(root, opts = {}) {
+    const st = { screen: 'home', tab: 'home', uni: 'الكل', htype: 'الكل', favs: new Set([2]), gal: 0, id: null };
+    const statusBar = `<div class="app-status"><span>9:41</span><span style="display:flex;gap:5px;align-items:center"><svg width="16" height="10" viewBox="0 0 16 10"><path d="M1 9h2V7H1zM5 9h2V5H5zM9 9h2V3H9zM13 9h2V1h-2z" fill="currentColor"/></svg><svg width="22" height="11" viewBox="0 0 22 11"><rect x=".5" y=".5" width="18" height="10" rx="3" fill="none" stroke="currentColor" opacity=".5"/><rect x="2" y="2" width="14" height="7" rx="1.5" fill="currentColor"/><rect x="19.5" y="3.5" width="1.5" height="4" rx=".7" fill="currentColor" opacity=".5"/></svg></span></div>`;
+
+    const driverRow = d => `
+      <button class="li" data-a="ride:${d.id}">
+        <span class="th" style="background:${d.color}14;color:${d.color}">${ic('bus', 28)}</span>
+        <span class="mid"><b>${d.name} · ${d.car}</b><small>${d.route}</small>
+          ${d.female ? '<span class="tag f">طالبات فقط</span>' : '<span class="tag v">' + ic('check', 9) + ' موثّق</span>'}
+          <span class="tag s">${d.free} مقاعد متاحة</span></span>
+        <span class="end"><span class="price">${fmt(d.price)}</span><small>د.ع / شهر</small></span>
+      </button>`;
+    const houseRow = h => `
+      <button class="li" data-a="house:${h.id}">
+        <span class="th" style="background:linear-gradient(135deg,${h.g[0]},${h.g[1]});color:#fff">${ic('building', 28)}</span>
+        <span class="mid"><b>${h.title}</b><small>${h.area} · ${h.dist} عن ${h.unis[0]}</small>
+          <span class="tag ${h.type === 'سكن طالبات' ? 'f' : 'v'}">${h.type}</span>
+          <span class="tag s">${h.vacant} شاغر</span></span>
+        <span class="end"><span class="price">${fmt(h.price)}</span><small>د.ع / شهر</small></span>
+      </button>`;
+
+    const screens = {
+      home() {
+        const near = drivers.slice(0, 2).map(driverRow).join('') + houseRow(housing[0]);
+        return `
+          <div class="a-hello"><div><small>صباح الخير</small><b>زينب، أين وجهتك اليوم؟</b></div><span class="avatar">ز</span></div>
+          <div class="a-search">${ic('search', 16)} ابحث عن خط أو سكن أو منطقة…</div>
+          <div class="a-svc">
+            <button class="s1" data-a="rides"><span>${ic('bus', 24)}</span><span><b>خطوط النقل</b><small>${drivers.length * 21}+ سائق موثّق</small></span><svg class="bgi"><use href="#i-bus"/></svg></button>
+            <button class="s2" data-a="housing"><span>${ic('building', 24)}</span><span><b>السكن الطلابي</b><small>${housing.length * 17}+ سكن قريب</small></span><svg class="bgi"><use href="#i-building"/></svg></button>
+          </div>
+          <div class="a-title"><b>خدمات قادمة</b></div>
+          <div class="soon"><div><i>قريباً</i>سوق الكتب</div><div><i>قريباً</i>مكاتب الطباعة</div><div><i>قريباً</i>دروس خصوصية</div><div><i>قريباً</i>عمل جزئي</div></div>
+          <div class="a-title"><b>الأقرب لجامعتك</b><span data-a="rides">عرض الكل</span></div>
+          ${near}`;
+      },
+      rides() {
+        const list = drivers.filter(d => st.uni === 'الكل' || d.uni === st.uni);
+        return `
+          <div class="a-back"><b>سواق الخطوط</b></div>
+          <div class="a-search">${ic('search', 16)} ابحث بالمنطقة أو اسم السائق…</div>
+          <div class="chips">${unis.map(u => `<button class="${u === st.uni ? 'on' : ''}" data-uni="${u}">${u}</button>`).join('')}</div>
+          <div class="a-title"><b>${list.length} خطوط متاحة</b><span>الأرخص أولاً</span></div>
+          ${list.sort((a, b) => a.price - b.price).map(driverRow).join('') || '<div class="empty">لا توجد خطوط</div>'}`;
+      },
+      ride() {
+        const d = drivers.find(x => x.id === st.id);
+        const fav = st.favs.has('d' + d.id);
+        return `
+          <div class="a-back"><button data-a="back">${ic('back', 16)}</button><b>تفاصيل الخط</b><button class="fav-btn ${fav ? 'on' : ''}" style="margin-right:auto" data-fav="d${d.id}">${ic(fav ? 'heart-f' : 'heart', 16)}</button></div>
+          <div class="hero-img" style="background:linear-gradient(135deg,${d.color},${d.color}aa)"><svg class="big" style="color:#fff"><use href="#i-bus"/></svg><span class="cap">${d.car}</span></div>
+          <div class="d-title"><div><b>${d.name}</b><small>${d.route}</small></div><span class="rate">${ic('star', 11)} ${d.rating} <span style="font-weight:500;opacity:.7">(${d.reviews})</span></span></div>
+          <div class="info">
+            <div><small>نوع السيارة</small><b>${d.car}</b></div>
+            <div><small>الجامعة</small><b>${d.uni}</b></div>
+            <div><small>المنطقة</small><b>${d.area}</b></div>
+            <div><small>السعر الشهري</small><b style="color:#5b47f5">${fmt(d.price)} د.ع</b></div>
+            <div><small>وقت الانطلاق</small><b>${d.time}</b></div>
+            <div><small>المقاعد المتاحة</small><b>${d.free} من ${d.seats}</b></div>
+          </div>
+          <div class="feat">${d.female ? '<span>خط طالبات فقط</span>' : ''}<span>سائق موثّق</span><span>تبريد</span><span>ذهاب وإياب</span></div>
+          <div class="cta-row"><button class="sq" data-toast="جارٍ الاتصال بـ ${d.name}…">${ic('phone', 18)}</button><button class="wa" data-toast="فتح محادثة واتساب">${ic('chat', 18)}</button><button class="main" data-toast="✓ تم إرسال طلب حجز مقعد">احجز مقعدك</button></div>`;
+      },
+      housing() {
+        const types = ['الكل', 'سكن طالبات', 'سكن طلاب', 'شقة مشتركة'];
+        const list = housing.filter(h => st.htype === 'الكل' || h.type === st.htype);
+        return `
+          <div class="a-back"><b>السكن الطلابي</b></div>
+          <div class="seg">${['قائمة', 'خريطة'].map((x, i) => `<button class="${i === 0 ? 'on' : ''}" data-toast="${i ? 'عرض الخريطة متاح في التطبيق النهائي' : ''}">${x}</button>`).join('')}</div>
+          <div class="chips">${types.map(u => `<button class="${u === st.htype ? 'on' : ''}" data-ht="${u}">${u}</button>`).join('')}</div>
+          <div class="a-title"><b>${list.length} أماكن سكن</b><span>الأقرب أولاً</span></div>
+          ${list.map(houseRow).join('')}`;
+      },
+      house() {
+        const h = housing.find(x => x.id === st.id);
+        const fav = st.favs.has('h' + h.id);
+        const caps = ['الواجهة', 'الغرفة', 'المطبخ'];
+        const shift = st.gal * 40;
+        return `
+          <div class="a-back"><button data-a="back">${ic('back', 16)}</button><b>تفاصيل السكن</b><button class="fav-btn ${fav ? 'on' : ''}" style="margin-right:auto" data-fav="h${h.id}">${ic(fav ? 'heart-f' : 'heart', 16)}</button></div>
+          <div class="hero-img" style="background:linear-gradient(${135 + shift}deg,${h.g[0]},${h.g[1]})">
+            <svg class="big" style="color:#fff"><use href="#i-${['building', 'home', 'grid'][st.gal]}"/></svg>
+            <span class="cap">صورة ${st.gal + 1}/3 · ${caps[st.gal]}</span>
+            <button class="nav-g r" data-gal="-1">‹</button><button class="nav-g l" data-gal="1">›</button>
+            <span class="dots">${[0, 1, 2].map(i => `<i class="${i === st.gal ? 'on' : ''}"></i>`).join('')}</span>
+          </div>
+          <div class="d-title"><div><b>${h.title}</b><small>${h.area} · ${h.type}</small></div><span class="rate">${ic('star', 11)} ${h.rating}</span></div>
+          <div class="info">
+            <div><small>نوع الغرفة</small><b>${h.room}</b></div>
+            <div><small>السعر الشهري</small><b style="color:#5b47f5">${fmt(h.price)} د.ع</b></div>
+            <div><small>الجامعات القريبة</small><b>${h.unis.join('، ')}</b></div>
+            <div><small>الأماكن الشاغرة</small><b>${h.vacant}</b></div>
+          </div>
+          <div class="map-mini"><svg viewBox="0 0 270 110"><path d="M0 70 Q60 50 120 72 T270 60" stroke="#c9d3ea" stroke-width="10" fill="none"/><path d="M90 0 L110 110" stroke="#d6deef" stroke-width="7"/><path d="M200 0 L180 110" stroke="#d6deef" stroke-width="5"/><path d="M60 40 C 120 20, 170 30, 205 52" stroke="#5b47f5" stroke-width="2.5" stroke-dasharray="5 4" fill="none"/><circle cx="60" cy="40" r="7" fill="#5b47f5"/><circle cx="60" cy="40" r="14" fill="#5b47f5" opacity=".18"/><rect x="190" y="42" width="30" height="20" rx="5" fill="#151a2d"/><text x="205" y="56" font-size="9" fill="#fff" text-anchor="middle" font-family="IBM Plex Sans Arabic">جامعة</text><text x="130" y="22" font-size="10" fill="#5b47f5" text-anchor="middle" font-weight="700" font-family="IBM Plex Sans Arabic">${h.dist}</text></svg></div>
+          <div class="feat">${h.feats.map(f => `<span>${f}</span>`).join('')}</div>
+          <div class="cta-row"><button class="sq" data-toast="جارٍ الاتصال بصاحب السكن…">${ic('phone', 18)}</button><button class="wa" data-toast="فتح محادثة واتساب">${ic('chat', 18)}</button><button class="main" data-toast="✓ تم إرسال طلب حجز زيارة">احجز زيارة</button></div>`;
+      },
+      favs() {
+        const fd = drivers.filter(d => st.favs.has('d' + d.id)), fh = housing.filter(h => st.favs.has('h' + h.id));
+        if (!fd.length && !fh.length) return `<div class="a-back"><b>المفضلة</b></div><div class="empty"><svg><use href="#i-heart"/></svg><div>لم تحفظ شيئاً بعد</div></div>`;
+        return `<div class="a-back"><b>المفضلة</b></div>${fd.map(driverRow).join('')}${fh.map(houseRow).join('')}`;
+      },
+      profile() {
+        return `
+          <div class="a-back"><b>حسابي</b></div>
+          <div class="prof-card"><div style="display:flex;gap:12px;align-items:center"><span class="avatar" style="background:rgba(255,255,255,.18)">ز</span><div><b style="font-family:var(--head);font-size:15px">زينب علي</b><br><small>جامعة بغداد · كلية الهندسة</small></div></div></div>
+          <div class="set-li"><span>تعديل الجامعة والمنطقة</span><i>‹</i></div>
+          <div class="set-li"><span>انضم كسائق خط</span><i>‹</i></div>
+          <div class="set-li"><span>أضف سكنك</span><i>‹</i></div>
+          <div class="set-li"><span>الإشعارات</span><span class="switch"></span></div>
+          <div class="set-li"><span>تواصل مع الإدارة</span><i>‹</i></div>`;
+      }
+    };
+
+    const tabs = [['home', 'home', 'الرئيسية'], ['rides', 'bus', 'الخطوط'], ['housing', 'building', 'السكن'], ['favs', 'heart', 'المفضلة'], ['profile', 'user', 'حسابي']];
+    function render() {
+      root.innerHTML = `<div class="app">${statusBar}<div class="app-body">${screens[st.screen]()}</div>
+        <div class="app-nav">${tabs.map(([k, i, l]) => `<button class="${st.tab === k ? 'on' : ''}" data-tab-a="${k}">${ic(i, 21)}${l}</button>`).join('')}</div>
+        <div class="toast"></div>${opts.splash && !st.splashed ? `<div class="splash"><div><div class="mk">${ic('cap', 36)}</div><b>مشوار</b><small style="opacity:.85">طريقك للجامعة… أسهل</small></div></div>` : ''}</div>`;
+      if (opts.splash && !st.splashed) { st.splashed = true; setTimeout(() => { const s = $('.splash', root); s && s.classList.add('hide'); }, 1300); }
+      opts.onChange && opts.onChange(st);
+    }
+    function go(target) {
+      const [s, id] = target.split(':');
+      st.screen = s; st.gal = 0;
+      if (id) st.id = +id;
+      st.tab = { ride: 'rides', house: 'housing' }[s] || s;
+      render();
+      const b = $('.app-body', root); b && (b.scrollTop = 0);
+    }
+    function toast(msg) {
+      if (!msg) return;
+      const t = $('.toast', root); t.textContent = msg; t.classList.add('show');
+      clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('show'), 1800);
+    }
+    if (!opts.static) root.addEventListener('click', e => {
+      const el = e.target.closest('button,[data-a]'); if (!el) return;
+      const d = el.dataset;
+      if (d.a === 'back') return go(st.tab);
+      if (d.a) return go(d.a);
+      if (d.tabA) return go(d.tabA);
+      if (d.uni) { st.uni = d.uni; return render(); }
+      if (d.ht) { st.htype = d.ht; return render(); }
+      if (d.gal) { st.gal = (st.gal + +d.gal + 3) % 3; return render(); }
+      if (d.fav) { st.favs.has(d.fav) ? st.favs.delete(d.fav) : st.favs.add(d.fav); render(); return toast(st.favs.has(d.fav) ? 'أُضيف إلى المفضلة' : 'أُزيل من المفضلة'); }
+      if (d.toast !== undefined) toast(d.toast);
+    });
+    render();
+    return { go };
+  }
+
+  makeApp($('#heroScreen'), { static: true });
+  const app = makeApp($('#appScreen'), {
+    splash: true,
+    onChange: st => {
+      const key = st.screen === 'ride' || st.screen === 'house' ? st.screen + ':' + st.id : st.screen;
+      $$('#jump button').forEach(b => b.classList.toggle('on', b.dataset.go === key || (b.dataset.go.split(':')[0] === st.screen && /ride|house/.test(st.screen))));
+    }
+  });
+  $$('#jump button').forEach(b => b.addEventListener('click', () => app.go(b.dataset.go)));
+
+  /* ---------- tabs ---------- */
+  $$('.sim-tabs button').forEach(b => b.addEventListener('click', () => {
+    $$('.sim-tabs button').forEach(x => x.classList.toggle('on', x === b));
+    $$('.sim-panel').forEach(p => p.classList.toggle('on', p.id === 'tab-' + b.dataset.tab));
+    if (b.dataset.tab === 'dash') renderDash();
+  }));
+
+  /* ---------- dashboard simulator ---------- */
+  const requests = [
+    { id: 1, name: 'حيدر كاظم', kind: 'سائق', detail: 'كيا بونغو · البياع ← التكنولوجية', date: 'منذ ساعة', av: '#5b47f5', status: 'wait' },
+    { id: 2, name: 'سكن الربيع', kind: 'سكن', detail: 'سكن طالبات · الجادرية · 6 غرف', date: 'منذ 3 ساعات', av: '#e11d74', status: 'wait' },
+    { id: 3, name: 'عباس جاسم', kind: 'سائق', detail: 'هيونداي H1 · الشعلة ← العراقية', date: 'أمس', av: '#0ea5c6', status: 'wait' },
+    { id: 4, name: 'شقق الأندلس', kind: 'سكن', detail: 'شقة مشتركة · الوزيرية · 4 غرف', date: 'أمس', av: '#f59e0b', status: 'wait' },
+  ];
+  let dView = 'overview';
+  const dToast = msg => { const t = $('#dToast'); t.textContent = msg; t.classList.add('show'); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('show'), 2000); };
+  const pending = () => requests.filter(r => r.status === 'wait').length;
+  const reqTable = (rows) => `
+    <div class="t-wrap"><table class="t"><thead><tr><th>مقدّم الطلب</th><th>النوع</th><th>التاريخ</th><th>الحالة</th><th>إجراء</th></tr></thead><tbody>
+    ${rows.map(r => `<tr><td><div class="who"><span class="av" style="background:${r.av}">${r.name[0]}</span><div>${r.name}<small>${r.detail}</small></div></div></td>
+      <td>${r.kind}</td><td style="color:var(--dim)">${r.date}</td>
+      <td><span class="pill ${r.status}">${{ wait: 'بانتظار المراجعة', ok: 'مقبول', off: 'مرفوض' }[r.status]}</span></td>
+      <td>${r.status === 'wait' ? `<div class="act"><button class="y" data-ok="${r.id}">قبول</button><button class="n" data-no="${r.id}">رفض</button></div>` : '<span style="color:var(--dim)">—</span>'}</td></tr>`).join('')}
+    </tbody></table></div>`;
+  const months = [['أيار', 38], ['حزيران', 46], ['تموز', 41], ['آب', 58], ['أيلول', 82], ['تشرين1', 100]];
+
+  const dViews = {
+    overview: () => `
+      <div class="d-top"><div><h4>نظرة عامة</h4><small>أهلاً بك، مدير المنصة</small></div><div class="d-search">${ic('search', 15)} بحث سريع…</div></div>
+      <div class="kpis">
+        <div class="kpi"><small>الطلاب المسجلون</small><b class="mono">4,812</b><span class="up">▲ 18% هذا الشهر</span></div>
+        <div class="kpi"><small>سواق الخطوط</small><b class="mono">126</b><span class="up">▲ 12 جديد</span></div>
+        <div class="kpi"><small>أماكن السكن</small><b class="mono">85</b><span class="up">▲ 7 جديد</span></div>
+        <div class="kpi"><small>طلبات بانتظارك</small><b class="mono" style="color:var(--gold)">${pending()}</b><span style="color:var(--muted);font-size:11.5px">تحتاج مراجعة</span></div>
+      </div>
+      <div class="d-row">
+        <div class="panel"><div class="panel-h"><b>نمو المستخدمين</b><small>آخر 6 أشهر</small></div>
+          <div class="bars">${months.map(([m, v], i) => `<div class="col"><div class="b ${i < 4 ? 'alt' : ''}" style="height:${v}%;animation-delay:${i * 80}ms"></div><small>${m}</small></div>`).join('')}</div></div>
+        <div class="panel"><div class="panel-h"><b>توزيع البحث حسب الجامعة</b></div>
+          <div class="donut-wrap">
+            <svg width="120" height="120" viewBox="0 0 42 42"><circle cx="21" cy="21" r="15.9" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="6"/>
+              <circle cx="21" cy="21" r="15.9" fill="none" stroke="#7c5cff" stroke-width="6" stroke-dasharray="38 62" stroke-dashoffset="25"/>
+              <circle cx="21" cy="21" r="15.9" fill="none" stroke="#22d3ee" stroke-width="6" stroke-dasharray="26 74" stroke-dashoffset="-13"/>
+              <circle cx="21" cy="21" r="15.9" fill="none" stroke="#fbbf24" stroke-width="6" stroke-dasharray="20 80" stroke-dashoffset="-39"/>
+              <circle cx="21" cy="21" r="15.9" fill="none" stroke="#f472b6" stroke-width="6" stroke-dasharray="16 84" stroke-dashoffset="-59"/></svg>
+            <div class="legend"><div><i style="background:#7c5cff"></i>جامعة بغداد<b>38%</b></div><div><i style="background:#22d3ee"></i>المستنصرية<b>26%</b></div><div><i style="background:#fbbf24"></i>التكنولوجية<b>20%</b></div><div><i style="background:#f472b6"></i>أخرى<b>16%</b></div></div>
+          </div></div>
+      </div>
+      <div class="panel"><div class="panel-h"><b>أحدث طلبات الانضمام</b><small style="cursor:pointer;color:var(--p2)" data-d="requests">عرض الكل</small></div>${reqTable(requests.slice(0, 3))}</div>`,
+    drivers: () => `
+      <div class="d-top"><div><h4>سواق الخطوط</h4><small>${drivers.length} سائق نشط في العرض</small></div><button class="btn btn-primary btn-sm" data-d="add">${ic('plus', 16)} إضافة سائق</button></div>
+      <div class="panel"><div class="t-wrap"><table class="t"><thead><tr><th>السائق</th><th>السيارة</th><th>الجامعة</th><th>المنطقة</th><th>السعر</th><th>الظهور</th><th></th></tr></thead><tbody>
+      ${drivers.map((d, i) => `<tr><td><div class="who"><span class="av" style="background:${d.color}">${d.name.split(' ')[1][0]}</span><div>${d.name}<small>${d.female ? 'خط طالبات' : 'مختلط'} · ★ ${d.rating}</small></div></div></td>
+        <td>${d.car}</td><td>${d.uni}</td><td>${d.area}</td><td class="mono">${fmt(d.price)}</td><td><span class="switch ${i === 4 ? 'offs' : ''}" data-sw></span></td><td><div class="act"><button class="e" data-t="فتح نموذج التعديل">تعديل</button></div></td></tr>`).join('')}
+      </tbody></table></div></div>`,
+    housing: () => `
+      <div class="d-top"><div><h4>السكن الطلابي</h4><small>${housing.length} أماكن سكن في العرض</small></div><button class="btn btn-primary btn-sm" data-d="add">${ic('plus', 16)} إضافة سكن</button></div>
+      <div class="panel"><div class="t-wrap"><table class="t"><thead><tr><th>السكن</th><th>النوع</th><th>المنطقة</th><th>الجامعات القريبة</th><th>السعر</th><th>شاغر</th><th></th></tr></thead><tbody>
+      ${housing.map(h => `<tr><td><div class="who"><span class="av" style="background:linear-gradient(135deg,${h.g[0]},${h.g[1]})">${ic('building', 15)}</span><div>${h.title}<small>3 صور · ★ ${h.rating}</small></div></div></td>
+        <td><span class="pill ${h.type === 'سكن طالبات' ? 'off' : 'ok'}" style="${h.type === 'سكن طالبات' ? 'background:rgba(244,114,182,.12);color:var(--pink)' : ''}">${h.type}</span></td><td>${h.area}</td><td>${h.unis.join('، ')}</td><td class="mono">${fmt(h.price)}</td><td>${h.vacant}</td><td><div class="act"><button class="e" data-t="فتح نموذج التعديل">تعديل</button></div></td></tr>`).join('')}
+      </tbody></table></div></div>`,
+    requests: () => `
+      <div class="d-top"><div><h4>طلبات الانضمام</h4><small>راجع وثّق السواق وأصحاب السكن قبل ظهورهم في التطبيق</small></div></div>
+      <div class="panel">${reqTable(requests)}</div>`,
+    add: () => `
+      <div class="d-top"><div><h4>إضافة إعلان جديد</h4><small>يظهر فوراً في التطبيق بعد الحفظ</small></div></div>
+      <div class="panel"><div class="form-grid">
+        <div class="fld"><label>نوع الإعلان</label><div class="in">سائق خط ▾</div></div>
+        <div class="fld"><label>الاسم</label><div class="in">أبو أحمد</div></div>
+        <div class="fld"><label>نوع السيارة</label><div class="in">كيا بونغو</div></div>
+        <div class="fld"><label>عدد المقاعد</label><div class="in mono" style="justify-content:flex-end">11</div></div>
+        <div class="fld"><label>المنطقة</label><div class="in">البياع ▾</div></div>
+        <div class="fld"><label>الجامعة</label><div class="in">الجامعة التكنولوجية ▾</div></div>
+        <div class="fld"><label>السعر الشهري (د.ع)</label><div class="in mono" style="justify-content:flex-end">85,000</div></div>
+        <div class="fld"><label>رقم الهاتف</label><div class="in mono" style="justify-content:flex-end">07XX XXX XXXX</div></div>
+        <div class="fld full"><label>الصور والمستمسكات</label><div class="upload">اسحب الصور هنا أو اضغط للرفع</div></div>
+      </div><div style="display:flex;gap:10px;margin-top:16px"><button class="btn btn-primary btn-sm" data-t="✓ تم حفظ الإعلان ونشره في التطبيق">حفظ ونشر</button><button class="btn btn-ghost btn-sm" data-d="overview">إلغاء</button></div></div>`,
+    notify: () => `
+      <div class="d-top"><div><h4>إرسال إشعار</h4><small>يصل فوراً لهواتف الطلاب</small></div></div>
+      <div class="panel"><div class="form-grid">
+        <div class="fld"><label>الفئة المستهدفة</label><div class="in">طلاب جامعة بغداد ▾</div></div>
+        <div class="fld"><label>العنوان</label><div class="in">خطوط جديدة لمنطقة الدورة</div></div>
+        <div class="fld full"><label>نص الإشعار</label><div class="in" style="height:80px;align-items:flex-start;padding-top:10px">تمت إضافة 3 خطوط جديدة من الدورة إلى الجادرية، احجز مقعدك الآن!</div></div>
+      </div><div style="margin-top:16px"><button class="btn btn-primary btn-sm" data-t="✓ تم إرسال الإشعار إلى 1,930 طالب">إرسال الآن</button></div></div>`,
+    settings: () => `
+      <div class="d-top"><div><h4>الإعدادات</h4><small>الجامعات، المناطق، والصلاحيات</small></div></div>
+      <div class="d-row" style="grid-template-columns:1fr 1fr">
+        <div class="panel"><div class="panel-h"><b>الجامعات</b><small>${unis.length - 1}</small></div>${unis.slice(1).map(u => `<div class="set-li" style="background:rgba(255,255,255,.03);border-color:var(--line);color:var(--text)"><span>${u}</span><span class="switch" data-sw></span></div>`).join('')}</div>
+        <div class="panel"><div class="panel-h"><b>المشرفون</b></div>
+          ${[['مدير عام', 'كل الصلاحيات'], ['مشرف محتوى', 'إضافة وتعديل'], ['مراجع طلبات', 'قبول ورفض فقط']].map(([a, b]) => `<div class="set-li" style="background:rgba(255,255,255,.03);border-color:var(--line);color:var(--text)"><span>${a}</span><small style="color:var(--muted)">${b}</small></div>`).join('')}</div>
+      </div>`,
+  };
+  function renderDash() {
+    $('#dMain').innerHTML = dViews[dView]();
+    $$('#dSide button').forEach(b => b.classList.toggle('on', b.dataset.d === dView));
+    const n = pending(); const bd = $('#reqBadge'); bd.textContent = n; bd.style.display = n ? '' : 'none';
+  }
+  $('.dash').addEventListener('click', e => {
+    const el = e.target.closest('[data-d],[data-ok],[data-no],[data-t],[data-sw]'); if (!el) return;
+    const d = el.dataset;
+    if (d.d) { dView = d.d; return renderDash(); }
+    if (d.ok || d.no) {
+      const r = requests.find(x => x.id === +(d.ok || d.no)); r.status = d.ok ? 'ok' : 'off';
+      dToast(d.ok ? `✓ تم قبول ${r.name} وأصبح ظاهراً في التطبيق` : `تم رفض طلب ${r.name}`);
+      return renderDash();
+    }
+    if (d.sw !== undefined) { el.classList.toggle('offs'); return dToast(el.classList.contains('offs') ? 'تم إخفاء العنصر من التطبيق' : 'أصبح العنصر ظاهراً في التطبيق'); }
+    if (d.t) dToast(d.t);
+  });
+  renderDash();
+
+  /* ---------- gantt ---------- */
+  const phases = [
+    ['تحليل وتصميم UI/UX', 'تصاميم الشاشات + هيكل البيانات', 0, 1.1, '#7c5cff'],
+    ['قاعدة البيانات و API', 'Laravel · MySQL', 0.7, 2.2, '#ef4444'],
+    ['لوحة الإدارة', 'Vue.js 3', 1.2, 2.2, '#10b981'],
+    ['تطبيق الجوال', 'Flutter · iOS / Android', 1.5, 3.4, '#0ea5c6'],
+    ['منصة الويب', 'صفحة تعريفية + عرض المحتوى', 2.4, 3.3, '#8b5cf6'],
+    ['اختبار ونشر', 'QA · المتاجر · الخادم', 3.2, 4, '#f59e0b'],
+  ];
+  $('#gantt').insertAdjacentHTML('beforeend', phases.map(([t, s, a, b, c]) => `
+    <div class="g-row"><div class="lab">${t}<small>${s}</small></div><div class="cell"></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+      <div class="g-bar" style="background:linear-gradient(90deg,${c},${c}bb);right:calc(var(--lw) + (100% - var(--lw)) * ${a / 4});width:calc((100% - var(--lw)) * ${(b - a) / 4} - 8px)">${t}</div></div>`).join(''));
+  const setLw = () => $('#gantt').style.setProperty('--lw', (matchMedia('(max-width:680px)').matches ? 120 : 260) + 'px');
+  setLw(); addEventListener('resize', setLw);
+
+  /* ---------- price breakdown ---------- */
+  const parts = [['تصميم واجهات وتجربة المستخدم (UI/UX)', 400], ['تطبيق Flutter لنظامي iOS و Android', 1100], ['الخادم و API وقاعدة البيانات (Laravel · MySQL)', 700], ['لوحة الإدارة (Vue.js) + منصة الويب', 550], ['الاختبار والنشر على المتاجر والخادم', 250]];
+  $('#breakdown').innerHTML = parts.map(([l, v]) => `<div class="bd"><span>${l}</span><b>$${fmt(v)}</b><div class="bar"><i style="width:${v / 11}%"></i></div></div>`).join('');
+
+  /* ---------- reveal ---------- */
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
+  $$('.rv').forEach(el => io.observe(el));
+})();
+</script>
+</body>
+</html>
