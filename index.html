@@ -354,6 +354,17 @@ table.t tr:last-child td{border-bottom:0}
 .why small{display:block;font-size:12.5px;color:var(--muted);line-height:1.65}
 @media (max-width:1040px){.opts{grid-template-columns:1fr}}
 @media (max-width:680px){.why{grid-template-columns:1fr}.opt{padding:22px}}
+.webx{margin-top:18px;padding:26px;border-radius:var(--radius);border:1px dashed rgba(34,211,238,.4);background:linear-gradient(135deg,rgba(34,211,238,.06),transparent 60%),var(--card)}
+.webx-h{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+.webx-h b{font-family:var(--head);font-size:19px;display:flex;align-items:center;gap:10px}
+.webx-h .tot{display:flex;gap:8px;flex-wrap:wrap}
+.webx-h .tot span{padding:6px 12px;border-radius:99px;font-size:13px;font-weight:600;background:rgba(255,255,255,.05);border:1px solid var(--line)}
+.webx-h .tot span.c{background:rgba(34,211,238,.12);border-color:rgba(34,211,238,.3);color:var(--p2)}
+.webx>p{color:var(--muted);font-size:14.5px;margin-bottom:16px}
+.webx .milestones{margin-top:0}
+.webx .ms .w{color:var(--gold)}
+.dur{display:inline-flex;align-items:center;gap:6px;margin:4px 0 10px;padding:5px 12px;border-radius:99px;background:rgba(255,255,255,.05);border:1px solid var(--line);font-size:13px;font-weight:600}
+.opt.hl .dur{background:rgba(34,211,238,.1);border-color:rgba(34,211,238,.3);color:var(--p2)}
 .terms{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .term{padding:20px;border-radius:16px;border:1px solid var(--line);background:var(--card);display:flex;gap:14px;align-items:flex-start}
 .term .icon{flex-shrink:0;width:40px;height:40px;border-radius:12px}
@@ -791,7 +802,7 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
     <div class="sec-head rv">
       <div class="kicker">مدة التنفيذ</div>
       <h2>من الفكرة إلى المتجر خلال 30 يوماً</h2>
-      <p>خطة عمل متوازية ومنظّمة، مع عرض تقدّم أسبوعي ونسخة تجريبية تستطيعون استخدامها قبل الإطلاق.</p>
+      <p>خطة عمل متوازية ومنظّمة، مع عرض تقدّم أسبوعي ونسخة تجريبية تستطيعون استخدامها قبل الإطلاق. هذا الجدول للتطبيق ولوحة الإدارة، وفي حال إضافة منصة الويب تُضاف 10 أيام موضّحة أدناه.</p>
     </div>
     <div class="gantt rv" id="gantt">
       <div class="g-head"><div>المرحلة</div><div>الأسبوع 1</div><div>الأسبوع 2</div><div>الأسبوع 3</div><div>الأسبوع 4</div></div>
@@ -801,6 +812,20 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
       <div class="ms rv"><div class="w">DAY 14</div><b>لوحة الإدارة تعمل</b><p>تبدأ جهتكم بإدخال السواق والسكن الحقيقيين مبكراً.</p></div>
       <div class="ms rv"><div class="w">DAY 23</div><b>نسخة تجريبية</b><p>تطبيق تجريبي على هواتفكم للاختبار وإبداء الملاحظات.</p></div>
       <div class="ms rv"><div class="w">DAY 30</div><b>الإطلاق</b><p>نشر على Google Play و App Store وتشغيل المنصة رسمياً.</p></div>
+    </div>
+
+    <div class="webx rv">
+      <div class="webx-h">
+        <b><span class="icon k" style="width:38px;height:38px;border-radius:12px"><svg style="color:var(--ok);width:18px;height:18px"><use href="#i-globe"/></svg></span>في حال إضافة منصة الويب (الخيار الثاني)</b>
+        <div class="tot"><span>التطبيق + الإدارة: 30 يوماً</span><span class="c">مع منصة الويب: 40 يوماً</span></div>
+      </div>
+      <p>يُطلق التطبيق ولوحة الإدارة في اليوم 30 دون أي تأخير، ثم نعمل على منصة الويب لمدة 10 أيام إضافية. تُبنى المنصة على نفس الخادم وقاعدة البيانات، فلا يتأثر التطبيق بها.</p>
+      <div class="milestones">
+        <div class="ms"><div class="w">DAY 31–33</div><b>تصميم صفحات المنصة</b><p>الصفحة الرئيسية، صفحات السواق والسكن، وصفحة «انضم كسائق / أضف سكنك».</p></div>
+        <div class="ms"><div class="w">DAY 34–37</div><b>البرمجة والربط</b><p>بناء المنصة وربطها بنفس قاعدة البيانات، فكل ما يُضاف من لوحة الإدارة يظهر فيها تلقائياً.</p></div>
+        <div class="ms"><div class="w">DAY 38–39</div><b>SEO وربط النطاق</b><p>تهيئة الظهور في Google، روابط المشاركة، وربط النطاق وشهادة SSL.</p></div>
+        <div class="ms"><div class="w">DAY 40</div><b>إطلاق منصة الويب</b><p>تشغيل المنصة رسمياً على نطاقكم مع روابط تحميل التطبيق.</p></div>
+      </div>
     </div>
     <div class="note rv"><svg><use href="#i-info"/></svg><div>مراجعة متجر Apple قد تستغرق من 1 إلى 3 أيام عمل خارج سيطرة فريق التطوير، لذلك نرفع النسخة للمراجعة مبكراً في الأسبوع الرابع لضمان الإطلاق في الموعد.</div></div>
   </div>
@@ -856,6 +881,7 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
         <div class="lbl">الخيار الأول</div>
         <h3>التطبيق + لوحة الإدارة</h3>
         <div class="pr">$2,500</div>
+        <span class="dur"><svg width="14" height="14"><use href="#i-zap"/></svg>مدة التنفيذ: 30 يوماً</span>
         <p>تطبيق iOS و Android بكل المزايا، ولوحة إدارة كاملة على نطاق فرعي للإدارة. مناسب إذا كان التطبيق هو قناة الوصول الوحيدة للطلاب.</p>
         <ul class="checks">
           <li>كل مزايا التطبيق المعروضة في المحاكي</li>
@@ -867,6 +893,7 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
         <div class="lbl">الخيار الثاني · المنظومة الكاملة</div>
         <h3>التطبيق + لوحة الإدارة + منصة ويب على نطاقكم</h3>
         <div class="pr">$3,000</div>
+        <span class="dur"><svg width="14" height="14"><use href="#i-zap"/></svg>مدة التنفيذ: 40 يوماً (التطبيق يُطلق في اليوم 30)</span>
         <p>كل ما في الخيار الأول، مع منصة ويب عامة مرتبطة بنفس قاعدة البيانات. <b style="color:var(--text)">ما الهدف منها؟</b></p>
         <div class="why">
           <div><b>الظهور في Google</b><small>من يبحث عن «سكن طالبات قرب جامعة بغداد» أو «خط من الدورة للجادرية» يصل إليكم مباشرة، ثم يحمّل التطبيق.</small></div>
@@ -950,7 +977,7 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
     <div class="deliv">
       <div class="dv rv"><span class="icon"><svg style="color:#a593ff"><use href="#i-phone"/></svg></span><div><b>تطبيق منشور على المتجرين</b><small>Google Play و App Store باسم جهتكم.</small></div></div>
       <div class="dv rv"><span class="icon c"><svg style="color:var(--p2)"><use href="#i-grid"/></svg></span><div><b>لوحة إدارة جاهزة</b><small>مع حسابات المشرفين وصلاحياتهم.</small></div></div>
-      <div class="dv rv"><span class="icon k"><svg style="color:var(--ok)"><use href="#i-globe"/></svg></span><div><b>منصة ويب على نطاقكم</b><small>صفحة تعريفية + عرض المحتوى للزوار (ضمن خيار <span class="mono">$3,000</span>).</small></div></div>
+      <div class="dv rv"><span class="icon k"><svg style="color:var(--ok)"><use href="#i-globe"/></svg></span><div><b>منصة ويب على نطاقكم</b><small>صفحة تعريفية + عرض المحتوى للزوار (ضمن خيار <span class="mono">$3,000</span> · خلال 40 يوماً).</small></div></div>
       <div class="dv rv"><span class="icon g"><svg style="color:var(--gold)"><use href="#i-lock"/></svg></span><div><b>الكود المصدري كاملاً</b><small>ملكية كاملة للكود وقاعدة البيانات بعد إتمام الدفعات.</small></div></div>
       <div class="dv rv"><span class="icon p"><svg style="color:var(--pink)"><use href="#i-cap"/></svg></span><div><b>جلسة تدريب</b><small>شرح استخدام لوحة الإدارة لفريقكم.</small></div></div>
       <div class="dv rv"><span class="icon"><svg style="color:#a593ff"><use href="#i-shield"/></svg></span><div><b>30 يوماً دعم فني</b><small>إصلاح أي خلل بعد الإطلاق مجاناً.</small></div></div>
@@ -1274,7 +1301,6 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
     ['قاعدة البيانات و API', 'Laravel · MySQL', 0.7, 2.2, '#ef4444'],
     ['لوحة الإدارة', 'Vue.js 3', 1.2, 2.2, '#10b981'],
     ['تطبيق الجوال', 'Flutter · iOS / Android', 1.5, 3.4, '#0ea5c6'],
-    ['منصة الويب', 'ضمن خيار $3,000', 2.4, 3.3, '#8b5cf6'],
     ['اختبار ونشر', 'QA · المتاجر · الخادم', 3.2, 4, '#f59e0b'],
   ];
   $('#gantt').insertAdjacentHTML('beforeend', phases.map(([t, s, a, b, c]) => `
