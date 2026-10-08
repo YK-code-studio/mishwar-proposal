@@ -392,6 +392,129 @@ table.t tr:last-child td{border-bottom:0}
   .w-sec{padding:18px 14px}.w-grid,.w-detail,.w-form{grid-template-columns:1fr}.w-app{margin:6px 14px 18px}
   .sim-tabs{flex-wrap:wrap;justify-content:center}
 }
+/* ===== multi-role app & publishing flow ===== */
+.role-bar{display:flex;flex-direction:column;align-items:center;gap:10px;margin:-14px auto 30px;max-width:680px;text-align:center}
+.role-sw{display:inline-flex;padding:4px;border-radius:14px;background:var(--card);border:1px solid var(--line);gap:4px;flex-wrap:wrap;justify-content:center}
+.role-sw button{display:flex;align-items:center;gap:7px;padding:9px 16px;border-radius:11px;font-size:14px;font-weight:600;color:var(--muted);transition:.2s}
+.role-sw button.on{background:rgba(124,92,255,.16);color:#fff;box-shadow:inset 0 0 0 1px rgba(124,92,255,.45)}
+.role-note{font-size:12.5px;color:var(--dim);line-height:1.8}
+.role-note b{color:var(--muted);font-weight:600}
+.sim-note{margin-top:14px;padding:12px 14px;border-radius:14px;border:1px solid rgba(251,191,36,.25);background:rgba(251,191,36,.06);font-size:12.5px;color:#e6d8b5;line-height:1.8}
+.sim-note b{color:var(--gold)}
+.a-search input{flex:1;min-width:0;border:0;background:none;font:inherit;font-size:12.5px;color:#151a2d;outline:none}
+.a-search button{color:#5b47f5;font-weight:600;font-size:11.5px}
+.f{display:grid;gap:11px;margin-bottom:12px}
+.f-grid{display:grid;gap:12px}
+.f-grid .full{grid-column:1/-1}
+.f-row label:not(.f-chk):not(.up-box),.f-lab{display:block;font-size:11.5px;color:#5c6380;margin-bottom:4px;font-weight:600}
+.f-row label i,.f-lab i{color:#e11d48;font-style:normal}
+.f-in{width:100%;height:38px;border-radius:11px;border:1px solid #e3e6f0;background:#fff;padding:0 11px;font-family:inherit;font-size:12.5px;color:#151a2d;outline:none;transition:border-color .2s,box-shadow .2s}
+textarea.f-in{height:72px;padding:9px 11px;resize:vertical;line-height:1.6}
+.f-in:focus{border-color:#5b47f5;box-shadow:0 0 0 3px rgba(91,71,245,.12)}
+.f-in:disabled{opacity:.65}
+.f-row.bad .f-in{border-color:#e11d48}
+.f-err{display:block;color:#e11d48;font-size:10.5px;margin-top:3px;line-height:1.5}
+.f-err:empty{display:none}
+.f-chk{display:flex;align-items:flex-start;gap:8px;font-size:12px;color:#3d445e;cursor:pointer}
+.f-chk input{margin-top:3px;accent-color:#5b47f5;flex-shrink:0}
+.f-multi{display:flex;flex-wrap:wrap;gap:6px}
+.f-multi label{display:flex;align-items:center;gap:5px;padding:5px 9px;border-radius:9px;border:1px solid #e3e6f0;background:#fff;font-size:11.5px;color:#3d445e;font-weight:500;cursor:pointer}
+.f-multi input{accent-color:#5b47f5;margin:0}
+.f-hint{display:block;font-size:10.5px;color:#8a91a8;line-height:1.6;margin-top:3px}
+.f-sum{padding:10px 12px;border-radius:12px;background:#fff1f2;color:#be123c;font-size:11.5px;margin-bottom:10px;line-height:1.7}
+.f-sum:empty{display:none}
+.f-ok{padding:10px 12px;border-radius:12px;background:#e8fbf3;color:#0f7a55;font-size:11.5px;margin-bottom:10px;line-height:1.6}
+.f-warn{padding:10px 12px;border-radius:12px;background:#fff7e6;color:#8a5a00;font-size:11.5px;margin-bottom:10px;line-height:1.6}
+.a-btn{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;min-height:42px;border-radius:13px;font-weight:600;font-size:13px;background:#5b47f5;color:#fff;box-shadow:0 8px 18px rgba(91,71,245,.3);margin-top:8px;padding:8px 12px}
+.a-btn.sec{background:#fff;color:#151a2d;border:1px solid #e3e6f0;box-shadow:none}
+.a-btn.lnk{background:none;color:#5b47f5;box-shadow:none;min-height:0;padding:6px}
+.a-btn:disabled{opacity:.5;cursor:not-allowed}
+.up-box{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding:12px;border-radius:12px;border:1.5px dashed #c9cee0;background:#fafbff;color:#6b7290;font-size:11.5px;cursor:pointer;text-align:center;font-weight:500}
+.up-box input{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.up-box:focus-within{border-color:#5b47f5}
+.ph-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px}
+.ph-grid:empty{display:none}
+.ph{position:relative;aspect-ratio:1;border-radius:10px;background:#eef0f6 center/cover no-repeat;overflow:hidden}
+.ph button{position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.6);color:#fff;font-size:13px;line-height:1;display:grid;place-items:center}
+.doc-row{display:flex;align-items:center;gap:10px;padding:8px;border-radius:12px;background:#fff;border:1px solid #eef0f6}
+.doc-row .ph{width:44px;flex-shrink:0;display:grid;place-items:center;font-size:10px;font-weight:700;color:#5c6380}
+.doc-row div{flex:1;min-width:0}
+.doc-row b{display:block;font-size:11.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.doc-row small{color:#8a91a8;font-size:10.5px}
+.doc-row button{color:#e11d48;font-size:11px;font-weight:600;flex-shrink:0}
+.lock-note{display:flex;gap:6px;align-items:flex-start;font-size:10.5px;color:#8a5a00;background:#fff7e6;border-radius:10px;padding:8px 10px;margin:0 0 10px;line-height:1.6}
+.lock-note svg{flex-shrink:0;margin-top:2px}
+.steps-v{display:grid;gap:7px;margin:4px 0 12px}
+.sv{display:flex;align-items:center;gap:10px;padding:9px 11px;border-radius:13px;background:#fff;border:1px solid #eef0f6;font-size:12px;text-align:right;width:100%}
+.sv .dot{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:700;background:#eef0f6;color:#8a91a8;flex-shrink:0}
+.sv.done .dot{background:#e8fbf3;color:#0f9f6e}
+.sv.cur .dot{background:#5b47f5;color:#fff}
+.sv b{font-weight:600;display:block}
+.sv small{color:#8a91a8;font-size:10.5px;display:block}
+.st-card{border-radius:16px;padding:14px;margin-bottom:12px;color:#fff;background:linear-gradient(140deg,#151a2d,#2d2a6e)}
+.st-card.pending{background:linear-gradient(140deg,#b45309,#f59e0b)}
+.st-card.changes{background:linear-gradient(140deg,#c2410c,#fb923c)}
+.st-card.rejected{background:linear-gradient(140deg,#9f1239,#e11d48)}
+.st-card.approved{background:linear-gradient(140deg,#047857,#10b981)}
+.st-card small{opacity:.9;font-size:11px;display:block;line-height:1.6}
+.st-card b{font-family:var(--head);font-size:15px;display:block;margin:2px 0}
+.st-note{margin-top:8px;padding:8px 10px;border-radius:10px;background:rgba(255,255,255,.18);font-size:11.5px;line-height:1.6;word-break:break-word}
+.req{background:#fff;border:1px solid #eef0f6;border-radius:14px;padding:11px 12px;margin-bottom:8px}
+.req-h{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.req-h b{font-size:12.5px;line-height:1.5}
+.spill{font-size:10px;font-weight:700;padding:2px 8px;border-radius:7px;white-space:nowrap;flex-shrink:0}
+.spill.new,.spill.draft{background:#eef0ff;color:#4b3ad8}.spill.contacted,.spill.pending{background:#fff7e6;color:#b45309}.spill.confirmed,.spill.approved{background:#e8fbf3;color:#0f9f6e}.spill.declined,.spill.rejected{background:#fff1f2;color:#be123c}.spill.changes{background:#fff1e6;color:#c2410c}
+.req small{display:block;color:#8a91a8;font-size:10.5px;margin-top:2px;word-break:break-word}
+.anote{margin-top:6px;padding:7px 9px;border-radius:9px;background:#f7f8fc;font-size:11px;color:#3d445e;line-height:1.6;word-break:break-word}
+.app-nav button.nav-dot{position:relative}
+.app-nav button.nav-dot::after{content:"";position:absolute;top:4px;right:12px;width:7px;height:7px;border-radius:50%;background:#e11d48}
+.terms-box{font-size:10.5px;color:#6b7290;background:#f7f8fc;border-radius:10px;padding:8px 10px;line-height:1.7;margin-top:6px}
+.set-li{width:100%;text-align:right}
+.set-li b{font-weight:600}
+.prof-card p{font-size:11.5px;opacity:.8;margin-top:6px;line-height:1.6}
+.intro{background:#fff;border:1px solid #eef0f6;border-radius:16px;padding:14px;margin-bottom:12px}
+.intro b{font-family:var(--head);font-size:15px;display:block;margin-bottom:4px}
+.intro p{color:#6b7290;font-size:11.5px;line-height:1.7}
+/* dark (admin) variants */
+.dash .f-in{background:rgba(255,255,255,.04);border-color:var(--line2);color:var(--text)}
+.dash select.f-in option{background:#0e1529;color:var(--text)}
+.dash .f-row label:not(.f-chk):not(.up-box),.dash .f-lab{color:var(--muted)}
+.dash .f-multi label{background:rgba(255,255,255,.04);border-color:var(--line2);color:#c6cde0}
+.dash .f-chk{color:#c6cde0}
+.dash .f-hint{color:var(--dim)}
+.dash .up-box{background:rgba(255,255,255,.03);border-color:var(--line2);color:var(--muted)}
+.dash .f-sum{background:rgba(251,113,133,.1);color:#fda4af}
+.dash .f-err{color:#fda4af}
+.dash .ph{background-color:rgba(255,255,255,.05)}
+.dash .f-grid{grid-template-columns:1fr 1fr}
+.rv-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:12px;align-items:start}
+.kv-t{width:100%;border-collapse:collapse;font-size:13px}
+.kv-t th{text-align:right;font-weight:500;color:var(--dim);font-size:12px;padding:6px 10px;border-bottom:1px solid var(--line)}
+.kv-t td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top;color:#c6cde0;word-break:break-word}
+.kv-t td:first-child{color:var(--muted);width:30%}
+.kv-t tr.chg td{background:rgba(251,191,36,.07)}
+.kv-t tr.chg td:last-child{color:var(--gold)}
+.priv{border:1px dashed rgba(251,113,133,.45);border-radius:14px;padding:12px;background:rgba(251,113,133,.04);margin-top:12px}
+.priv-h{font-size:12.5px;color:#fda4af;font-weight:600;margin-bottom:8px;display:flex;gap:6px;align-items:center}
+.priv a{display:block}
+.rv-act{display:grid;gap:10px}
+.rv-btns{display:flex;gap:8px;flex-wrap:wrap}
+.rv-btns button{padding:9px 14px;border-radius:10px;font-weight:600;font-size:13px}
+.rv-btns .y{background:rgba(52,211,153,.16);color:var(--ok)}
+.rv-btns .c{background:rgba(251,191,36,.14);color:var(--gold)}
+.rv-btns .n{background:rgba(251,113,133,.14);color:var(--red)}
+.rv-btns .e{background:rgba(255,255,255,.06);color:var(--muted)}
+.pill.chg{background:rgba(251,146,60,.14);color:#fdba74}
+.pill.edit{background:rgba(34,211,238,.12);color:var(--p2)}
+.act .c{background:rgba(251,191,36,.14);color:var(--gold)}
+.d-back{color:var(--p2);font-size:13px;font-weight:600;margin-bottom:10px;display:inline-block}
+.notice-log{margin-top:14px;display:grid;gap:8px}
+.notice-log div{padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.03);border:1px solid var(--line);font-size:13px;word-break:break-word}
+.notice-log small{color:var(--dim);display:block}
+.bk-panel{margin-bottom:12px}
+.empty-d{color:var(--dim);font-size:13px;padding:14px 4px}
+@media (max-width:1040px){.rv-grid{grid-template-columns:1fr}}
+@media (max-width:680px){.dash .f-grid{grid-template-columns:1fr}.role-sw button{padding:8px 11px;font-size:13px}.f-in{font-size:16px}}
 #tab-web .browser{scroll-margin-top:84px}
 /* web platform simulator — motion & polish */
 .web{position:relative;overflow:hidden;display:flex;flex-direction:column}
@@ -780,26 +903,28 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
     </div>
     <div style="text-align:center" class="rv">
       <div class="sim-tabs" role="tablist">
-        <button class="on" data-tab="app">تطبيق الطالب · Flutter</button>
-        <button data-tab="dash">لوحة الإدارة · Vue.js</button>
+        <button class="on" data-tab="app">تطبيق مشوار · Flutter</button>
+        <button data-tab="dash">الإدارة والنشر · Vue.js</button>
         <button data-tab="web">منصة الويب<span class="opt-tag">$3,000</span></button>
       </div>
     </div>
 
     <div class="sim-panel on" id="tab-app">
+      <div class="role-bar">
+        <div class="role-sw" id="roleSw" role="group" aria-label="اختر الواجهة">
+          <button class="on" data-role="student"><svg width="16" height="16"><use href="#i-cap"/></svg>الطالب</button>
+          <button data-role="driver"><svg width="16" height="16"><use href="#i-bus"/></svg>السائق</button>
+          <button data-role="owner"><svg width="16" height="16"><use href="#i-building"/></svg>صاحب السكن</button>
+        </div>
+        <p class="role-note">الحالة في المحاكي مشتركة بين التطبيق و«الإدارة والنشر» ومنصة الويب، وهي <b>مؤقتة داخل المتصفح وتُصفّر عند تحديث الصفحة</b>. لا تُحفظ كلمات المرور، ولا تُرسل الملفات إلى أي خدمة خارجية.</p>
+      </div>
       <div class="sim-app">
         <div class="phone"><div class="notch"></div><div class="screen" id="appScreen"></div></div>
         <div class="sim-side">
-          <h3>تطبيق الطالب</h3>
-          <p>واجهة عربية بالكامل، خفيفة وسريعة، مصممة للاستخدام بيد واحدة. اختر شاشة للانتقال إليها مباشرة أو تفاعل مع الهاتف.</p>
-          <div class="jump" id="jump">
-            <button data-go="home"><span class="num">01</span><div><b>الرئيسية</b><span>الخدمات والأقرب لجامعتك</span></div></button>
-            <button data-go="rides"><span class="num">02</span><div><b>سواق الخطوط</b><span>فلترة حسب الجامعة، نوع السيارة، السعر</span></div></button>
-            <button data-go="ride:1"><span class="num">03</span><div><b>تفاصيل السائق</b><span>السيارة، المنطقة، المقاعد، التواصل والحجز</span></div></button>
-            <button data-go="housing"><span class="num">04</span><div><b>السكن الطلابي</b><span>نوع السكن، المنطقة، الجامعات القريبة</span></div></button>
-            <button data-go="house:1"><span class="num">05</span><div><b>تفاصيل السكن</b><span>معرض صور، مزايا، خريطة، تواصل</span></div></button>
-          </div>
-          <div class="hint"><svg width="16" height="16"><use href="#i-info"/></svg> الأسماء والأرقام والأسعار بيانات تجريبية للعرض فقط، أما كل زر ووظيفة تراها في المحاكي فهي مشمولة فعلياً ضمن السعر.</div>
+          <h3 id="simTitle">واجهة الطالب</h3>
+          <p id="simDesc">واجهة عربية بالكامل، خفيفة وسريعة، مصممة للاستخدام بيد واحدة. اختر شاشة للانتقال إليها مباشرة أو تفاعل مع الهاتف.</p>
+          <div class="jump" id="jump">          </div>
+          <div id="simNote"></div>
         </div>
       </div>
     </div>
@@ -817,7 +942,7 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
             <button data-d="drivers"><svg><use href="#i-bus"/></svg>السواق</button>
             <button data-d="housing"><svg><use href="#i-building"/></svg>السكن</button>
             <button data-d="requests"><svg><use href="#i-inbox"/></svg>طلبات الانضمام <span class="badge" id="reqBadge">4</span></button>
-            <button data-d="bookings"><svg><use href="#i-check"/></svg>طلبات الحجز</button>
+            <button data-d="bookings"><svg><use href="#i-check"/></svg>طلبات الحجز <span class="badge" id="bkBadge"></span></button>
             <div class="sep">الإدارة</div>
             <button data-d="add"><svg><use href="#i-plus"/></svg>إضافة إعلان</button>
             <button data-d="notify"><svg><use href="#i-bell"/></svg>الإشعارات</button>
@@ -826,7 +951,7 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
           <main class="d-main" id="dMain"></main>
         </div>
       </div>
-      <div class="hint" style="justify-content:center"><svg width="16" height="16"><use href="#i-info"/></svg> الأرقام والإحصائيات تجريبية للعرض، وكل الأقسام والوظائف الظاهرة في لوحة الإدارة مشمولة ضمن السعر.</div>
+      <div class="hint" style="justify-content:center"><svg width="16" height="16"><use href="#i-info"/></svg> الأرقام والإحصائيات تجريبية للعرض. طلبات الانضمام والحجز هنا مرتبطة فعلياً بمحاكي التطبيق ومنصة الويب، والحالة مؤقتة وتُصفّر عند تحديث الصفحة.</div>
     </div>
 
     <div class="sim-panel" id="tab-web">
@@ -1189,10 +1314,19 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
   const $ = (s, r = document) => r.querySelector(s);
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const ic = (id, s = 18) => `<svg width="${s}" height="${s}"><use href="#i-${id}"/></svg>`;
-  const fmt = n => n.toLocaleString('en-US');
+  const fmt = n => Number(n).toLocaleString('en-US');
+  // Every user-supplied string passes through esc() before reaching innerHTML.
+  const esc = v => String(v ?? '').replace(/[&<>"'`]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;', '`': '&#96;' }[c]));
+  const toEn = v => String(v ?? '').replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)).replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d));
+  const clone = o => JSON.parse(JSON.stringify(o));
+  const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
+  const samePh = (a, b) => same((a || []).map(p => p.id), (b || []).map(p => p.id));
+  const rel = t => { if (typeof t === 'string') return t; const m = Math.round((Date.now() - t) / 60000); return m < 1 ? 'الآن' : m < 60 ? `منذ ${m} دقيقة` : `منذ ${Math.round(m / 60)} ساعة`; };
 
   /* ---------- data ---------- */
   const unis = ['الكل', 'جامعة بغداد', 'المستنصرية', 'التكنولوجية', 'النهرين', 'العراقية'];
+  const uniOff = new Set();
+  const activeUnis = () => unis.filter(u => !uniOff.has(u));
   const drivers = [
     { id: 1, name: 'أبو حسين', car: 'كيا بونغو', seats: 11, free: 3, area: 'الدورة', route: 'الدورة ← الجادرية', uni: 'جامعة بغداد', price: 90000, rating: 4.9, reviews: 128, time: '7:00 ص', female: false, color: '#5b47f5' },
     { id: 2, name: 'أبو زهراء', car: 'هيونداي H1', seats: 9, free: 1, area: 'الكرادة', route: 'الكرادة ← باب المعظم', uni: 'المستنصرية', price: 75000, rating: 4.8, reviews: 96, time: '7:15 ص', female: true, color: '#e11d74' },
@@ -1200,204 +1334,712 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
     { id: 4, name: 'أبو مصطفى', car: 'هيونداي ستاركس', seats: 11, free: 2, area: 'المنصور', route: 'المنصور ← الجادرية', uni: 'النهرين', price: 100000, rating: 5.0, reviews: 52, time: '7:10 ص', female: true, color: '#f59e0b' },
     { id: 5, name: 'أبو كرار', car: 'كيا بونغو', seats: 11, free: 4, area: 'الأعظمية', route: 'الأعظمية ← حي الجامعة', uni: 'العراقية', price: 70000, rating: 4.6, reviews: 61, time: '7:20 ص', female: false, color: '#10b981' },
     { id: 6, name: 'أبو يوسف', car: 'تويوتا هايس', seats: 14, free: 6, area: 'زيونة', route: 'زيونة ← باب المعظم', uni: 'المستنصرية', price: 80000, rating: 4.8, reviews: 88, time: '7:00 ص', female: false, color: '#8b5cf6' },
-  ];
+  ].map(d => ({ ...d, verified: true, photos: [] }));
   const housing = [
-    { id: 1, title: 'سكن طالبات النخيل', type: 'سكن طالبات', area: 'الجادرية', unis: ['جامعة بغداد', 'النهرين'], dist: '1.2 كم', price: 250000, room: 'غرفة لشخصين', vacant: 3, rating: 4.9, feats: ['إنترنت', 'مولدة 24 ساعة', 'تبريد مركزي', 'مطبخ', 'حراسة', 'مشرفة مقيمة'], g: ['#5b47f5', '#22d3ee'] },
-    { id: 2, title: 'شقق الوزيرية للطلاب', type: 'شقة مشتركة', area: 'الوزيرية', unis: ['المستنصرية', 'التكنولوجية'], dist: '800 م', price: 200000, room: 'غرفة مفردة', vacant: 2, rating: 4.7, feats: ['إنترنت', 'مولدة', 'غسالة', 'مطبخ مشترك'], g: ['#0ea5c6', '#34d399'] },
-    { id: 3, title: 'بيت الطالب – حي الجامعة', type: 'سكن طلاب', area: 'حي الجامعة', unis: ['العراقية'], dist: '500 م', price: 175000, room: 'غرفة لثلاثة', vacant: 4, rating: 4.5, feats: ['إنترنت', 'مولدة', 'تبريد'], g: ['#f59e0b', '#f472b6'] },
-    { id: 4, title: 'إقامة الكرادة الحديثة', type: 'سكن طالبات', area: 'الكرادة', unis: ['جامعة بغداد', 'النهرين'], dist: '2.5 كم', price: 300000, room: 'غرفة مفردة', vacant: 1, rating: 4.8, feats: ['إنترنت', 'مولدة 24 ساعة', 'وجبتان يومياً', 'حراسة', 'كاميرات'], g: ['#8b5cf6', '#ec4899'] },
-    { id: 5, title: 'سكن الصناعة', type: 'سكن طلاب', area: 'الصناعة', unis: ['التكنولوجية'], dist: '300 م', price: 160000, room: 'غرفة لشخصين', vacant: 5, rating: 4.4, feats: ['إنترنت', 'مولدة', 'مطبخ'], g: ['#10b981', '#22d3ee'] },
-  ];
+    { id: 1, title: 'سكن طالبات النخيل', type: 'سكن طالبات', area: 'الجادرية', unis: ['جامعة بغداد', 'النهرين'], dist: '1.2 كم', price: 250000, room: 'غرفة لشخصين', vacant: 3, rating: 4.9, feats: ['إنترنت', 'مولدة 24 ساعة', 'تبريد مركزي', 'مطبخ', 'حراسة', 'مشرفة مقيمة'], g: ['#5b47f5', '#22d3ee'], lat: 33.2790, lng: 44.3800 },
+    { id: 2, title: 'شقق الوزيرية للطلاب', type: 'شقة مشتركة', area: 'الوزيرية', unis: ['المستنصرية', 'التكنولوجية'], dist: '800 م', price: 200000, room: 'غرفة مفردة', vacant: 2, rating: 4.7, feats: ['إنترنت', 'مولدة', 'غسالة', 'مطبخ مشترك'], g: ['#0ea5c6', '#34d399'], lat: 33.3570, lng: 44.3920 },
+    { id: 3, title: 'بيت الطالب – حي الجامعة', type: 'سكن طلاب', area: 'حي الجامعة', unis: ['العراقية'], dist: '500 م', price: 175000, room: 'غرفة لثلاثة', vacant: 4, rating: 4.5, feats: ['إنترنت', 'مولدة', 'تبريد'], g: ['#f59e0b', '#f472b6'], lat: 33.3700, lng: 44.3600 },
+    { id: 4, title: 'إقامة الكرادة الحديثة', type: 'سكن طالبات', area: 'الكرادة', unis: ['جامعة بغداد', 'النهرين'], dist: '2.5 كم', price: 300000, room: 'غرفة مفردة', vacant: 1, rating: 4.8, feats: ['إنترنت', 'مولدة 24 ساعة', 'وجبتان يومياً', 'حراسة', 'كاميرات'], g: ['#8b5cf6', '#ec4899'], lat: 33.3050, lng: 44.4250 },
+    { id: 5, title: 'سكن الصناعة', type: 'سكن طلاب', area: 'الصناعة', unis: ['التكنولوجية'], dist: '300 م', price: 160000, room: 'غرفة لشخصين', vacant: 5, rating: 4.4, feats: ['إنترنت', 'مولدة', 'مطبخ'], g: ['#10b981', '#22d3ee'], lat: 33.3150, lng: 44.4440 },
+  ].map(h => ({ ...h, verified: true, photos: [], gender: h.type === 'سكن طالبات' ? 'طالبات' : 'طلاب', capacity: h.vacant + 8, address: h.area }));
+  const PAL = ['#5b47f5', '#e11d74', '#0ea5c6', '#f59e0b', '#10b981', '#8b5cf6'];
+  const GPAL = [['#5b47f5', '#22d3ee'], ['#0ea5c6', '#34d399'], ['#f59e0b', '#f472b6'], ['#8b5cf6', '#ec4899'], ['#10b981', '#22d3ee']];
+  const UNI_POS = { 'جامعة بغداد': [33.2717, 44.3773], 'المستنصرية': [33.3539, 44.3963], 'التكنولوجية': [33.3127, 44.4461], 'النهرين': [33.2787, 44.3769], 'العراقية': [33.3745, 44.3626] };
+  const km = (a, b, c, d) => { const r = x => x * Math.PI / 180; const h = Math.sin(r(c - a) / 2) ** 2 + Math.cos(r(a)) * Math.cos(r(c)) * Math.sin(r(d - b) / 2) ** 2; return 12742 * Math.asin(Math.sqrt(h)); };
+  const distTo = (lat, lng, uni) => { const p = UNI_POS[uni]; if (!p) return '—'; const k = km(lat, lng, p[0], p[1]); return k < 1 ? `${Math.max(100, Math.round(k * 10) * 100)} م` : `${k.toFixed(1)} كم`; };
+  const fmtTime = t => { const [h, m] = t.split(':').map(Number); return `${h % 12 || 12}:${String(m).padStart(2, '0')} ${h < 12 ? 'ص' : 'م'}`; };
+  const to24 = s => { const m = /^(\d{1,2}):(\d{2})\s*(ص|م)$/.exec(s || ''); if (!m) return ''; let h = +m[1] % 12; if (m[3] === 'م') h += 12; return `${String(h).padStart(2, '0')}:${m[2]}`; };
+  const rt = x => x.rating == null ? 'جديد' : x.rating;
 
-  /* ---------- mobile app simulator ---------- */
+  /* ---------- form schema & validation ---------- */
+  const FEATS = ['إنترنت', 'مولدة', 'مولدة 24 ساعة', 'تبريد', 'تبريد مركزي', 'مطبخ', 'مطبخ مشترك', 'غسالة', 'حراسة', 'كاميرات', 'مشرفة مقيمة', 'وجبتان يومياً'];
+  const FIELDS = {
+    ride: [
+      { k: 'name', l: 'اسم السائق / الخط', t: 'text', req: 1, max: 60, ph: 'مثال: أبو أحمد' },
+      { k: 'car', l: 'نوع السيارة', t: 'text', req: 1, max: 40, ph: 'مثال: كيا بونغو' },
+      { k: 'area', l: 'المنطقة', t: 'text', req: 1, max: 40, ph: 'مثال: البياع' },
+      { k: 'route', l: 'مسار الخط', t: 'text', req: 1, max: 80, ph: 'مثال: البياع ← الجادرية' },
+      { k: 'uni', l: 'الجامعة المخدومة', t: 'select', opts: unis.slice(1), req: 1 },
+      { k: 'price', l: 'السعر الشهري (د.ع)', t: 'number', req: 1, min: 10000, max: 1000000, ph: '85000' },
+      { k: 'seats', l: 'إجمالي المقاعد', t: 'number', req: 1, min: 1, max: 30, ph: '11' },
+      { k: 'free', l: 'المقاعد المتاحة', t: 'number', req: 1, min: 0, max: 30, ph: '4' },
+      { k: 'time', l: 'وقت الانطلاق', t: 'time', req: 1 },
+      { k: 'phone', l: 'رقم التواصل / واتساب', t: 'tel', req: 1, ph: '07XXXXXXXXX' },
+      { k: 'female', l: 'خط طالبات فقط', t: 'check', full: 1 },
+      { k: 'desc', l: 'الوصف', t: 'textarea', max: 500, full: 1, ph: 'أوقات العودة، ملاحظات للطلاب…' },
+    ],
+    house: [
+      { k: 'title', l: 'اسم السكن', t: 'text', req: 1, max: 60, ph: 'مثال: سكن الربيع' },
+      { k: 'gender', l: 'مخصص لـ', t: 'select', opts: ['طالبات', 'طلاب'], req: 1 },
+      { k: 'htype', l: 'نوع السكن', t: 'select', opts: ['سكن طلابي', 'شقة مشتركة', 'بيت'], req: 1 },
+      { k: 'room', l: 'نوع الغرفة', t: 'select', opts: ['غرفة مفردة', 'غرفة لشخصين', 'غرفة لثلاثة', 'غرفة لأربعة'], req: 1 },
+      { k: 'area', l: 'المنطقة', t: 'text', req: 1, max: 40, ph: 'مثال: الجادرية' },
+      { k: 'address', l: 'العنوان', t: 'text', req: 1, max: 120, ph: 'الشارع، أقرب نقطة دالة', full: 1 },
+      { k: 'lat', l: 'خط العرض (Latitude)', t: 'coord', req: 1, range: [33.0, 33.7], ph: '33.2785' },
+      { k: 'lng', l: 'خط الطول (Longitude)', t: 'coord', req: 1, range: [44.0, 44.8], ph: '44.3790' },
+      { k: 'unis', l: 'الجامعات القريبة', t: 'multi', opts: unis.slice(1), req: 1, full: 1 },
+      { k: 'price', l: 'السعر الشهري (د.ع)', t: 'number', req: 1, min: 25000, max: 3000000, ph: '230000' },
+      { k: 'capacity', l: 'السعة الكلية (أشخاص)', t: 'number', req: 1, min: 1, max: 500, ph: '12' },
+      { k: 'vacant', l: 'الشواغر', t: 'number', req: 1, min: 0, max: 500, ph: '4' },
+      { k: 'phone', l: 'رقم التواصل / واتساب', t: 'tel', req: 1, ph: '07XXXXXXXXX' },
+      { k: 'feats', l: 'المزايا', t: 'multi', opts: FEATS, full: 1 },
+      { k: 'desc', l: 'الوصف والشروط', t: 'textarea', max: 800, full: 1, ph: 'أوقات الدخول، شروط السكن، التأمين…' },
+    ],
+  };
+  const PHONE_RE = /^07[3-9]\d{8}$/;
+  const normPhone = v => toEn(v).replace(/[\s\-()]/g, '').replace(/^(\+|00)964/, '0');
+  const emptyData = kind => Object.fromEntries(FIELDS[kind].map(f => [f.k, f.t === 'check' ? false : f.t === 'multi' ? [] : '']));
+  function vListing(kind, d, full) {
+    const E = {};
+    for (const f of FIELDS[kind]) {
+      if (f.t === 'check') continue;
+      const v = d[f.k], empty = v == null || v === '' || (Array.isArray(v) && !v.length) || (typeof v === 'string' && !v.trim());
+      if (empty) { if (full && f.req) E[f.k] = 'هذا الحقل مطلوب'; continue; }
+      if (f.t === 'text' || f.t === 'textarea') { const s = String(v).trim(); if (f.req && s.length < 2) E[f.k] = 'قصير جداً'; else if (s.length > f.max) E[f.k] = `الحد الأقصى ${f.max} حرفاً`; }
+      if (f.t === 'number') { const s = toEn(v).trim(), n = Number(s); if (!/^\d+$/.test(s)) E[f.k] = 'أدخل رقماً صحيحاً دون فواصل'; else if (n < f.min || n > f.max) E[f.k] = `القيمة بين ${fmt(f.min)} و ${fmt(f.max)}`; }
+      if (f.t === 'tel' && !PHONE_RE.test(normPhone(v))) E[f.k] = 'رقم عراقي غير صحيح (مثال: 07701234567)';
+      if (f.t === 'coord') { const s = toEn(v).trim(), n = Number(s); if (!/^\d{1,3}(\.\d{1,7})?$/.test(s)) E[f.k] = `أدخل رقماً عشرياً (مثال: ${f.ph})`; else if (n < f.range[0] || n > f.range[1]) E[f.k] = `خارج نطاق بغداد (${f.range[0]} – ${f.range[1]})`; else if (!/\.\d{3,}$/.test(s)) E[f.k] = `أدخل 3 خانات عشرية على الأقل لدقة الموقع (مثال: ${f.ph})`; }
+      if (f.t === 'select' && !f.opts.includes(v)) E[f.k] = 'اختر من القائمة';
+      if (f.t === 'multi' && v.some(x => !f.opts.includes(x))) E[f.k] = 'قيمة غير صالحة';
+      if (f.t === 'time' && !/^([01]\d|2[0-3]):[0-5]\d$/.test(v)) E[f.k] = 'وقت غير صحيح';
+    }
+    const cap = kind === 'ride' ? ['seats', 'free', 'المقاعد المتاحة لا تتجاوز إجمالي المقاعد'] : ['capacity', 'vacant', 'الشواغر لا تتجاوز السعة الكلية'];
+    if (!E[cap[0]] && !E[cap[1]] && d[cap[0]] !== '' && d[cap[1]] !== '' && Number(toEn(d[cap[1]])) > Number(toEn(d[cap[0]]))) E[cap[1]] = cap[2];
+    return E;
+  }
+  const IMG_TYPES = ['image/jpeg', 'image/png', 'image/webp'];
+  const MAX_MB = 5, MAX_PHOTOS = 8;
+  function takeFiles(files, { into, max, types }) {
+    const errs = [];
+    for (const f of files) {
+      if (into.length >= max) { errs.push(`الحد الأقصى ${max} ${max > 1 ? 'صور' : 'ملف'}؛ لم تُضف بقية الملفات.`); break; }
+      if (!types.includes(f.type)) { errs.push(`«${f.name}»: نوع غير مدعوم.`); continue; }
+      if (f.size > MAX_MB * 1024 * 1024) { errs.push(`«${f.name}»: الحجم ${(f.size / 1048576).toFixed(1)}MB يتجاوز ${MAX_MB}MB.`); continue; }
+      // Files stay in this browser tab as object URLs; nothing is uploaded anywhere.
+      into.push({ id: nid(), name: f.name, size: f.size, type: f.type, url: URL.createObjectURL(f) });
+    }
+    return errs;
+  }
+  function showErrors(root, E, probs) {
+    $$('.f-row', root).forEach(r => { const m = E[r.dataset.k]; r.classList.toggle('bad', !!m); const e = $('.f-err', r); if (e) e.textContent = m || ''; });
+    const sum = $('.f-sum', root);
+    const list = [...(probs || []), ...(Object.keys(E).length ? ['راجع الحقول المحددة باللون الأحمر.'] : [])];
+    if (sum) sum.innerHTML = list.map(esc).join('<br>');
+    const first = $('.f-row.bad', root) || (list.length && sum);
+    first && first.scrollIntoView && first.scrollIntoView({ block: 'nearest' });
+  }
+  function fieldHTML(f, v, ro) {
+    const dis = ro ? ' disabled' : '', id = `f-${f.k}-${nid()}`;
+    const lab = `<label for="${id}">${f.l}${f.req ? ' <i>*</i>' : ''}</label>`;
+    let inp;
+    if (f.t === 'check') return `<div class="f-row${f.full ? ' full' : ''}" data-k="${f.k}"><label class="f-chk"><input type="checkbox" data-f="${f.k}"${v ? ' checked' : ''}${dis}> ${f.l}</label><span class="f-err"></span></div>`;
+    if (f.t === 'select') inp = `<select class="f-in" id="${id}" data-f="${f.k}"${dis}><option value="">اختر…</option>${f.opts.map(o => `<option${o === v ? ' selected' : ''}>${esc(o)}</option>`).join('')}</select>`;
+    else if (f.t === 'textarea') inp = `<textarea class="f-in" id="${id}" data-f="${f.k}" maxlength="${f.max}" placeholder="${esc(f.ph || '')}"${dis}>${esc(v || '')}</textarea>`;
+    else if (f.t === 'multi') inp = `<div class="f-multi" role="group" aria-label="${esc(f.l)}">${f.opts.map(o => `<label><input type="checkbox" data-fm="${f.k}" value="${esc(o)}"${(v || []).includes(o) ? ' checked' : ''}${dis}>${esc(o)}</label>`).join('')}</div>`;
+    else if (f.t === 'time') inp = `<input class="f-in" id="${id}" type="time" data-f="${f.k}" value="${esc(v || '')}"${dis}>`;
+    else {
+      const im = { number: 'numeric', tel: 'tel', coord: 'decimal' }[f.t];
+      inp = `<input class="f-in" id="${id}" type="${f.t === 'tel' ? 'tel' : 'text'}"${im ? ` inputmode="${im}" dir="ltr"` : ''} data-f="${f.k}" value="${esc(v ?? '')}"${f.max ? ` maxlength="${f.max}"` : ''} placeholder="${esc(f.ph || '')}"${dis}>`;
+    }
+    return `<div class="f-row${f.full ? ' full' : ''}" data-k="${f.k}">${f.t === 'multi' ? `<span class="f-lab">${f.l}${f.req ? ' <i>*</i>' : ''}</span>` : lab}${inp}<span class="f-err"></span></div>`;
+  }
+  function bindField(el, data) {
+    if (el.dataset.fm) { const k = el.dataset.fm; data[k] = $$(`[data-fm="${k}"]`, el.closest('.f-row')).filter(x => x.checked).map(x => x.value); return; }
+    const k = el.dataset.f, f = [...FIELDS.ride, ...FIELDS.house].find(x => x.k === k);
+    data[k] = el.type === 'checkbox' ? el.checked : (f && ['number', 'tel', 'coord'].includes(f.t) ? toEn(el.value) : el.value);
+  }
+  const photosHTML = (photos, ro, label) => `<div class="f-row full" data-k="photos"><span class="f-lab">${label} (${photos.length}/${MAX_PHOTOS}) <i>*</i></span>
+    ${ro ? '' : `<label class="up-box">${ic('plus', 16)} إضافة صور عامة — JPG / PNG / WebP، حتى ${MAX_MB}MB للصورة<input type="file" accept="${IMG_TYPES.join(',')}" multiple data-up="photos"></label>`}
+    <span class="f-err"></span><div class="ph-grid">${photos.map(p => `<div class="ph" style="background-image:url('${p.url}')" title="${esc(p.name)}">${ro ? '' : `<button type="button" data-rm-ph="${p.id}" aria-label="حذف الصورة">×</button>`}</div>`).join('')}</div></div>`;
+
+  /* ---------- shared simulator state (in memory only; resets on reload; passwords are never kept) ---------- */
+  const S = { accounts: [], subs: [], bookings: [], notices: [], me: { student: null, driver: null, owner: null }, seq: 1000 };
+  function nid() { return ++S.seq; }
+  const listeners = [];
+  const emit = () => listeners.forEach(f => f());
+  const acc = id => S.accounts.find(a => a.id === id);
+  const subOf = accId => S.subs.find(s => s.ownerId === accId);
+  const findL = (kind, id) => (kind === 'ride' ? drivers : housing).find(x => x.id === id);
+  const visible = arr => arr.filter(x => !x.hidden);
+  const media = (x, kind, i = 0) => x.photos && x.photos.length ? `url('${x.photos[i % x.photos.length]}') center/cover no-repeat` : (kind === 'ride' ? `linear-gradient(${135 + i * 45}deg,${x.color},${x.color}99)` : `linear-gradient(${135 + i * 45}deg,${x.g[0]},${x.g[1]})`);
+  const subTitle = s => s.kind === 'ride' ? (s.data.name || 'خط بدون اسم') : (s.data.title || 'سكن بدون اسم');
+  const DOC_LABELS = { ride: ['الهوية', 'إجازة السوق'], house: ['هوية المسؤول عن السكن', 'إثبات حق عرض السكن'] };
+  const ST_LABEL = { draft: 'مسودة', pending: 'قيد المراجعة', changes: 'مطلوب تعديل', rejected: 'مرفوض', approved: 'منشور' };
+  const BK_LABEL = { new: 'جديد', contacted: 'تم التواصل', confirmed: 'مؤكد', declined: 'معتذر' };
+  const phImg = (label, c1, c2) => 'data:image/svg+xml,' + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${c1}"/><stop offset="1" stop-color="${c2}"/></linearGradient></defs><rect width="400" height="300" fill="url(#g)"/><text x="200" y="160" font-family="sans-serif" font-size="28" fill="#ffffff" text-anchor="middle">${label}</text></svg>`);
+  const demoFile = (name, label, c1, c2) => ({ id: nid(), name, size: 180000, type: 'image/svg+xml', url: phImg(label, c1, c2) });
+
+  // Listings are stored display-ready: free-text fields are escaped once here, at publish time.
+  function buildListing(kind, d, photos, id, verified, subId) {
+    const t = s => esc(String(s || '').trim());
+    if (kind === 'ride') return { id, subId, name: t(d.name), car: t(d.car), seats: +d.seats, free: +d.free, area: t(d.area), route: t(d.route), uni: t(d.uni), price: +d.price, rating: null, reviews: 0, time: fmtTime(d.time), female: !!d.female, color: PAL[id % PAL.length], verified: !!verified, photos: photos.map(p => p.url), phone: t(normPhone(d.phone)), desc: t(d.desc) };
+    const type = d.gender === 'طالبات' ? 'سكن طالبات' : d.htype === 'شقة مشتركة' ? 'شقة مشتركة' : 'سكن طلاب';
+    return { id, subId, title: t(d.title), type, gender: d.gender, htype: t(d.htype), area: t(d.area), address: t(d.address), lat: +d.lat, lng: +d.lng, unis: d.unis.map(t), dist: distTo(+d.lat, +d.lng, d.unis[0]), estDist: true, price: +d.price, room: t(d.room), capacity: +d.capacity, vacant: +d.vacant, rating: null, feats: (d.feats || []).map(t), g: GPAL[id % GPAL.length], verified: !!verified, photos: photos.map(p => p.url), phone: t(normPhone(d.phone)), desc: t(d.desc) };
+  }
+  function publish(kind, data, photos, verified, existingId, subId) {
+    const arr = kind === 'ride' ? drivers : housing;
+    if (existingId) {
+      const L = findL(kind, existingId);
+      const keep = { id: L.id, rating: L.rating, reviews: L.reviews, color: L.color, g: L.g, hidden: L.hidden, subId: L.subId };
+      Object.assign(L, buildListing(kind, data, photos, L.id, verified, subId), keep);
+      return L.id;
+    }
+    const id = nid();
+    arr.unshift(buildListing(kind, data, photos, id, verified, subId));
+    return id;
+  }
+  // Raw editable values for a published listing (admin edit form).
+  function rawOf(kind, L) {
+    if (L.subId) { const s = S.subs.find(x => x.id === L.subId); if (s && s.publishedData) return { data: clone(s.publishedData), photos: s.publishedPhotos.slice() }; }
+    if (kind === 'ride') return { data: { name: L.name, car: L.car, area: L.area, route: L.route, uni: L.uni, price: String(L.price), seats: String(L.seats), free: String(L.free), time: to24(L.time), phone: L.phone || '07701112233', female: L.female, desc: L.desc || '' }, photos: [] };
+    return { data: { title: L.title, gender: L.gender, htype: L.type === 'شقة مشتركة' ? 'شقة مشتركة' : 'سكن طلابي', room: L.room, area: L.area, address: L.address, lat: L.lat.toFixed(4), lng: L.lng.toFixed(4), unis: L.unis.slice(), price: String(L.price), capacity: String(L.capacity), vacant: String(L.vacant), phone: L.phone || '07701112233', feats: L.feats.filter(f => FEATS.includes(f)), desc: L.desc || '' }, photos: [] };
+  }
+  function newSub(kind, ownerId, data) {
+    const s = { id: nid(), kind, ownerId, status: 'draft', data: Object.assign(emptyData(kind), data || {}), photos: [], docs: { a: null, b: null }, note: '', publishedId: null, publishedData: null, publishedPhotos: null, submittedAt: null };
+    S.subs.push(s);
+    return s;
+  }
+  // Seed: the four sample join requests from the original demo, now as reviewable submissions.
+  (() => {
+    const seed = (role, name, phone, kind, data, at, c) => {
+      const a = { id: nid(), role, name, phone, at };
+      S.accounts.push(a);
+      const s = newSub(kind, a.id, data);
+      const L = DOC_LABELS[kind];
+      s.docs = { a: demoFile('id-demo.svg', L[0] + ' (تجريبية)', '#64748b', '#94a3b8'), b: demoFile('doc-demo.svg', L[1] + ' (تجريبي)', '#475569', '#94a3b8') };
+      s.photos = [demoFile('photo-1.svg', 'صورة عامة 1', c[0], c[1]), demoFile('photo-2.svg', 'صورة عامة 2', c[1], c[0])];
+      s.status = 'pending'; s.submittedAt = at;
+    };
+    seed('driver', 'حيدر كاظم', '07701234567', 'ride', { name: 'حيدر كاظم', car: 'كيا بونغو', area: 'البياع', route: 'البياع ← الصناعة', uni: 'التكنولوجية', price: '80000', seats: '11', free: '4', time: '07:05', phone: '07701234567', female: false, desc: 'خط يومي ذهاب وإياب.' }, 'منذ ساعة', ['#5b47f5', '#22d3ee']);
+    seed('owner', 'أم علي', '07812345678', 'house', { title: 'سكن الربيع', gender: 'طالبات', htype: 'سكن طلابي', room: 'غرفة لشخصين', area: 'الجادرية', address: 'الجادرية – قرب البوابة الرئيسية', lat: '33.2785', lng: '44.3790', unis: ['جامعة بغداد', 'النهرين'], price: '230000', capacity: '12', vacant: '6', phone: '07812345678', feats: ['إنترنت', 'مولدة 24 ساعة', 'حراسة'], desc: 'الدخول قبل 9 مساءً.' }, 'منذ 3 ساعات', ['#e11d74', '#f472b6']);
+    seed('driver', 'عباس جاسم', '07901234567', 'ride', { name: 'عباس جاسم', car: 'هيونداي H1', area: 'الشعلة', route: 'الشعلة ← الأعظمية', uni: 'العراقية', price: '75000', seats: '9', free: '3', time: '06:55', phone: '07901234567', female: false, desc: '' }, 'أمس', ['#0ea5c6', '#34d399']);
+    seed('owner', 'محمد رضا', '07501234567', 'house', { title: 'شقق الأندلس', gender: 'طلاب', htype: 'شقة مشتركة', room: 'غرفة مفردة', area: 'الوزيرية', address: 'الوزيرية – شارع المغرب', lat: '33.3560', lng: '44.3940', unis: ['المستنصرية', 'التكنولوجية'], price: '190000', capacity: '8', vacant: '4', phone: '07501234567', feats: ['إنترنت', 'مولدة', 'غسالة'], desc: '' }, 'أمس', ['#f59e0b', '#f472b6']);
+    S.bookings.push(
+      { id: nid(), studentId: null, studentName: 'زينب علي', studentPhone: '07711112222', studentUni: 'جامعة بغداد', kind: 'ride', listingId: 1, title: 'مقعد · أبو حسين · الدورة ← الجادرية', note: '', status: 'new', adminNote: '', at: 'منذ 10 دقائق' },
+      { id: nid(), studentId: null, studentName: 'مريم حسن', studentPhone: '07722223333', studentUni: 'النهرين', kind: 'house', listingId: 1, title: 'زيارة · سكن طالبات النخيل', note: '', status: 'new', adminNote: '', at: 'منذ ساعة' },
+      { id: nid(), studentId: null, studentName: 'علي كريم', studentPhone: '07733334444', studentUni: 'التكنولوجية', kind: 'ride', listingId: 3, title: 'مقعد · أبو علي · السيدية ← الصناعة', note: '', status: 'contacted', adminNote: 'تم الاتصال وتحديد موعد الانطلاق.', at: 'أمس' });
+  })();
+  function approveSub(sub, verified) {
+    sub.publishedId = publish(sub.kind, sub.data, sub.photos, verified, sub.publishedId, sub.id);
+    sub.status = 'approved'; sub.note = '';
+    sub.publishedData = clone(sub.data); sub.publishedPhotos = sub.photos.slice();
+    emit();
+  }
+  function submitSub(sub, data, photos) {
+    const E = vListing(sub.kind, data, true), probs = [];
+    if (!photos.length) probs.push('أضف صورة عامة واحدة على الأقل.');
+    if (!sub.docs.a || !sub.docs.b) probs.push(`ارفع المستمسكات الخاصة: ${DOC_LABELS[sub.kind].join(' و')}.`);
+    if (sub.publishedId && same(data, sub.publishedData) && samePh(photos, sub.publishedPhotos)) probs.push('لا توجد تعديلات على النسخة المنشورة لإرسالها.');
+    if (Object.keys(E).length || probs.length) return { E, probs };
+    sub.data = clone(data); sub.photos = photos.slice();
+    sub.status = 'pending'; sub.note = ''; sub.submittedAt = Date.now();
+    emit();
+    return null;
+  }
+
+  /* ---------- mobile app simulator: student · driver · housing owner ---------- */
+  const KIND_OF = { driver: 'ride', owner: 'house' };
   function makeApp(root, opts = {}) {
-    const st = { screen: 'home', tab: 'home', uni: 'الكل', htype: 'الكل', favs: new Set([2]), gal: 0, id: null };
+    const st = {
+      role: 'student', splashed: false,
+      r: {
+        student: { screen: 'home', tab: 'home', uni: 'الكل', htype: 'الكل', favs: new Set([2]), gal: 0, id: null, kind: 'ride', q: '', after: null, msg: null, seenN: 0, seenBk: {} },
+        driver: { screen: 'start', tab: 'status', buf: null, err: null, msg: null, upErr: null },
+        owner: { screen: 'start', tab: 'status', buf: null, err: null, msg: null, upErr: null },
+      },
+    };
+    const cur = () => st.r[st.role];
+    const me = (role = st.role) => S.me[role] && acc(S.me[role]);
+    const mySub = () => { const a = me(); return a && subOf(a.id); };
     const statusBar = `<div class="app-status"><span>9:41</span><span style="display:flex;gap:5px;align-items:center"><svg width="16" height="10" viewBox="0 0 16 10"><path d="M1 9h2V7H1zM5 9h2V5H5zM9 9h2V3H9zM13 9h2V1h-2z" fill="currentColor"/></svg><svg width="22" height="11" viewBox="0 0 22 11"><rect x=".5" y=".5" width="18" height="10" rx="3" fill="none" stroke="currentColor" opacity=".5"/><rect x="2" y="2" width="14" height="7" rx="1.5" fill="currentColor"/><rect x="19.5" y="3.5" width="1.5" height="4" rx=".7" fill="currentColor" opacity=".5"/></svg></span></div>`;
-
+    const flash = R => { const m = R.msg; R.msg = null; return m ? `<div class="${m.warn ? 'f-warn' : 'f-ok'}">${esc(m.t || m)}</div>` : ''; };
+    const thumb = (x, kind) => x.photos && x.photos.length ? `<span class="th" style="background:${media(x, kind)}"></span>` : kind === 'ride' ? `<span class="th" style="background:${x.color}14;color:${x.color}">${ic('bus', 28)}</span>` : `<span class="th" style="background:linear-gradient(135deg,${x.g[0]},${x.g[1]});color:#fff">${ic('building', 28)}</span>`;
     const driverRow = d => `
-      <button class="li" data-a="ride:${d.id}">
-        <span class="th" style="background:${d.color}14;color:${d.color}">${ic('bus', 28)}</span>
+      <button class="li" data-a="ride:${d.id}">${thumb(d, 'ride')}
         <span class="mid"><b>${d.name} · ${d.car}</b><small>${d.route}</small>
-          ${d.female ? '<span class="tag f">طالبات فقط</span>' : '<span class="tag v">' + ic('check', 9) + ' موثّق</span>'}
+          ${d.female ? '<span class="tag f">طالبات فقط</span>' : d.verified ? '<span class="tag v">' + ic('check', 9) + ' موثّق</span>' : ''}
           <span class="tag s">${d.free} مقاعد متاحة</span></span>
         <span class="end"><span class="price">${fmt(d.price)}</span><small>د.ع / شهر</small></span>
       </button>`;
     const houseRow = h => `
-      <button class="li" data-a="house:${h.id}">
-        <span class="th" style="background:linear-gradient(135deg,${h.g[0]},${h.g[1]});color:#fff">${ic('building', 28)}</span>
+      <button class="li" data-a="house:${h.id}">${thumb(h, 'house')}
         <span class="mid"><b>${h.title}</b><small>${h.area} · ${h.dist} عن ${h.unis[0]}</small>
           <span class="tag ${h.type === 'سكن طالبات' ? 'f' : 'v'}">${h.type}</span>
           <span class="tag s">${h.vacant} شاغر</span></span>
         <span class="end"><span class="price">${fmt(h.price)}</span><small>د.ع / شهر</small></span>
       </button>`;
-
-    const screens = {
-      home() {
-        const near = drivers.slice(0, 2).map(driverRow).join('') + houseRow(housing[0]);
-        return `
-          <div class="a-hello"><div><small>صباح الخير</small><b>زينب، أين وجهتك اليوم؟</b></div><span class="avatar">ز</span></div>
-          <div class="a-search">${ic('search', 16)} ابحث عن خط أو سكن أو منطقة…</div>
-          <div class="a-svc">
-            <button class="s1" data-a="rides"><span>${ic('bus', 24)}</span><span><b>خطوط النقل</b><small>${drivers.length * 21}+ سائق موثّق</small></span><svg class="bgi"><use href="#i-bus"/></svg></button>
-            <button class="s2" data-a="housing"><span>${ic('building', 24)}</span><span><b>السكن الطلابي</b><small>${housing.length * 17}+ سكن قريب</small></span><svg class="bgi"><use href="#i-building"/></svg></button>
-          </div>
-          <div class="a-title"><b>تصفّح حسب جامعتك</b></div>
-          <div class="soon">${unis.slice(1).map(u => `<button data-uni-go="${u}">${u}</button>`).join('')}</div>
-          <div class="a-title"><b>الأقرب لجامعتك</b><span data-a="rides">عرض الكل</span></div>
-          ${near}`;
-      },
-      rides() {
-        const list = drivers.filter(d => st.uni === 'الكل' || d.uni === st.uni);
-        return `
-          <div class="a-back"><b>سواق الخطوط</b></div>
-          <div class="a-search">${ic('search', 16)} ابحث بالمنطقة أو اسم السائق…</div>
-          <div class="chips">${unis.map(u => `<button class="${u === st.uni ? 'on' : ''}" data-uni="${u}">${u}</button>`).join('')}</div>
-          <div class="a-title"><b>${list.length} خطوط متاحة</b><span>الأرخص أولاً</span></div>
-          ${list.sort((a, b) => a.price - b.price).map(driverRow).join('') || '<div class="empty">لا توجد خطوط</div>'}`;
-      },
-      ride() {
-        const d = drivers.find(x => x.id === st.id);
-        const fav = st.favs.has('d' + d.id);
-        return `
-          <div class="a-back"><button data-a="back">${ic('back', 16)}</button><b>تفاصيل الخط</b><button class="fav-btn ${fav ? 'on' : ''}" style="margin-right:auto" data-fav="d${d.id}">${ic(fav ? 'heart-f' : 'heart', 16)}</button></div>
-          <div class="hero-img" style="background:linear-gradient(135deg,${d.color},${d.color}aa)"><svg class="big" style="color:#fff"><use href="#i-bus"/></svg><span class="cap">${d.car}</span></div>
-          <div class="d-title"><div><b>${d.name}</b><small>${d.route}</small></div><span class="rate">${ic('star', 11)} ${d.rating} <span style="font-weight:500;opacity:.7">(${d.reviews})</span></span></div>
-          <div class="info">
-            <div><small>نوع السيارة</small><b>${d.car}</b></div>
-            <div><small>الجامعة</small><b>${d.uni}</b></div>
-            <div><small>المنطقة</small><b>${d.area}</b></div>
-            <div><small>السعر الشهري</small><b style="color:#5b47f5">${fmt(d.price)} د.ع</b></div>
-            <div><small>وقت الانطلاق</small><b>${d.time}</b></div>
-            <div><small>المقاعد المتاحة</small><b>${d.free} من ${d.seats}</b></div>
-          </div>
-          <div class="feat">${d.female ? '<span>خط طالبات فقط</span>' : ''}<span>سائق موثّق</span><span>تبريد</span><span>ذهاب وإياب</span></div>
-          <div class="cta-row"><button class="sq" data-toast="يفتح شاشة الاتصال برقم ${d.name}">${ic('phone', 18)}</button><button class="wa" data-toast="يفتح واتساب برسالة جاهزة">${ic('chat', 18)}</button><button class="main" data-toast="✓ وصل طلب الحجز للإدارة وستتواصل معك">احجز مقعدك</button></div>`;
-      },
-      housing() {
-        const types = ['الكل', 'سكن طالبات', 'سكن طلاب', 'شقة مشتركة'];
-        const list = housing.filter(h => st.htype === 'الكل' || h.type === st.htype);
-        return `
-          <div class="a-back"><b>السكن الطلابي</b></div>
-          <div class="chips">${types.map(u => `<button class="${u === st.htype ? 'on' : ''}" data-ht="${u}">${u}</button>`).join('')}</div>
-          <div class="a-title"><b>${list.length} أماكن سكن</b><span>الأقرب أولاً</span></div>
-          ${list.map(houseRow).join('')}`;
-      },
-      house() {
-        const h = housing.find(x => x.id === st.id);
-        const fav = st.favs.has('h' + h.id);
-        const caps = ['الواجهة', 'الغرفة', 'المطبخ'];
-        const shift = st.gal * 40;
-        return `
-          <div class="a-back"><button data-a="back">${ic('back', 16)}</button><b>تفاصيل السكن</b><button class="fav-btn ${fav ? 'on' : ''}" style="margin-right:auto" data-fav="h${h.id}">${ic(fav ? 'heart-f' : 'heart', 16)}</button></div>
-          <div class="hero-img" style="background:linear-gradient(${135 + shift}deg,${h.g[0]},${h.g[1]})">
-            <svg class="big" style="color:#fff"><use href="#i-${['building', 'home', 'grid'][st.gal]}"/></svg>
-            <span class="cap">صورة ${st.gal + 1}/3 · ${caps[st.gal]}</span>
-            <button class="nav-g r" data-gal="-1">‹</button><button class="nav-g l" data-gal="1">›</button>
-            <span class="dots">${[0, 1, 2].map(i => `<i class="${i === st.gal ? 'on' : ''}"></i>`).join('')}</span>
-          </div>
-          <div class="d-title"><div><b>${h.title}</b><small>${h.area} · ${h.type}</small></div><span class="rate">${ic('star', 11)} ${h.rating}</span></div>
-          <div class="info">
-            <div><small>نوع الغرفة</small><b>${h.room}</b></div>
-            <div><small>السعر الشهري</small><b style="color:#5b47f5">${fmt(h.price)} د.ع</b></div>
-            <div><small>الجامعات القريبة</small><b>${h.unis.join('، ')}</b></div>
-            <div><small>الأماكن الشاغرة</small><b>${h.vacant}</b></div>
-          </div>
-          <div class="map-mini"><svg viewBox="0 0 270 110"><path d="M0 70 Q60 50 120 72 T270 60" stroke="#c9d3ea" stroke-width="10" fill="none"/><path d="M90 0 L110 110" stroke="#d6deef" stroke-width="7"/><path d="M200 0 L180 110" stroke="#d6deef" stroke-width="5"/><path d="M60 40 L 190 52" stroke="#5b47f5" stroke-width="2" stroke-dasharray="3 4" fill="none"/><circle cx="60" cy="40" r="7" fill="#5b47f5"/><circle cx="60" cy="40" r="14" fill="#5b47f5" opacity=".18"/><rect x="190" y="42" width="30" height="20" rx="5" fill="#151a2d"/><text x="205" y="56" font-size="9" fill="#fff" text-anchor="middle" font-family="IBM Plex Sans Arabic">جامعة</text><text x="130" y="22" font-size="10" fill="#5b47f5" text-anchor="middle" font-weight="700" font-family="IBM Plex Sans Arabic">${h.dist} · مسافة مباشرة</text></svg><button class="open" data-toast="يفتح الموقع في خرائط Google">فتح في الخرائط ↗</button></div>
-          <div class="feat">${h.feats.map(f => `<span>${f}</span>`).join('')}</div>
-          <div class="cta-row"><button class="sq" data-toast="يفتح شاشة الاتصال برقم صاحب السكن">${ic('phone', 18)}</button><button class="wa" data-toast="يفتح واتساب برسالة جاهزة">${ic('chat', 18)}</button><button class="main" data-toast="✓ وصل طلب الزيارة للإدارة وستتواصل معك">احجز زيارة</button></div>`;
-      },
-      favs() {
-        const fd = drivers.filter(d => st.favs.has('d' + d.id)), fh = housing.filter(h => st.favs.has('h' + h.id));
-        if (!fd.length && !fh.length) return `<div class="a-back"><b>المفضلة</b></div><div class="empty"><svg><use href="#i-heart"/></svg><div>لم تحفظ شيئاً بعد</div></div>`;
-        return `<div class="a-back"><b>المفضلة</b></div>${fd.map(driverRow).join('')}${fh.map(houseRow).join('')}`;
-      },
-      profile() {
-        return `
-          <div class="a-back"><b>حسابي</b></div>
-          <div class="prof-card"><div style="display:flex;gap:12px;align-items:center"><span class="avatar" style="background:rgba(255,255,255,.18)">ز</span><div><b style="font-family:var(--head);font-size:15px">زينب علي</b><br><small>جامعة بغداد · كلية الهندسة</small></div></div></div>
-          <div class="set-li"><span>تعديل الجامعة والمنطقة</span><i>‹</i></div>
-          <div class="set-li"><span>انضم كسائق خط</span><i>‹</i></div>
-          <div class="set-li"><span>أضف سكنك</span><i>‹</i></div>
-          <div class="set-li"><span>الإشعارات</span><span class="switch"></span></div>
-          <div class="set-li"><span>تواصل مع الإدارة</span><i>‹</i></div>`;
-      }
+    const match = (x, q) => !q || [x.name, x.title, x.area, x.route, x.car, x.uni, ...(x.unis || [])].filter(Boolean).join(' ').includes(q);
+    const rideList = R => visible(drivers).filter(d => (R.uni === 'الكل' || d.uni === R.uni) && match(d, R.q.trim())).sort((a, b) => a.price - b.price);
+    const houseList = R => visible(housing).filter(h => (R.htype === 'الكل' || h.type === R.htype) && match(h, R.q.trim()));
+    const myBookings = () => { const a = me('student'); return a ? S.bookings.filter(b => b.studentId === a.id) : []; };
+    const myNotices = () => { const a = me('student'); return S.notices.filter(n => n.target === 'all' || (a && n.target === a.uni)); };
+    const unseen = () => { const R = st.r.student; return myBookings().filter(b => R.seenBk[b.id] !== b.status + b.adminNote).length + Math.max(0, myNotices().length - R.seenN); };
+    const searchBox = (R, live) => `<form class="a-search" data-search="${live || ''}" role="search">${ic('search', 16)}<input name="q" value="${esc(R.q)}" placeholder="${live === 'rides' ? 'ابحث بالمنطقة أو اسم السائق…' : live === 'housing' ? 'ابحث باسم السكن أو المنطقة…' : 'ابحث عن خط أو سكن أو منطقة…'}" aria-label="بحث" maxlength="40" autocomplete="off">${live ? '' : '<button type="submit">بحث</button>'}</form>`;
+    const unavailable = `<div class="a-back"><button data-a="back" aria-label="رجوع">${ic('back', 16)}</button><b>غير متاح</b></div><div class="empty">هذا الإعلان غير متاح حالياً.</div>`;
+    const signupForm = (role, R) => {
+      const isS = role === 'student';
+      const rows = [
+        `<div class="f-row" data-k="name"><label for="su-name">${role === 'owner' ? 'اسم المسؤول عن السكن' : 'الاسم الكامل'} <i>*</i></label><input class="f-in" id="su-name" name="name" maxlength="50" autocomplete="name" placeholder="${role === 'owner' ? 'الشخص المسؤول، وليس اسم المبنى' : ''}"><span class="f-err"></span></div>`,
+        `<div class="f-row" data-k="phone"><label for="su-phone">رقم الهاتف <i>*</i></label><input class="f-in" id="su-phone" name="phone" type="tel" inputmode="tel" dir="ltr" maxlength="16" placeholder="07XXXXXXXXX" autocomplete="tel"><span class="f-err"></span></div>`,
+        `<div class="f-row" data-k="pass"><label for="su-pass">كلمة المرور <i>*</i></label><input class="f-in" id="su-pass" name="pass" type="password" maxlength="64" autocomplete="new-password"><span class="f-hint">8 أحرف على الأقل، حروف وأرقام.</span><span class="f-err"></span></div>`,
+        `<div class="f-row" data-k="pass2"><label for="su-pass2">تأكيد كلمة المرور <i>*</i></label><input class="f-in" id="su-pass2" name="pass2" type="password" maxlength="64" autocomplete="new-password"><span class="f-err"></span></div>`,
+      ];
+      if (isS) rows.push(
+        `<div class="f-row" data-k="uni"><label for="su-uni">الجامعة <i>*</i></label><select class="f-in" id="su-uni" name="uni"><option value="">اختر…</option>${unis.slice(1).map(u => `<option>${u}</option>`).join('')}</select><span class="f-err"></span></div>`,
+        `<div class="f-row" data-k="area"><label for="su-area">المنطقة (اختياري)</label><input class="f-in" id="su-area" name="area" maxlength="40"><span class="f-err"></span></div>`);
+      rows.push(`<div class="f-row" data-k="terms"><label class="f-chk"><input type="checkbox" name="terms"> أوافق على الشروط وسياسة الخصوصية</label><details class="terms-box"><summary>عرض الشروط والخصوصية باختصار</summary>تُستخدم بياناتك لتشغيل الخدمة والتواصل بخصوص طلباتك فقط. لا يُشارك رقمك إلا مع الطرف الذي تطلب التواصل معه. يحق للإدارة إخفاء أي إعلان أو حساب مخالف.</details><span class="f-err"></span></div>`);
+      return `<div class="a-back">${isS ? `<button data-a="back" aria-label="رجوع">${ic('back', 16)}</button>` : ''}<b>${{ student: 'إنشاء حساب طالب', driver: 'إنشاء حساب سائق', owner: 'حساب صاحب السكن' }[role]}</b></div>${flash(R)}
+        <div class="lock-note">${ic('info', 14)} التسجيل برقم الهاتف وكلمة المرور فقط، دون رسائل OTP أو SMS؛ لذلك لا يُثبت التسجيل ملكية الرقم.</div>
+        <div class="f-sum"></div><div class="f">${rows.join('')}</div>
+        <button class="a-btn" data-signup>إنشاء الحساب</button>${isS ? '<button class="a-btn lnk" data-a="home">متابعة التصفح كزائر</button>' : ''}`;
     };
 
-    const tabs = [['home', 'home', 'الرئيسية'], ['rides', 'bus', 'الخطوط'], ['housing', 'building', 'السكن'], ['favs', 'heart', 'المفضلة'], ['profile', 'user', 'حسابي']];
-    function render() {
-      root.innerHTML = `<div class="app">${statusBar}<div class="app-body">${screens[st.screen]()}</div>
-        <div class="app-nav">${tabs.map(([k, i, l]) => `<button class="${st.tab === k ? 'on' : ''}" data-tab-a="${k}">${ic(i, 21)}${l}</button>`).join('')}</div>
-        <div class="toast"></div>${opts.splash && !st.splashed ? `<div class="splash"><div><div class="mk">${ic('cap', 36)}</div><b>مشوار</b><small style="opacity:.85">طريقك للجامعة… أسهل</small></div></div>` : ''}</div>`;
+    const SCREENS = {
+      student: {
+        home() {
+          const R = st.r.student, a = me(), nm = a ? esc(a.name.split(' ')[0]) : opts.demoName;
+          const near = visible(drivers).slice(0, 2).map(driverRow).join('') + (visible(housing)[0] ? houseRow(visible(housing)[0]) : '');
+          return `
+            <div class="a-hello"><div><small>صباح الخير</small><b>${nm ? nm + '، ' : ''}أين وجهتك اليوم؟</b></div><span class="avatar">${nm ? nm[0] : ic('user', 18)}</span></div>
+            ${opts.static ? `<div class="a-search">${ic('search', 16)} ابحث عن خط أو سكن أو منطقة…</div>` : searchBox(R)}
+            <div class="a-svc">
+              <button class="s1" data-a="rides"><span>${ic('bus', 24)}</span><span><b>خطوط النقل</b><small>126+ سائق موثّق</small></span><svg class="bgi"><use href="#i-bus"/></svg></button>
+              <button class="s2" data-a="housing"><span>${ic('building', 24)}</span><span><b>السكن الطلابي</b><small>85+ سكن قريب</small></span><svg class="bgi"><use href="#i-building"/></svg></button>
+            </div>
+            <div class="a-title"><b>تصفّح حسب جامعتك</b></div>
+            <div class="soon">${activeUnis().slice(1).map(u => `<button data-uni-go="${u}">${u}</button>`).join('')}</div>
+            <div class="a-title"><b>الأقرب لجامعتك</b><span data-a="rides">عرض الكل</span></div>
+            ${near}`;
+        },
+        search() {
+          const R = st.r.student, q = R.q.trim();
+          const rs = visible(drivers).filter(d => match(d, q)), hs = visible(housing).filter(h => match(h, q));
+          return `<div class="a-back"><button data-a="home" aria-label="رجوع">${ic('back', 16)}</button><b>نتائج البحث</b></div>${searchBox(R)}
+            <div class="a-title"><b>${rs.length + hs.length} نتيجة${q ? ` لـ «${esc(q)}»` : ''}</b></div>${rs.map(driverRow).join('')}${hs.map(houseRow).join('') || (rs.length ? '' : '<div class="empty">لا توجد نتائج مطابقة</div>')}`;
+        },
+        rides() {
+          const R = st.r.student, list = rideList(R);
+          return `
+            <div class="a-back"><b>سواق الخطوط</b></div>
+            ${searchBox(R, 'rides')}
+            <div class="chips">${activeUnis().map(u => `<button class="${u === R.uni ? 'on' : ''}" data-uni="${u}">${u}</button>`).join('')}</div>
+            <div id="aList"><div class="a-title"><b>${list.length} خطوط متاحة</b><span>الأرخص أولاً</span></div>
+            ${list.map(driverRow).join('') || '<div class="empty">لا توجد خطوط</div>'}</div>`;
+        },
+        ride() {
+          const R = st.r.student, d = findL('ride', R.id);
+          if (!d || d.hidden) return unavailable;
+          const fav = R.favs.has('d' + d.id);
+          return `
+            <div class="a-back"><button data-a="back" aria-label="رجوع">${ic('back', 16)}</button><b>تفاصيل الخط</b><button class="fav-btn ${fav ? 'on' : ''}" style="margin-right:auto" data-fav="d${d.id}" aria-label="المفضلة">${ic(fav ? 'heart-f' : 'heart', 16)}</button></div>
+            <div class="hero-img" style="background:${d.photos.length ? media(d, 'ride', R.gal) : `linear-gradient(135deg,${d.color},${d.color}aa)`}">${d.photos.length ? '' : '<svg class="big" style="color:#fff"><use href="#i-bus"/></svg>'}<span class="cap">${d.car}${d.photos.length > 1 ? ` · ${R.gal + 1}/${d.photos.length}` : ''}</span>
+              ${d.photos.length > 1 ? `<button class="nav-g r" data-gal="-1" aria-label="السابقة">‹</button><button class="nav-g l" data-gal="1" aria-label="التالية">›</button>` : ''}</div>
+            <div class="d-title"><div><b>${d.name}</b><small>${d.route}</small></div><span class="rate">${ic('star', 11)} ${rt(d)}${d.reviews ? ` <span style="font-weight:500;opacity:.7">(${d.reviews})</span>` : ''}</span></div>
+            <div class="info">
+              <div><small>نوع السيارة</small><b>${d.car}</b></div>
+              <div><small>الجامعة</small><b>${d.uni}</b></div>
+              <div><small>المنطقة</small><b>${d.area}</b></div>
+              <div><small>السعر الشهري</small><b style="color:#5b47f5">${fmt(d.price)} د.ع</b></div>
+              <div><small>وقت الانطلاق</small><b>${d.time}</b></div>
+              <div><small>المقاعد المتاحة</small><b>${d.free} من ${d.seats}</b></div>
+            </div>
+            ${d.desc ? `<div class="anote" style="margin:-4px 0 12px">${d.desc}</div>` : ''}
+            <div class="feat">${d.female ? '<span>خط طالبات فقط</span>' : ''}${d.verified ? '<span>سائق موثّق</span>' : ''}<span>ذهاب وإياب</span></div>
+            <div class="cta-row"><button class="sq" data-toast="يفتح شاشة الاتصال برقم ${d.name} — لا يُنشئ طلب حجز" aria-label="اتصال">${ic('phone', 18)}</button><button class="wa" data-toast="يفتح واتساب برسالة جاهزة — لا يُنشئ طلب حجز" aria-label="واتساب">${ic('chat', 18)}</button><button class="main" data-book="ride:${d.id}">اطلب حجز مقعد</button></div>`;
+        },
+        housing() {
+          const R = st.r.student, types = ['الكل', 'سكن طالبات', 'سكن طلاب', 'شقة مشتركة'], list = houseList(R);
+          return `
+            <div class="a-back"><b>السكن الطلابي</b></div>
+            ${searchBox(R, 'housing')}
+            <div class="chips">${types.map(u => `<button class="${u === R.htype ? 'on' : ''}" data-ht="${u}">${u}</button>`).join('')}</div>
+            <div id="aList"><div class="a-title"><b>${list.length} أماكن سكن</b><span>الأقرب أولاً</span></div>
+            ${list.map(houseRow).join('') || '<div class="empty">لا توجد نتائج</div>'}</div>`;
+        },
+        house() {
+          const R = st.r.student, h = findL('house', R.id);
+          if (!h || h.hidden) return unavailable;
+          const fav = R.favs.has('h' + h.id), n = h.photos.length || 3, caps = ['الواجهة', 'الغرفة', 'المطبخ'];
+          return `
+            <div class="a-back"><button data-a="back" aria-label="رجوع">${ic('back', 16)}</button><b>تفاصيل السكن</b><button class="fav-btn ${fav ? 'on' : ''}" style="margin-right:auto" data-fav="h${h.id}" aria-label="المفضلة">${ic(fav ? 'heart-f' : 'heart', 16)}</button></div>
+            <div class="hero-img" style="background:${h.photos.length ? media(h, 'house', R.gal) : `linear-gradient(${135 + R.gal * 40}deg,${h.g[0]},${h.g[1]})`}">
+              ${h.photos.length ? '' : `<svg class="big" style="color:#fff"><use href="#i-${['building', 'home', 'grid'][R.gal % 3]}"/></svg>`}
+              <span class="cap">صورة ${R.gal + 1}/${n}${h.photos.length ? '' : ' · ' + caps[R.gal % 3]}</span>
+              ${n > 1 ? `<button class="nav-g r" data-gal="-1" aria-label="السابقة">‹</button><button class="nav-g l" data-gal="1" aria-label="التالية">›</button>` : ''}
+              <span class="dots">${Array.from({ length: n }, (_, i) => `<i class="${i === R.gal ? 'on' : ''}"></i>`).join('')}</span>
+            </div>
+            <div class="d-title"><div><b>${h.title}</b><small>${h.area} · ${h.type}</small></div><span class="rate">${ic('star', 11)} ${rt(h)}</span></div>
+            <div class="info">
+              <div><small>نوع الغرفة</small><b>${h.room}</b></div>
+              <div><small>السعر الشهري</small><b style="color:#5b47f5">${fmt(h.price)} د.ع</b></div>
+              <div><small>الجامعات القريبة</small><b>${h.unis.join('، ')}</b></div>
+              <div><small>الأماكن الشاغرة</small><b>${h.vacant}</b></div>
+              ${h.estDist ? `<div style="grid-column:1/-1"><small>العنوان</small><b>${h.address}</b></div>` : ''}
+            </div>
+            ${h.desc ? `<div class="anote" style="margin:-4px 0 12px">${h.desc}</div>` : ''}
+            <div class="map-mini"><svg viewBox="0 0 270 110"><path d="M0 70 Q60 50 120 72 T270 60" stroke="#c9d3ea" stroke-width="10" fill="none"/><path d="M90 0 L110 110" stroke="#d6deef" stroke-width="7"/><path d="M200 0 L180 110" stroke="#d6deef" stroke-width="5"/><path d="M60 40 L 190 52" stroke="#5b47f5" stroke-width="2" stroke-dasharray="3 4" fill="none"/><circle cx="60" cy="40" r="7" fill="#5b47f5"/><circle cx="60" cy="40" r="14" fill="#5b47f5" opacity=".18"/><rect x="190" y="42" width="30" height="20" rx="5" fill="#151a2d"/><text x="205" y="56" font-size="9" fill="#fff" text-anchor="middle" font-family="IBM Plex Sans Arabic">جامعة</text><text x="130" y="22" font-size="10" fill="#5b47f5" text-anchor="middle" font-weight="700" font-family="IBM Plex Sans Arabic">${h.dist} · ${h.estDist ? 'مسافة تقديرية' : 'مسافة مباشرة'}</text></svg><button class="open" data-toast="يفتح الإحداثيات ${h.lat.toFixed(4)}, ${h.lng.toFixed(4)} في خرائط Google">فتح في الخرائط ↗</button></div>
+            <div class="feat">${h.verified ? '<span>سكن موثّق</span>' : ''}${h.feats.map(f => `<span>${f}</span>`).join('')}</div>
+            <div class="cta-row"><button class="sq" data-toast="يفتح شاشة الاتصال برقم صاحب السكن — لا يُنشئ طلب حجز" aria-label="اتصال">${ic('phone', 18)}</button><button class="wa" data-toast="يفتح واتساب برسالة جاهزة — لا يُنشئ طلب حجز" aria-label="واتساب">${ic('chat', 18)}</button><button class="main" data-book="house:${h.id}">اطلب زيارة</button></div>`;
+        },
+        book() {
+          const R = st.r.student, L = findL(R.kind, R.id), a = me();
+          if (!L || L.hidden) return unavailable;
+          const dup = myBookings().find(b => b.kind === R.kind && b.listingId === L.id && ['new', 'contacted'].includes(b.status));
+          return `<div class="a-back"><button data-a="${R.kind}:${L.id}" aria-label="رجوع">${ic('back', 16)}</button><b>${R.kind === 'ride' ? 'طلب حجز مقعد' : 'طلب زيارة سكن'}</b></div>
+            <div class="li" style="cursor:default">${thumb(L, R.kind)}<span class="mid"><b>${R.kind === 'ride' ? `${L.name} · ${L.car}` : L.title}</b><small>${R.kind === 'ride' ? L.route : L.area}</small></span><span class="end"><span class="price">${fmt(L.price)}</span><small>د.ع / شهر</small></span></div>
+            ${dup ? `<div class="f-warn">لديك طلب قائم لهذا الإعلان بحالة «${BK_LABEL[dup.status]}».</div><button class="a-btn sec" data-a="myreqs">عرض طلباتي</button>` : `
+            <div class="intro"><p>سيصل الطلب إلى الإدارة مع اسمك ورقمك (${esc(a.phone)}) وجامعتك، وتظهر حالته في «طلباتي». الاتصال أو واتساب لا يُنشئان طلباً.</p></div>
+            <div class="f"><div class="f-row" data-k="note"><label for="bk-note">ملاحظة للإدارة (اختياري)</label><textarea class="f-in" id="bk-note" maxlength="200" placeholder="${R.kind === 'ride' ? 'مثال: أحتاج مقعداً من بداية الفصل' : 'مثال: أفضّل الزيارة مساءً'}"></textarea><span class="f-err"></span></div></div>
+            <button class="a-btn" data-send-book>إرسال الطلب للإدارة</button>`}`;
+        },
+        myreqs() {
+          const R = st.r.student, a = me();
+          if (!a) return `<div class="a-back"><b>طلباتي</b></div><div class="empty">سجّل حساباً لمتابعة طلباتك.</div><button class="a-btn" data-a="signup">إنشاء حساب</button>`;
+          const list = myBookings().slice().reverse();
+          list.forEach(b => { R.seenBk[b.id] = b.status + b.adminNote; });
+          return `<div class="a-back"><button data-a="profile" aria-label="رجوع">${ic('back', 16)}</button><b>طلباتي</b></div>${flash(R)}
+            ${list.map(b => `<div class="req"><div class="req-h"><b>${b.title}</b><span class="spill ${b.status}">${BK_LABEL[b.status]}</span></div>
+              <small>${b.kind === 'ride' ? 'حجز مقعد' : 'زيارة سكن'} · ${rel(b.at)}</small>${b.note ? `<small>ملاحظتك: ${esc(b.note)}</small>` : ''}
+              ${b.adminNote ? `<div class="anote"><b>ملاحظة الإدارة:</b> ${esc(b.adminNote)}</div>` : '<div class="anote">بانتظار إجراء الإدارة.</div>'}</div>`).join('') || '<div class="empty">لا توجد طلبات بعد. تصفّح الخطوط أو السكن واطلب حجزاً.</div>'}`;
+        },
+        favs() {
+          const R = st.r.student, fd = visible(drivers).filter(d => R.favs.has('d' + d.id)), fh = visible(housing).filter(h => R.favs.has('h' + h.id));
+          if (!fd.length && !fh.length) return `<div class="a-back"><b>المفضلة</b></div><div class="empty"><svg><use href="#i-heart"/></svg><div>لم تحفظ شيئاً بعد</div></div>`;
+          return `<div class="a-back"><b>المفضلة</b></div>${fd.map(driverRow).join('')}${fh.map(houseRow).join('')}`;
+        },
+        profile() {
+          const R = st.r.student, a = me(), ns = myNotices().slice().reverse(), n = myBookings().length, upd = unseen();
+          R.seenN = myNotices().length;
+          const roleLinks = `<button class="set-li" data-role-go="driver"><span>انضم كسائق خط</span><i>‹</i></button><button class="set-li" data-role-go="owner"><span>أضف سكنك</span><i>‹</i></button>`;
+          const notices = `<div class="a-title"><b>الإشعارات</b></div>${ns.slice(0, 3).map(x => `<div class="req"><b style="font-size:12.5px">${esc(x.title)}</b><small>${esc(x.body)}</small></div>`).join('') || '<div class="req"><small>لا توجد إشعارات.</small></div>'}`;
+          if (!a) return `<div class="a-back"><b>حسابي</b></div>${flash(R)}
+            <div class="prof-card"><b style="font-family:var(--head);font-size:15px">تتصفح كزائر</b><p>يمكنك التصفح والبحث والمفضلة دون حساب. الحساب مطلوب لإرسال طلبات الحجز ومتابعتها.</p></div>
+            <button class="a-btn" data-a="signup">إنشاء حساب طالب</button>${notices}${roleLinks}`;
+          return `<div class="a-back"><b>حسابي</b></div>${flash(R)}
+            <div class="prof-card"><div style="display:flex;gap:12px;align-items:center"><span class="avatar" style="background:rgba(255,255,255,.18)">${esc(a.name[0])}</span><div><b style="font-family:var(--head);font-size:15px">${esc(a.name)}</b><br><small>${esc(a.uni)}${a.area ? ' · ' + esc(a.area) : ''} · <span dir="ltr">${esc(a.phone)}</span></small></div></div></div>
+            <button class="set-li" data-a="myreqs"><span><b>طلباتي</b> (${n})${upd ? ' <span class="spill declined">تحديث جديد</span>' : ''}</span><i>‹</i></button>
+            ${notices}${roleLinks}
+            <button class="set-li" data-logout><span style="color:#e11d48">تسجيل الخروج</span><i>‹</i></button>
+            <div class="f-hint" style="margin-top:8px">في المحاكي لا تُحفظ كلمات المرور، لذا لا يتوفر تسجيل الدخول مجدداً بعد الخروج.</div>`;
+        },
+        signup() { return signupForm('student', st.r.student); },
+      },
+    };
+    const providerScreens = role => {
+      const kind = KIND_OF[role], noun = kind === 'ride' ? 'الخط' : 'السكن';
+      return {
+        start() {
+          const R = cur();
+          return `<div class="a-back"><b>${role === 'driver' ? 'انضم كسائق خط' : 'أضف سكنك'}</b></div>${flash(R)}
+            <div class="intro"><b>${role === 'driver' ? 'اعرض خطك لطلاب جامعتك' : 'اعرض سكنك لطلاب الجامعات القريبة'}</b><p>لا يظهر إعلانك للطلاب أو زوار المنصة إلا بعد مراجعة الإدارة واعتمادها. شارة «موثّق» تمنحها الإدارة فقط.</p></div>
+            <div class="steps-v">${['إنشاء الحساب', 'المستمسكات الخاصة', `بيانات ${noun} والصور`, 'الإرسال للمراجعة', 'متابعة القرار'].map((t, i) => `<div class="sv"><span class="dot">${i + 1}</span><span><b>${t}</b></span></div>`).join('')}</div>
+            <button class="a-btn" data-a="signup">ابدأ بإنشاء الحساب</button>`;
+        },
+        signup() { return signupForm(role, cur()); },
+        status() {
+          const R = cur(), sub = mySub(), L = sub.publishedId && findL(kind, sub.publishedId);
+          const dataOk = !Object.keys(vListing(kind, sub.data, true)).length && sub.photos.length > 0, docsOk = !!(sub.docs.a && sub.docs.b);
+          const dirty = sub.publishedId && (!same(sub.data, sub.publishedData) || !samePh(sub.photos, sub.publishedPhotos));
+          const sts = sub.status, sub2 = {
+            draft: 'أكمل الخطوات ثم أرسل طلبك. لن يظهر الإعلان قبل اعتماد الإدارة.',
+            pending: sub.publishedId ? 'تعديلك قيد المراجعة، والنسخة المعتمدة ما زالت ظاهرة للطلاب.' : 'طلبك لدى الإدارة. لن يظهر إعلانك للطلاب قبل الاعتماد.',
+            changes: 'طلبت الإدارة تعديلات. عدّل البيانات ثم أعد الإرسال.' + (sub.publishedId ? ' النسخة المعتمدة ما زالت ظاهرة.' : ''),
+            rejected: 'رُفض الطلب. يمكنك التعديل وإعادة الإرسال.' + (sub.publishedId ? ' النسخة المعتمدة ما زالت ظاهرة.' : ''),
+            approved: `إعلانك ظاهر للطلاب في التطبيق ومنصة الويب${L && L.verified ? ' ويحمل شارة «موثّق»' : ''}.${L && L.hidden ? ' (مخفي مؤقتاً من الإدارة)' : ''}`,
+          }[sts];
+          const step = (ok, cur2, t, d, go) => `<button class="sv ${ok ? 'done' : cur2 ? 'cur' : ''}" ${go ? `data-a="${go}"` : 'disabled'}><span class="dot">${ok ? '✓' : '•'}</span><span><b>${t}</b><small>${d}</small></span></button>`;
+          const canSend = sts !== 'pending' && !(sts === 'approved' && !dirty);
+          return `<div class="a-back"><b>${role === 'driver' ? 'حالة إعلان الخط' : 'حالة إعلان السكن'}</b></div>${flash(R)}
+            <div class="st-card ${sts}"><small>الحالة الحالية</small><b>${ST_LABEL[sts]}${sub.publishedId && sts !== 'approved' ? ' · النسخة المعتمدة منشورة' : ''}</b><small>${sub2}</small>
+              ${sub.note ? `<div class="st-note"><b>ملاحظة الإدارة:</b> ${esc(sub.note)}</div>` : ''}
+              ${dirty && sts === 'approved' ? '<div class="st-note">لديك تعديلات محفوظة لم تُرسل للمراجعة بعد، ولن تظهر للطلاب قبل الموافقة.</div>' : ''}</div>
+            <div class="steps-v">
+              ${step(true, false, 'الحساب', esc(me().name))}
+              ${step(docsOk, !docsOk, 'المستمسكات الخاصة', docsOk ? 'مرفوعة — للمراجع فقط' : 'مطلوبة: ' + DOC_LABELS[kind].join(' و'), 'docs')}
+              ${step(dataOk, docsOk && !dataOk, `بيانات ${noun} والصور`, dataOk ? `${sub.photos.length} صور عامة` : 'غير مكتملة', 'form')}
+              ${step(sts === 'approved', sts === 'pending', 'المراجعة والنشر', ST_LABEL[sts])}
+            </div>
+            <button class="a-btn" data-submit-saved ${canSend ? '' : 'disabled'}>${sts === 'pending' ? 'بانتظار قرار الإدارة' : sts === 'approved' && !dirty ? 'لا توجد تعديلات بانتظار الإرسال' : ['changes', 'rejected'].includes(sts) || sub.publishedId ? 'إعادة الإرسال للمراجعة' : 'إرسال للمراجعة'}</button>
+            ${L && !L.hidden ? '<button class="a-btn sec" data-view-pub>عرض إعلاني كما يراه الطلاب</button>' : ''}`;
+        },
+        docs() {
+          const R = cur(), sub = mySub(), ro = sub.status === 'pending', lab = DOC_LABELS[kind];
+          return `<div class="a-back"><b>المستمسكات الخاصة</b></div>${flash(R)}
+            <div class="lock-note">${ic('lock', 14)}<span>خاصة: تظهر فقط للمراجع المخوّل في «الإدارة والنشر»، ولا تظهر للطلاب أو ضمن صور الإعلان.${kind === 'house' ? ' هذه متطلبات تجريبية قابلة للاعتماد لاحقاً.' : ''}</span></div>
+            ${ro ? '<div class="f-warn">الطلب قيد المراجعة؛ يمكنك تعديل المستمسكات بعد صدور القرار.</div>' : ''}
+            <div class="f-sum"></div><div class="f">${['a', 'b'].map((k, i) => { const f = sub.docs[k]; return `<div class="f-row" data-k="doc-${k}"><span class="f-lab">${lab[i]} <i>*</i></span>
+              ${f ? `<div class="doc-row"><span class="ph" style="${f.type.startsWith('image/') ? `background-image:url('${f.url}')` : ''}">${f.type === 'application/pdf' ? 'PDF' : ''}</span><div><b>${esc(f.name)}</b><small>${(f.size / 1048576).toFixed(2)} MB · مرفوع</small></div>${ro ? '' : `<button data-rm-doc="${k}">حذف</button>`}</div>`
+                : ro ? '<small>غير مرفوع</small>' : `<label class="up-box">${ic('plus', 16)} رفع ${lab[i]} — صورة أو PDF حتى ${MAX_MB}MB<input type="file" accept="${[...IMG_TYPES, 'application/pdf'].join(',')}" data-up="doc-${k}"></label>`}
+              <span class="f-err"></span></div>`; }).join('')}</div>
+            <button class="a-btn sec" data-a="form">التالي: بيانات ${noun} والصور</button>`;
+        },
+        form() {
+          const R = cur(), sub = mySub(), ro = sub.status === 'pending';
+          if (ro) R.buf = null; else if (!R.buf) R.buf = { data: clone(sub.data), photos: sub.photos.slice() };
+          const B = ro ? { data: sub.data, photos: sub.photos } : R.buf;
+          const dirty = !ro && (!same(B.data, sub.data) || !samePh(B.photos, sub.photos));
+          return `<div class="a-back"><b>بيانات ${noun} والصور</b><span class="spill ${sub.status}" style="margin-right:auto">${ST_LABEL[sub.status]}</span></div>${flash(R)}
+            ${ro ? '<div class="f-warn">الطلب قيد المراجعة؛ يمكنك التعديل بعد صدور القرار.</div>' : ''}
+            ${sub.publishedId && !ro ? `<div class="lock-note">${ic('info', 14)}<span>إعلانك منشور. أي تعديل هنا لا يظهر للطلاب حتى توافق عليه الإدارة، ولن يُنشأ إعلان مكرر.</span></div>` : ''}
+            ${sub.note && !ro ? `<div class="f-warn"><b>ملاحظة الإدارة:</b> ${esc(sub.note)}</div>` : ''}
+            ${kind === 'house' ? `<div class="lock-note">${ic('pin', 14)}<span>حدّد الموقع بإدخال الإحداثيات (يمكن نسخها من خرائط Google). لا يتوفر تحديد موقع تفاعلي في المحاكي.</span></div>` : ''}
+            <div class="f-sum"></div>
+            <div class="f">${FIELDS[kind].map(f => fieldHTML(f, B.data[f.k], ro)).join('')}${photosHTML(B.photos, ro, kind === 'ride' ? 'صور السيارة العامة' : 'صور السكن العامة')}</div>
+            ${dirty ? '<div class="f-hint" style="color:#b45309;margin:-4px 0 4px">لديك تغييرات غير محفوظة.</div>' : ''}
+            ${ro ? '' : `<button class="a-btn sec" data-save>حفظ مسودة</button><button class="a-btn" data-submit>${sub.publishedId || ['changes', 'rejected'].includes(sub.status) ? 'حفظ وإعادة الإرسال للمراجعة' : 'حفظ وإرسال للمراجعة'}</button>`}`;
+        },
+        profile() {
+          const R = cur(), a = me();
+          return `<div class="a-back"><b>حسابي</b></div>${flash(R)}
+            <div class="prof-card"><div style="display:flex;gap:12px;align-items:center"><span class="avatar" style="background:rgba(255,255,255,.18)">${esc(a.name[0])}</span><div><b style="font-family:var(--head);font-size:15px">${esc(a.name)}</b><br><small>${role === 'driver' ? 'حساب سائق' : 'حساب صاحب سكن'} · <span dir="ltr">${esc(a.phone)}</span></small></div></div></div>
+            <button class="set-li" data-a="status"><span>حالة الإعلان</span><i>‹</i></button>
+            <button class="set-li" data-role-go="student"><span>تصفّح التطبيق كطالب</span><i>‹</i></button>
+            <button class="set-li" data-logout><span style="color:#e11d48">تسجيل الخروج</span><i>‹</i></button>
+            <div class="f-hint" style="margin-top:8px">في المحاكي لا تُحفظ كلمات المرور، لذا لا يتوفر تسجيل الدخول مجدداً بعد الخروج.</div>`;
+        },
+      };
+    };
+    SCREENS.driver = providerScreens('driver');
+    SCREENS.owner = providerScreens('owner');
+    const NAV = {
+      student: () => [['home', 'home', 'الرئيسية'], ['rides', 'bus', 'الخطوط'], ['housing', 'building', 'السكن'], ['favs', 'heart', 'المفضلة'], ['profile', 'user', 'حسابي']],
+      driver: () => me() && [['status', 'inbox', 'الحالة'], ['form', 'bus', 'بيانات الخط'], ['docs', 'lock', 'المستمسكات'], ['profile', 'user', 'حسابي']],
+      owner: () => me() && [['status', 'inbox', 'الحالة'], ['form', 'building', 'بيانات السكن'], ['docs', 'lock', 'المستمسكات'], ['profile', 'user', 'حسابي']],
+    };
+    const TAB_OF = { ride: 'rides', house: 'housing', search: 'home', signup: 'profile', myreqs: 'profile' };
+
+    function render(keepScroll) {
+      const R = cur(), b0 = $('.app-body', root), sc = keepScroll && b0 ? b0.scrollTop : 0;
+      if (!SCREENS[st.role][R.screen]) R.screen = st.role === 'student' ? 'home' : 'start';
+      const body = SCREENS[st.role][R.screen](), nav = NAV[st.role](), dot = st.role === 'student' && unseen() > 0;
+      root.innerHTML = `<div class="app">${statusBar}<div class="app-body">${body}</div>
+        ${nav ? `<div class="app-nav">${nav.map(([k, i, l]) => `<button class="${R.tab === k ? 'on' : ''}${k === 'profile' && dot ? ' nav-dot' : ''}" data-tab-a="${k}">${ic(i, 21)}${l}</button>`).join('')}</div>` : ''}
+        <div class="toast" role="status"></div>${opts.splash && !st.splashed ? `<div class="splash"><div><div class="mk">${ic('cap', 36)}</div><b>مشوار</b><small style="opacity:.85">طريقك للجامعة… أسهل</small></div></div>` : ''}</div>`;
       if (opts.splash && !st.splashed) { st.splashed = true; setTimeout(() => { const s = $('.splash', root); s && s.classList.add('hide'); }, 1300); }
+      if (keepScroll) $('.app-body', root).scrollTop = sc;
+      if (R.err) { showErrors(root, R.err.E, R.err.probs); R.err = null; }
+      if (R.upErr) { const row = $(`.f-row[data-k="${R.upErr.k}"]`, root); if (row) { $('.f-err', row).textContent = R.upErr.msgs.join(' '); row.classList.add('bad'); } R.upErr = null; }
       opts.onChange && opts.onChange(st);
     }
     function go(target) {
-      const [s, id] = target.split(':');
-      st.screen = s; st.gal = 0;
-      if (id) st.id = +id;
-      st.tab = { ride: 'rides', house: 'housing' }[s] || s;
+      const R = cur(), [s, id] = String(target).split(':');
+      if (st.role !== 'student' && !me() && !['start', 'signup'].includes(s)) { R.screen = 'start'; R.msg = { t: 'أنشئ حساباً أولاً لمتابعة هذه الخطوة.', warn: 1 }; }
+      else R.screen = s;
+      if (st.role === 'student') {
+        R.gal = 0;
+        if (s === 'ride' || s === 'house') { R.kind = s; if (id) R.id = +id; }
+        R.tab = TAB_OF[s] || s;
+        if (s === 'rides' || s === 'housing') R.q = '';
+      } else R.tab = R.screen;
       render();
       const b = $('.app-body', root); b && (b.scrollTop = 0);
     }
     function toast(msg) {
       if (!msg) return;
       const t = $('.toast', root); t.textContent = msg; t.classList.add('show');
-      clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('show'), 1800);
+      clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('show'), 2200);
     }
-    if (!opts.static) root.addEventListener('click', e => {
-      const el = e.target.closest('button,[data-a]'); if (!el) return;
-      const d = el.dataset;
-      if (d.a === 'back') return go(st.tab);
-      if (d.a) return go(d.a);
-      if (d.tabA) return go(d.tabA);
-      if (d.uniGo) { st.uni = d.uniGo; return go('rides'); }
-      if (d.uni) { st.uni = d.uni; return render(); }
-      if (d.ht) { st.htype = d.ht; return render(); }
-      if (d.gal) { st.gal = (st.gal + +d.gal + 3) % 3; return render(); }
-      if (d.fav) { st.favs.has(d.fav) ? st.favs.delete(d.fav) : st.favs.add(d.fav); render(); return toast(st.favs.has(d.fav) ? 'أُضيف إلى المفضلة' : 'أُزيل من المفضلة'); }
-      if (d.toast !== undefined) toast(d.toast);
-    });
+    function setRole(role) { st.role = role; render(); opts.onRole && opts.onRole(role); }
+    function doSignup() {
+      const role = st.role, v = n => { const el = $(`[name="${n}"]`, root); return el ? el.value : ''; }, E = {};
+      const name = v('name').trim().replace(/\s+/g, ' '), phone = normPhone(v('phone')), p1 = v('pass'), p2 = v('pass2');
+      if (name.length < 2 || name.length > 50) E.name = 'أدخل الاسم (2–50 حرفاً).';
+      if (!PHONE_RE.test(phone)) E.phone = 'رقم عراقي غير صحيح (مثال: 07701234567).';
+      else if (S.accounts.some(a => a.role === role && a.phone === phone)) E.phone = 'هذا الرقم مسجّل مسبقاً في المحاكي.';
+      if (p1.length < 8) E.pass = '8 أحرف على الأقل.'; else if (!/[A-Za-z؀-ۿ]/.test(p1) || !/\d/.test(toEn(p1))) E.pass = 'يجب أن تحتوي حروفاً وأرقاماً.';
+      if (!E.pass && p2 !== p1) E.pass2 = 'كلمتا المرور غير متطابقتين.';
+      let uni = '', area = '';
+      if (role === 'student') { uni = v('uni'); area = v('area').trim(); if (!unis.slice(1).includes(uni)) E.uni = 'اختر جامعتك.'; if (area.length > 40) E.area = 'الحد الأقصى 40 حرفاً.'; }
+      if (!$('[name="terms"]', root).checked) E.terms = 'يجب الموافقة على الشروط وسياسة الخصوصية.';
+      if (Object.keys(E).length) { ['pass', 'pass2'].forEach(n => { if (E.pass || E.pass2) $(`[name="${n}"]`, root).value = ''; }); return showErrors(root, E); }
+      // Passwords were only validated; they are cleared now and never stored.
+      $$('input[type=password]', root).forEach(i => { i.value = ''; });
+      const a = { id: nid(), role, name, phone, uni, area, at: Date.now() };
+      S.accounts.push(a); S.me[role] = a.id;
+      const R = cur();
+      if (role === 'student') {
+        R.msg = 'تم إنشاء الحساب.';
+        emit();
+        if (R.after) { R.after = null; return go('book'); }
+        return go('profile');
+      }
+      newSub(KIND_OF[role], a.id, { [role === 'driver' ? 'name' : 'title']: role === 'driver' ? name : '', phone });
+      R.msg = 'تم إنشاء الحساب. الخطوة التالية: رفع المستمسكات الخاصة.';
+      emit(); go('docs');
+    }
+    function sendBooking() {
+      const R = st.r.student, a = me(), L = findL(R.kind, R.id);
+      if (!a || !L || L.hidden) return render();
+      if (myBookings().some(b => b.kind === R.kind && b.listingId === L.id && ['new', 'contacted'].includes(b.status))) return render();
+      const note = ($('#bk-note', root).value || '').trim().slice(0, 200);
+      S.bookings.push({ id: nid(), studentId: a.id, studentName: a.name, studentPhone: a.phone, studentUni: a.uni, kind: R.kind, listingId: L.id, title: R.kind === 'ride' ? `مقعد · ${L.name} · ${L.route}` : `زيارة · ${L.title}`, note, status: 'new', adminNote: '', at: Date.now() });
+      R.msg = '✓ وصل طلبك إلى الإدارة. تابع حالته هنا.';
+      emit(); go('myreqs');
+    }
+    function saveDraft(submit) {
+      const R = cur(), sub = mySub(), B = R.buf;
+      if (!B || sub.status === 'pending') return;
+      if (submit) {
+        const res = submitSub(sub, B.data, B.photos);
+        if (res) return showErrors(root, res.E, res.probs);
+        R.buf = null; R.msg = '✓ أُرسل الطلب للمراجعة. لن يظهر للطلاب قبل الاعتماد.'; return go('status');
+      }
+      const E = vListing(sub.kind, B.data, false);
+      if (Object.keys(E).length) return showErrors(root, E, ['صحّح الحقول غير الصالحة قبل حفظ المسودة.']);
+      sub.data = clone(B.data); sub.photos = B.photos.slice();
+      R.buf = null; R.msg = sub.publishedId ? '✓ حُفظت التعديلات كمسودة. النسخة المعتمدة ما زالت ظاهرة حتى ترسلها وتوافق الإدارة.' : '✓ حُفظت المسودة.';
+      emit(); render(true);
+    }
+
+    if (!opts.static) {
+      root.addEventListener('click', e => {
+        const el = e.target.closest('button,[data-a]'); if (!el || el.disabled) return;
+        const d = el.dataset, R = cur();
+        if (d.a === 'back') return go(R.tab === 'profile' ? 'profile' : R.tab);
+        if (d.a) return go(d.a);
+        if (d.tabA) return go(d.tabA);
+        if (d.uniGo) { R.uni = d.uniGo; go('rides'); return; }
+        if (d.uni) { R.uni = d.uni; return render(true); }
+        if (d.ht) { R.htype = d.ht; return render(true); }
+        if (d.gal) { const L = findL(R.kind, R.id), n = (L && L.photos.length) || 3; R.gal = (R.gal + +d.gal + n) % n; return render(true); }
+        if (d.fav) { R.favs.has(d.fav) ? R.favs.delete(d.fav) : R.favs.add(d.fav); render(true); return toast(R.favs.has(d.fav) ? 'أُضيف إلى المفضلة' : 'أُزيل من المفضلة'); }
+        if (d.book) {
+          const [k, id] = d.book.split(':'); R.kind = k; R.id = +id;
+          if (!me()) { R.after = 'book'; R.msg = { t: 'سجّل حساباً لإرسال طلب الحجز. يمكنك التصفح كزائر دون حساب.', warn: 1 }; return go('signup'); }
+          return go('book');
+        }
+        if (d.signup !== undefined) return doSignup();
+        if (d.sendBook !== undefined) return sendBooking();
+        if (d.logout !== undefined) { S.me[st.role] = null; st.r[st.role].buf = null; cur().msg = 'تم تسجيل الخروج.'; emit(); return go(st.role === 'student' ? 'profile' : 'start'); }
+        if (d.roleGo) return setRole(d.roleGo);
+        if (d.save !== undefined) return saveDraft(false);
+        if (d.submit !== undefined) return saveDraft(true);
+        if (d.submitSaved !== undefined) {
+          const sub = mySub(), res = submitSub(sub, sub.data, sub.photos);
+          if (res) { R.err = res; R.buf = null; return go(res.probs.some(p => p.includes('المستمسكات')) && !Object.keys(res.E).length && sub.photos.length ? 'docs' : 'form'); }
+          R.msg = '✓ أُرسل الطلب للمراجعة.'; return render(true);
+        }
+        if (d.rmPh) { R.buf.photos = R.buf.photos.filter(p => String(p.id) !== d.rmPh); return render(true); }
+        if (d.rmDoc) { mySub().docs[d.rmDoc] = null; emit(); return render(true); }
+        if (d.viewPub !== undefined) { const sub = mySub(); setRole('student'); return go(`${sub.kind}:${sub.publishedId}`); }
+        if (d.toast !== undefined) toast(d.toast);
+      });
+      const onField = e => { const R = cur(); if ((e.target.dataset.f || e.target.dataset.fm) && R.buf) bindField(e.target, R.buf.data); };
+      root.addEventListener('input', e => {
+        onField(e);
+        const f = e.target.closest('form[data-search]');
+        if (f && f.dataset.search) {
+          const R = st.r.student; R.q = e.target.value.slice(0, 40);
+          const list = f.dataset.search === 'rides' ? rideList(R) : houseList(R);
+          $('#aList', root).innerHTML = `<div class="a-title"><b>${list.length} ${f.dataset.search === 'rides' ? 'خطوط متاحة' : 'أماكن سكن'}</b></div>${list.map(f.dataset.search === 'rides' ? driverRow : houseRow).join('') || '<div class="empty">لا توجد نتائج مطابقة</div>'}`;
+        }
+      });
+      root.addEventListener('change', e => {
+        onField(e);
+        const up = e.target.dataset.up; if (!up) return;
+        const R = cur(), files = [...e.target.files];
+        if (up === 'photos') { const errs = takeFiles(files, { into: R.buf.photos, max: MAX_PHOTOS, types: IMG_TYPES }); if (errs.length) R.upErr = { k: 'photos', msgs: errs }; }
+        else { const k = up.slice(4), tmp = []; const errs = takeFiles(files, { into: tmp, max: 1, types: [...IMG_TYPES, 'application/pdf'] }); if (tmp[0]) { mySub().docs[k] = tmp[0]; emit(); } if (errs.length) R.upErr = { k: up, msgs: errs }; }
+        render(true);
+      });
+      root.addEventListener('submit', e => {
+        e.preventDefault();
+        const f = e.target; if (f.dataset.search !== '') return;
+        st.r.student.q = (f.q.value || '').trim().slice(0, 40); go('search');
+      });
+      const LIVE = ['home', 'rides', 'housing', 'ride', 'house', 'favs', 'profile', 'myreqs', 'status', 'search', 'book', 'docs'];
+      listeners.push(() => { if (LIVE.includes(cur().screen) && !root.contains(document.activeElement)) render(true); });
+    }
     render();
-    return { go };
+    return { go, setRole, get role() { return st.role; }, screen: () => cur() };
   }
 
-  makeApp($('#heroScreen'), { static: true });
+  makeApp($('#heroScreen'), { static: true, demoName: 'زينب' });
+  const SIDE = {
+    student: { t: 'واجهة الطالب', d: 'تصفّح وبحث ومفضلة دون حساب. إنشاء الحساب مطلوب فقط عند إرسال طلب حجز، وتظهر حالته في «طلباتي».', jump: [['home', 'الرئيسية', 'الخدمات والبحث والأقرب لجامعتك'], ['rides', 'سواق الخطوط', 'فلترة حسب الجامعة وبحث مباشر'], ['ride:1', 'تفاصيل السائق', 'السيارة، المقاعد، التواصل وطلب الحجز'], ['housing', 'السكن الطلابي', 'نوع السكن والمنطقة والجامعات القريبة'], ['house:1', 'تفاصيل السكن', 'الصور، المزايا، الموقع، طلب زيارة'], ['signup', 'إنشاء حساب طالب', 'رقم الهاتف وكلمة المرور، دون SMS'], ['myreqs', 'طلباتي', 'حالة الطلبات وملاحظات الإدارة']] },
+    driver: { t: 'واجهة السائق', d: 'إنشاء حساب ← المستمسكات ← بيانات الخط والصور ← إرسال للمراجعة ← متابعة القرار. لا يظهر الخط للطلاب قبل اعتماد الإدارة.', jump: [['start', 'البداية', 'خطوات الانضمام كسائق'], ['signup', 'إنشاء الحساب', 'الاسم، الهاتف، كلمة المرور'], ['docs', 'المستمسكات الخاصة', 'الهوية وإجازة السوق — للمراجع فقط'], ['form', 'بيانات الخط والصور', 'المسار، السعر، المقاعد، حتى 8 صور'], ['status', 'المراجعة والقرار', 'الحالة وملاحظات الإدارة']] },
+    owner: { t: 'واجهة صاحب السكن', d: 'حساب باسم المسؤول عن السكن ← المستمسكات ← بيانات السكن والموقع والصور ← المراجعة ← متابعة القرار.', jump: [['start', 'البداية', 'خطوات إضافة السكن'], ['signup', 'إنشاء الحساب', 'باسم المسؤول عن السكن'], ['docs', 'المستمسكات الخاصة', 'هوية المسؤول وإثبات حق العرض'], ['form', 'بيانات السكن والصور', 'النوع، الإحداثيات، الشواغر، المزايا'], ['status', 'المراجعة والقرار', 'الحالة وملاحظات الإدارة']] },
+  };
   const app = makeApp($('#appScreen'), {
     splash: true,
+    onRole: role => {
+      $$('#roleSw button').forEach(b => b.classList.toggle('on', b.dataset.role === role));
+      const c = SIDE[role];
+      $('#simTitle').textContent = c.t; $('#simDesc').textContent = c.d;
+      $('#jump').innerHTML = c.jump.map(([g, t, d], i) => `<button data-go="${g}"><span class="num">0${i + 1}</span><div><b>${t}</b><span>${d}</span></div></button>`).join('');
+      $('#simNote').innerHTML = role === 'student'
+        ? `<div class="hint"><svg width="16" height="16"><use href="#i-info"/></svg> الأسماء والأرقام والأسعار بيانات تجريبية. طلبات الحجز تصل فعلياً إلى «الإدارة والنشر» داخل المحاكي.</div>`
+        : `<div class="sim-note"><b>تنويه:</b> واجهتا السائق وصاحب السكن مسارات مقترحة لتوضيح الفكرة، ويُثبَّت نطاقها النهائي في الاتفاق؛ وإضافتها هنا لا توسّع الالتزام التجاري تلقائياً. الملفات تبقى داخل متصفحك ولا تُرفع لأي خدمة.</div>`;
+    },
     onChange: st => {
-      const key = st.screen === 'ride' || st.screen === 'house' ? st.screen + ':' + st.id : st.screen;
-      $$('#jump button').forEach(b => b.classList.toggle('on', b.dataset.go === key || (b.dataset.go.split(':')[0] === st.screen && /ride|house/.test(st.screen))));
-    }
+      const R = st.r[st.role], key = st.role === 'student' && (R.screen === 'ride' || R.screen === 'house') ? R.screen + ':' + R.id : R.screen;
+      $$('#jump button').forEach(b => b.classList.toggle('on', b.dataset.go === key || (st.role === 'student' && /^(ride|house)$/.test(R.screen) && b.dataset.go.split(':')[0] === R.screen)));
+    },
   });
-  $$('#jump button').forEach(b => b.addEventListener('click', () => app.go(b.dataset.go)));
+  app.setRole('student');
+  $('#jump').addEventListener('click', e => { const b = e.target.closest('button[data-go]'); if (b) app.go(b.dataset.go); });
+  $('#roleSw').addEventListener('click', e => { const b = e.target.closest('button[data-role]'); if (b && b.dataset.role !== app.role) app.setRole(b.dataset.role); });
 
   /* ---------- tabs ---------- */
-  $$('.sim-tabs button').forEach(b => b.addEventListener('click', () => {
-    $$('.sim-tabs button').forEach(x => x.classList.toggle('on', x === b));
-    $$('.sim-panel').forEach(p => p.classList.toggle('on', p.id === 'tab-' + b.dataset.tab));
-    if (b.dataset.tab === 'dash') renderDash();
-    if (b.dataset.tab === 'web') renderWeb();
-  }));
+  const showTab = tab => {
+    $$('.sim-tabs button').forEach(x => x.classList.toggle('on', x.dataset.tab === tab));
+    $$('.sim-panel').forEach(p => p.classList.toggle('on', p.id === 'tab-' + tab));
+    if (tab === 'dash') renderDash();
+    if (tab === 'web') renderWeb();
+  };
+  $$('.sim-tabs button').forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));
 
-  /* ---------- dashboard simulator ---------- */
-  const requests = [
-    { id: 1, name: 'حيدر كاظم', kind: 'سائق', detail: 'كيا بونغو · البياع ← التكنولوجية', date: 'منذ ساعة', av: '#5b47f5', status: 'wait' },
-    { id: 2, name: 'سكن الربيع', kind: 'سكن', detail: 'سكن طالبات · الجادرية · 6 غرف', date: 'منذ 3 ساعات', av: '#e11d74', status: 'wait' },
-    { id: 3, name: 'عباس جاسم', kind: 'سائق', detail: 'هيونداي H1 · الشعلة ← العراقية', date: 'أمس', av: '#0ea5c6', status: 'wait' },
-    { id: 4, name: 'شقق الأندلس', kind: 'سكن', detail: 'شقة مشتركة · الوزيرية · 4 غرف', date: 'أمس', av: '#f59e0b', status: 'wait' },
-  ];
-  let dView = 'overview';
-  const dToast = msg => { const t = $('#dToast'); t.textContent = msg; t.classList.add('show'); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('show'), 2000); };
-  const pending = () => requests.filter(r => r.status === 'wait').length;
-  const reqTable = (rows) => `
+  /* ---------- admin: الإدارة والنشر ---------- */
+  let dView = 'overview', dSel = null, dBuf = null;
+  const dToast = msg => { const t = $('#dToast'); t.textContent = msg; t.classList.add('show'); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('show'), 2600); };
+  const pendingSubs = () => S.subs.filter(s => s.status === 'pending');
+  const SUB_PILL = { pending: 'wait', changes: 'chg', rejected: 'off', approved: 'ok', draft: 'edit' };
+  const BK_PILL = { new: 'wait', contacted: 'edit', confirmed: 'ok', declined: 'off' };
+  const reviewable = () => S.subs.filter(s => s.status !== 'draft').sort((a, b) => (b.status === 'pending') - (a.status === 'pending'));
+  const subTable = rows => rows.length ? `
     <div class="t-wrap"><table class="t"><thead><tr><th>مقدّم الطلب</th><th>النوع</th><th>التاريخ</th><th>الحالة</th><th>إجراء</th></tr></thead><tbody>
-    ${rows.map(r => `<tr><td><div class="who"><span class="av" style="background:${r.av}">${r.name[0]}</span><div>${r.name}<small>${r.detail}</small></div></div></td>
-      <td>${r.kind}</td><td style="color:var(--dim)">${r.date}</td>
-      <td><span class="pill ${r.status}">${{ wait: 'بانتظار المراجعة', ok: 'مقبول', off: 'مرفوض' }[r.status]}</span></td>
-      <td>${r.status === 'wait' ? `<div class="act"><button class="y" data-ok="${r.id}">قبول</button><button class="n" data-no="${r.id}">رفض</button></div>` : '<span style="color:var(--dim)">—</span>'}</td></tr>`).join('')}
-    </tbody></table></div>`;
+    ${rows.map(s => { const a = acc(s.ownerId); return `<tr><td><div class="who"><span class="av" style="background:${s.kind === 'ride' ? '#5b47f5' : '#e11d74'}">${esc(a.name[0])}</span><div>${esc(a.name)}<small>${esc(subTitle(s))}${s.kind === 'ride' && s.data.area ? ' · ' + esc(s.data.area) : ''}</small></div></div></td>
+      <td>${s.kind === 'ride' ? 'سائق' : 'سكن'}${s.publishedId && s.status === 'pending' ? ' <span class="pill edit">تعديل على منشور</span>' : ''}</td><td style="color:var(--dim)">${rel(s.submittedAt || a.at)}</td>
+      <td><span class="pill ${SUB_PILL[s.status]}">${s.status === 'pending' ? 'بانتظار المراجعة' : ST_LABEL[s.status]}</span></td>
+      <td><div class="act"><button class="${s.status === 'pending' ? 'y' : 'e'}" data-review="${s.id}">${s.status === 'pending' ? 'مراجعة' : 'عرض'}</button></div></td></tr>`; }).join('')}
+    </tbody></table></div>` : '<div class="empty-d">لا توجد طلبات.</div>';
+  const fileTile = f => f.type.startsWith('image/') ? `<a href="${f.url}" target="_blank" rel="noopener" title="${esc(f.name)}"><div class="ph" style="background-image:url('${f.url}')"></div></a>` : `<a href="${f.url}" target="_blank" rel="noopener" class="ph" style="display:grid;place-items:center;color:var(--muted);font-size:12px;font-weight:700" title="${esc(f.name)}">PDF</a>`;
+  const showVal = (f, v) => f.t === 'check' ? (v ? 'نعم' : 'لا') : f.t === 'number' && /^\d+$/.test(v) ? fmt(v) : Array.isArray(v) ? (v.length ? v.map(esc).join('، ') : '—') : (v === '' || v == null ? '—' : esc(v));
+  function reviewView(s) {
+    const a = acc(s.ownerId), F = FIELDS[s.kind], P = s.publishedId && s.publishedData, L = s.publishedId && findL(s.kind, s.publishedId);
+    const rows = F.map(f => { const chg = P && !same(P[f.k], s.data[f.k]); return `<tr class="${chg ? 'chg' : ''}"><td>${f.l}</td>${P ? `<td>${showVal(f, P[f.k])}</td>` : ''}<td>${showVal(f, s.data[f.k])}</td></tr>`; }).join('');
+    const phChg = P && !samePh(s.photos, s.publishedPhotos);
+    return `<button class="d-back" data-d="requests">→ العودة لطلبات الانضمام</button>
+      <div class="d-top"><div><h4>مراجعة: ${esc(subTitle(s))}</h4><small>${s.kind === 'ride' ? 'إعلان خط نقل' : 'إعلان سكن'}${P ? ' · تعديل على إعلان منشور — النسخة المعتمدة ظاهرة حالياً' : ''}</small></div><span class="pill ${SUB_PILL[s.status]}">${ST_LABEL[s.status]}</span></div>
+      <div class="rv-grid"><div>
+        <div class="panel"><div class="panel-h"><b>بيانات الحساب</b></div><table class="kv-t"><tbody>
+          <tr><td>${s.kind === 'ride' ? 'الاسم' : 'المسؤول عن السكن'}</td><td>${esc(a.name)}</td></tr><tr><td>الهاتف</td><td dir="ltr" style="text-align:right">${esc(a.phone)}</td></tr><tr><td>أُرسل</td><td>${rel(s.submittedAt || a.at)}</td></tr></tbody></table></div>
+        <div class="panel" style="margin-top:12px"><div class="panel-h"><b>بيانات الإعلان</b>${P ? '<small>المظلّل تغيّر عن النسخة المنشورة</small>' : ''}</div><div class="t-wrap"><table class="kv-t">${P ? '<thead><tr><th>الحقل</th><th>المنشور حالياً</th><th>التعديل المقترح</th></tr></thead>' : ''}<tbody>${rows}</tbody></table></div></div>
+        <div class="panel" style="margin-top:12px"><div class="panel-h"><b>الصور العامة (${s.photos.length})</b>${phChg ? '<small style="color:var(--gold)">تغيّرت الصور</small>' : '<small>تظهر للطلاب بعد الاعتماد</small>'}</div><div class="ph-grid">${s.photos.map(fileTile).join('')}</div></div>
+        <div class="priv"><div class="priv-h">${ic('lock', 15)} مستمسكات خاصة — للمراجع المخوّل فقط، لا تظهر للطلاب أو في الإعلان</div>
+          <div class="ph-grid">${['a', 'b'].map((k, i) => s.docs[k] ? `<div>${fileTile(s.docs[k])}<small style="color:var(--muted);font-size:11px">${DOC_LABELS[s.kind][i]}</small></div>` : `<div class="empty-d">${DOC_LABELS[s.kind][i]}: غير مرفوع</div>`).join('')}</div></div>
+      </div>
+      <div class="panel rv-act">${s.status === 'pending' ? `
+        <b>القرار</b>
+        <label class="f-chk"><input type="checkbox" id="rvVer" ${L && L.verified ? 'checked' : ''}> منح شارة «موثّق» بعد التحقق من المستمسكات (صلاحية الإدارة فقط)</label>
+        <div class="f-row" data-k="reason"><label for="rvReason" class="f-lab">سبب طلب التعديل أو الرفض <span style="color:var(--dim)">(إلزامي لهما، ويظهر لصاحب الطلب)</span></label><textarea class="f-in" id="rvReason" maxlength="300" placeholder="مثال: صورة إجازة السوق غير واضحة، يرجى إعادة رفعها."></textarea><span class="f-err"></span></div>
+        <div class="rv-btns"><button class="y" data-decide="approve">اعتماد ونشر</button><button class="c" data-decide="changes">طلب تعديل</button><button class="n" data-decide="reject">رفض</button></div>
+        <small style="color:var(--dim)">الاعتماد ${P ? 'يحدّث الإعلان المنشور نفسه دون تكرار' : 'يضيف الإعلان فوراً إلى التطبيق ومنصة الويب'}.</small>`
+        : `<b>القرار: ${ST_LABEL[s.status]}</b>${s.note ? `<div class="notice-log"><div><small>الملاحظة المرسلة</small>${esc(s.note)}</div></div>` : ''}<small style="color:var(--dim)">يمكن لصاحب الطلب التعديل وإعادة الإرسال لمراجعة جديدة.</small>`}
+      </div></div>`;
+  }
+  const listingForm = (title, sub) => {
+    const B = dBuf, F = FIELDS[B.kind];
+    return `<button class="d-back" data-d="${B.kind === 'ride' ? 'drivers' : 'housing'}">→ رجوع</button>
+      <div class="d-top"><div><h4>${title}</h4><small>${sub}</small></div></div>
+      <div class="panel">${B.id ? '' : `<div class="f-row" style="max-width:280px;margin-bottom:12px"><label class="f-lab" for="dKind">نوع الإعلان</label><select class="f-in" id="dKind"><option value="ride" ${B.kind === 'ride' ? 'selected' : ''}>سائق خط</option><option value="house" ${B.kind === 'house' ? 'selected' : ''}>سكن طلابي</option></select></div>`}
+        <div class="f-sum"></div>
+        ${B.kind === 'house' ? '<div class="f-hint" style="margin-bottom:10px">الموقع بالإحداثيات؛ لا يتوفر تحديد موقع تفاعلي في المحاكي.</div>' : ''}
+        <div class="f-grid">${F.map(f => fieldHTML(f, B.data[f.k], false)).join('')}${photosHTML(B.photos, false, 'الصور العامة (اختياري للإدارة)').replace(' <i>*</i>', '')}
+          <div class="f-row full"><label class="f-chk"><input type="checkbox" id="dVer" ${B.verified ? 'checked' : ''}> شارة «موثّق» (تمنحها الإدارة فقط)</label></div></div>
+        <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap"><button class="btn btn-primary btn-sm" data-dsave>${B.id ? 'حفظ التعديلات ونشرها' : 'حفظ ونشر'}</button><button class="btn btn-ghost btn-sm" data-d="${B.kind === 'ride' ? 'drivers' : 'housing'}">إلغاء</button></div></div>`;
+  };
   const months = [['أيار', 38], ['حزيران', 46], ['تموز', 41], ['آب', 58], ['أيلول', 82], ['تشرين1', 100]];
-
   const dViews = {
     overview: () => `
       <div class="d-top"><div><h4>نظرة عامة</h4><small>أهلاً بك، مدير المنصة</small></div><div class="d-search">${ic('search', 15)} بحث سريع…</div></div>
@@ -1405,7 +2047,7 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
         <div class="kpi"><small>الطلاب المسجلون</small><b class="mono">4,812</b><span class="up">▲ 18% هذا الشهر</span></div>
         <div class="kpi"><small>سواق الخطوط</small><b class="mono">126</b><span class="up">▲ 12 جديد</span></div>
         <div class="kpi"><small>أماكن السكن</small><b class="mono">85</b><span class="up">▲ 7 جديد</span></div>
-        <div class="kpi"><small>طلبات بانتظارك</small><b class="mono" style="color:var(--gold)">${pending()}</b><span style="color:var(--muted);font-size:11.5px">تحتاج مراجعة</span></div>
+        <div class="kpi"><small>طلبات بانتظارك</small><b class="mono" style="color:var(--gold)">${pendingSubs().length}</b><span style="color:var(--muted);font-size:11.5px">تحتاج مراجعة</span></div>
       </div>
       <div class="d-row">
         <div class="panel"><div class="panel-h"><b>نمو المستخدمين</b><small>آخر 6 أشهر</small></div>
@@ -1420,96 +2062,149 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
             <div class="legend"><div><i style="background:#7c5cff"></i>جامعة بغداد<b>38%</b></div><div><i style="background:#22d3ee"></i>المستنصرية<b>26%</b></div><div><i style="background:#fbbf24"></i>التكنولوجية<b>20%</b></div><div><i style="background:#f472b6"></i>أخرى<b>16%</b></div></div>
           </div></div>
       </div>
-      <div class="panel"><div class="panel-h"><b>أحدث طلبات الانضمام</b><small style="cursor:pointer;color:var(--p2)" data-d="requests">عرض الكل</small></div>${reqTable(requests.slice(0, 3))}</div>`,
+      <div class="panel"><div class="panel-h"><b>أحدث طلبات الانضمام</b><small style="cursor:pointer;color:var(--p2)" data-d="requests">عرض الكل</small></div>${subTable(reviewable().slice(0, 3))}</div>`,
     drivers: () => `
-      <div class="d-top"><div><h4>سواق الخطوط</h4><small>${drivers.length} سائق نشط في العرض</small></div><button class="btn btn-primary btn-sm" data-d="add">${ic('plus', 16)} إضافة سائق</button></div>
+      <div class="d-top"><div><h4>سواق الخطوط</h4><small>${visible(drivers).length} ظاهر من ${drivers.length}</small></div><button class="btn btn-primary btn-sm" data-add="ride">${ic('plus', 16)} إضافة سائق</button></div>
       <div class="panel"><div class="t-wrap"><table class="t"><thead><tr><th>السائق</th><th>السيارة</th><th>الجامعة</th><th>المنطقة</th><th>السعر</th><th>الظهور</th><th></th></tr></thead><tbody>
-      ${drivers.map((d, i) => `<tr><td><div class="who"><span class="av" style="background:${d.color}">${d.name.split(' ')[1][0]}</span><div>${d.name}<small>${d.female ? 'خط طالبات' : 'مختلط'} · ★ ${d.rating}</small></div></div></td>
-        <td>${d.car}</td><td>${d.uni}</td><td>${d.area}</td><td class="mono">${fmt(d.price)}</td><td><span class="switch ${i === 4 ? 'offs' : ''}" data-sw></span></td><td><div class="act"><button class="e" data-t="فتح نموذج التعديل">تعديل</button></div></td></tr>`).join('')}
+      ${drivers.map(d => `<tr><td><div class="who"><span class="av" style="background:${d.color}">${d.photos.length ? '' : d.name.replace(/^أبو\s+/, '')[0]}</span><div>${d.name}<small>${d.female ? 'خط طالبات' : 'مختلط'} · ${d.verified ? 'موثّق ✓' : 'غير موثّق'} · ★ ${rt(d)}</small></div></div></td>
+        <td>${d.car}</td><td>${d.uni}</td><td>${d.area}</td><td class="mono">${fmt(d.price)}</td><td><button class="switch ${d.hidden ? 'offs' : ''}" data-hide="ride:${d.id}" aria-label="إظهار أو إخفاء"></button></td><td><div class="act"><button class="e" data-edit="ride:${d.id}">تعديل</button></div></td></tr>`).join('')}
       </tbody></table></div></div>`,
     housing: () => `
-      <div class="d-top"><div><h4>السكن الطلابي</h4><small>${housing.length} أماكن سكن في العرض</small></div><button class="btn btn-primary btn-sm" data-d="add">${ic('plus', 16)} إضافة سكن</button></div>
-      <div class="panel"><div class="t-wrap"><table class="t"><thead><tr><th>السكن</th><th>النوع</th><th>المنطقة</th><th>الجامعات القريبة</th><th>السعر</th><th>شاغر</th><th></th></tr></thead><tbody>
-      ${housing.map(h => `<tr><td><div class="who"><span class="av" style="background:linear-gradient(135deg,${h.g[0]},${h.g[1]})">${ic('building', 15)}</span><div>${h.title}<small>3 صور · ★ ${h.rating}</small></div></div></td>
-        <td><span class="pill ${h.type === 'سكن طالبات' ? 'off' : 'ok'}" style="${h.type === 'سكن طالبات' ? 'background:rgba(244,114,182,.12);color:var(--pink)' : ''}">${h.type}</span></td><td>${h.area}</td><td>${h.unis.join('، ')}</td><td class="mono">${fmt(h.price)}</td><td>${h.vacant}</td><td><div class="act"><button class="e" data-t="فتح نموذج التعديل">تعديل</button></div></td></tr>`).join('')}
+      <div class="d-top"><div><h4>السكن الطلابي</h4><small>${visible(housing).length} ظاهر من ${housing.length}</small></div><button class="btn btn-primary btn-sm" data-add="house">${ic('plus', 16)} إضافة سكن</button></div>
+      <div class="panel"><div class="t-wrap"><table class="t"><thead><tr><th>السكن</th><th>النوع</th><th>المنطقة</th><th>الجامعات القريبة</th><th>السعر</th><th>شاغر</th><th>الظهور</th><th></th></tr></thead><tbody>
+      ${housing.map(h => `<tr><td><div class="who"><span class="av" style="background:${media(h, 'house')}">${h.photos.length ? '' : ic('building', 15)}</span><div>${h.title}<small>${h.photos.length || 3} صور · ${h.verified ? 'موثّق ✓' : 'غير موثّق'} · ★ ${rt(h)}</small></div></div></td>
+        <td><span class="pill ${h.type === 'سكن طالبات' ? 'off' : 'ok'}" style="${h.type === 'سكن طالبات' ? 'background:rgba(244,114,182,.12);color:var(--pink)' : ''}">${h.type}</span></td><td>${h.area}</td><td>${h.unis.join('، ')}</td><td class="mono">${fmt(h.price)}</td><td>${h.vacant}</td><td><button class="switch ${h.hidden ? 'offs' : ''}" data-hide="house:${h.id}" aria-label="إظهار أو إخفاء"></button></td><td><div class="act"><button class="e" data-edit="house:${h.id}">تعديل</button></div></td></tr>`).join('')}
       </tbody></table></div></div>`,
     requests: () => `
-      <div class="d-top"><div><h4>طلبات الانضمام</h4><small>راجع وثّق السواق وأصحاب السكن قبل ظهورهم في التطبيق</small></div></div>
-      <div class="panel">${reqTable(requests)}</div>`,
-    bookings: () => `
-      <div class="d-top"><div><h4>طلبات الحجز</h4><small>كل طلب حجز مقعد أو زيارة سكن يصل هنا مع رقم الطالب للمتابعة</small></div></div>
+      <div class="d-top"><div><h4>طلبات الانضمام</h4><small>راجع الحساب والإعلان والمستمسكات قبل النشر. لا يظهر أي إعلان للطلاب قبل الاعتماد.</small></div></div>
+      <div class="panel">${subTable(reviewable())}</div>`,
+    review: () => { const s = S.subs.find(x => x.id === dSel); return s ? reviewView(s) : dViews.requests(); },
+    bookings: () => {
+      const sel = S.bookings.find(b => b.id === dSel);
+      return `<div class="d-top"><div><h4>طلبات الحجز</h4><small>طلبات حجز المقاعد وزيارات السكن من التطبيق، وأي إجراء هنا يظهر للطالب في «طلباتي».</small></div></div>
+      ${sel ? `<div class="panel bk-panel"><div class="panel-h"><b>إدارة الطلب: ${sel.title}</b><button class="d-back" style="margin:0" data-bk-close>إغلاق</button></div>
+        <small style="color:var(--muted)">${esc(sel.studentName)} · <span dir="ltr">${esc(sel.studentPhone)}</span> · ${esc(sel.studentUni)}${sel.note ? ' — ملاحظة الطالب: ' + esc(sel.note) : ''}</small>
+        <div class="f-row" data-k="bknote" style="margin-top:10px"><label class="f-lab" for="bkNote">ملاحظة للطالب <span style="color:var(--dim)">(إلزامية عند الاعتذار)</span></label><textarea class="f-in" id="bkNote" maxlength="200">${esc(sel.adminNote)}</textarea><span class="f-err"></span></div>
+        <div class="rv-btns" style="margin-top:10px"><button class="e" data-bk-wa>واتساب الطالب</button><button class="c" data-bk-set="contacted">تم التواصل</button><button class="y" data-bk-set="confirmed">تأكيد</button><button class="n" data-bk-set="declined">اعتذار</button></div></div>` : ''}
       <div class="panel"><div class="t-wrap"><table class="t"><thead><tr><th>الطالب</th><th>الطلب</th><th>الجامعة</th><th>الوقت</th><th>الحالة</th><th></th></tr></thead><tbody>
-      ${[['زينب علي', 'مقعد · أبو حسين · الدورة ← الجادرية', 'جامعة بغداد', 'منذ 10 دقائق', 'wait'], ['مريم حسن', 'زيارة · سكن طالبات النخيل', 'النهرين', 'منذ ساعة', 'wait'], ['علي كريم', 'مقعد · أبو علي · السيدية ← الصناعة', 'التكنولوجية', 'أمس', 'ok']].map(([n, r, u, t, st], i) => `<tr><td><div class="who"><span class="av" style="background:${['#5b47f5', '#e11d74', '#0ea5c6'][i]}">${n[0]}</span><div>${n}<small class="mono" style="text-align:right">07XX XXX XXXX</small></div></div></td><td>${r}</td><td>${u}</td><td style="color:var(--dim)">${t}</td><td><span class="pill ${st}">${st === 'ok' ? 'تم التواصل' : 'جديد'}</span></td><td>${st === 'wait' ? '<div class="act"><button class="e" data-t="يفتح واتساب مع الطالب">تواصل</button><button class="y" data-t="✓ تم تحديد الطلب كمكتمل">تم</button></div>' : '<span style="color:var(--dim)">—</span>'}</td></tr>`).join('')}
-      </tbody></table></div></div>`,
-    add: () => `
-      <div class="d-top"><div><h4>إضافة إعلان جديد</h4><small>يظهر فوراً في التطبيق بعد الحفظ</small></div></div>
-      <div class="panel"><div class="form-grid">
-        <div class="fld"><label>نوع الإعلان</label><div class="in">سائق خط ▾</div></div>
-        <div class="fld"><label>الاسم</label><div class="in">أبو أحمد</div></div>
-        <div class="fld"><label>نوع السيارة</label><div class="in">كيا بونغو</div></div>
-        <div class="fld"><label>عدد المقاعد</label><div class="in mono" style="justify-content:flex-end">11</div></div>
-        <div class="fld"><label>المنطقة</label><div class="in">البياع ▾</div></div>
-        <div class="fld"><label>الجامعة</label><div class="in">الجامعة التكنولوجية ▾</div></div>
-        <div class="fld"><label>السعر الشهري (د.ع)</label><div class="in mono" style="justify-content:flex-end">85,000</div></div>
-        <div class="fld"><label>رقم الهاتف</label><div class="in mono" style="justify-content:flex-end">07XX XXX XXXX</div></div>
-        <div class="fld full"><label>الصور والمستمسكات</label><div class="upload">اسحب الصور هنا أو اضغط للرفع</div></div>
-      </div><div style="display:flex;gap:10px;margin-top:16px"><button class="btn btn-primary btn-sm" data-t="✓ تم حفظ الإعلان ونشره في التطبيق">حفظ ونشر</button><button class="btn btn-ghost btn-sm" data-d="overview">إلغاء</button></div></div>`,
+      ${S.bookings.slice().reverse().map((b, i) => `<tr><td><div class="who"><span class="av" style="background:${PAL[i % PAL.length]}">${esc(b.studentName[0])}</span><div>${esc(b.studentName)}<small class="mono" style="text-align:right">${esc(b.studentPhone)}</small></div></div></td><td>${b.title}${b.note ? `<small style="display:block;color:var(--dim)">${esc(b.note)}</small>` : ''}</td><td>${esc(b.studentUni)}</td><td style="color:var(--dim)">${rel(b.at)}</td><td><span class="pill ${BK_PILL[b.status]}">${BK_LABEL[b.status]}</span></td><td><div class="act"><button class="${['new', 'contacted'].includes(b.status) ? 'y' : 'e'}" data-bk="${b.id}">إدارة</button></div></td></tr>`).join('')}
+      </tbody></table></div></div>`;
+    },
+    add: () => listingForm('إضافة إعلان جديد', 'تنشره الإدارة مباشرة، ويظهر فوراً في التطبيق ومنصة الويب'),
+    edit: () => listingForm('تعديل إعلان منشور', 'تعديل مباشر من الإدارة على النسخة المنشورة نفسها'),
     notify: () => `
-      <div class="d-top"><div><h4>إرسال إشعار</h4><small>يصل فوراً لهواتف الطلاب</small></div></div>
-      <div class="panel"><div class="form-grid">
-        <div class="fld"><label>الفئة المستهدفة</label><div class="in">طلاب جامعة بغداد ▾</div></div>
-        <div class="fld"><label>العنوان</label><div class="in">خطوط جديدة لمنطقة الدورة</div></div>
-        <div class="fld full"><label>نص الإشعار</label><div class="in" style="height:80px;align-items:flex-start;padding-top:10px">تمت إضافة 3 خطوط جديدة من الدورة إلى الجادرية، احجز مقعدك الآن!</div></div>
-      </div><div style="margin-top:16px"><button class="btn btn-primary btn-sm" data-t="✓ تم إرسال الإشعار إلى 1,930 طالب">إرسال الآن</button></div></div>`,
+      <div class="d-top"><div><h4>إرسال إشعار</h4><small>يظهر للطلاب في «حسابي ← الإشعارات» داخل محاكي التطبيق</small></div></div>
+      <div class="panel"><div class="f-sum"></div><div class="f-grid">
+        <div class="f-row"><label class="f-lab" for="nTarget">الفئة المستهدفة</label><select class="f-in" id="nTarget"><option value="all">كل الطلاب</option>${unis.slice(1).map(u => `<option value="${u}">طلاب ${u}</option>`).join('')}</select></div>
+        <div class="f-row" data-k="ntitle"><label class="f-lab" for="nTitle">العنوان</label><input class="f-in" id="nTitle" maxlength="60" value="خطوط جديدة لمنطقة الدورة"><span class="f-err"></span></div>
+        <div class="f-row full" data-k="nbody"><label class="f-lab" for="nBody">نص الإشعار</label><textarea class="f-in" id="nBody" maxlength="200">تمت إضافة خطوط جديدة من الدورة إلى الجادرية، اطلب حجز مقعدك الآن.</textarea><span class="f-err"></span></div>
+      </div><div style="margin-top:16px"><button class="btn btn-primary btn-sm" data-notify>إرسال الآن</button></div>
+      <div class="notice-log">${S.notices.slice().reverse().map(n => `<div><small>${n.target === 'all' ? 'كل الطلاب' : 'طلاب ' + esc(n.target)} · ${rel(n.at)}</small><b>${esc(n.title)}</b><br>${esc(n.body)}</div>`).join('')}</div></div>`,
     settings: () => `
-      <div class="d-top"><div><h4>الإعدادات</h4><small>الجامعات، المناطق، والصلاحيات</small></div></div>
+      <div class="d-top"><div><h4>الإعدادات</h4><small>الجامعات المعروضة في فلاتر التطبيق والمنصة، والصلاحيات</small></div></div>
       <div class="d-row" style="grid-template-columns:1fr 1fr">
-        <div class="panel"><div class="panel-h"><b>الجامعات</b><small>${unis.length - 1}</small></div>${unis.slice(1).map(u => `<div class="set-li" style="background:rgba(255,255,255,.03);border-color:var(--line);color:var(--text)"><span>${u}</span><span class="switch" data-sw></span></div>`).join('')}</div>
+        <div class="panel"><div class="panel-h"><b>الجامعات</b><small>${activeUnis().length - 1} مفعّلة</small></div>${unis.slice(1).map(u => `<div class="set-li" style="background:rgba(255,255,255,.03);border-color:var(--line);color:var(--text)"><span>${u}</span><button class="switch ${uniOff.has(u) ? 'offs' : ''}" data-uni-sw="${u}" aria-label="تفعيل ${u}"></button></div>`).join('')}</div>
         <div class="panel"><div class="panel-h"><b>المشرفون</b></div>
-          ${[['مدير عام', 'كل الصلاحيات'], ['مشرف محتوى', 'إضافة وتعديل'], ['مراجع طلبات', 'قبول ورفض فقط']].map(([a, b]) => `<div class="set-li" style="background:rgba(255,255,255,.03);border-color:var(--line);color:var(--text)"><span>${a}</span><small style="color:var(--muted)">${b}</small></div>`).join('')}</div>
+          ${[['مدير عام', 'كل الصلاحيات'], ['مشرف محتوى', 'إضافة وتعديل'], ['مراجع طلبات', 'الاطلاع على المستمسكات والقرار']].map(([a, b]) => `<div class="set-li" style="background:rgba(255,255,255,.03);border-color:var(--line);color:var(--text)"><span>${a}</span><small style="color:var(--muted)">${b}</small></div>`).join('')}</div>
       </div>`,
   };
   function renderDash() {
     $('#dMain').innerHTML = dViews[dView]();
-    $$('#dSide button').forEach(b => b.classList.toggle('on', b.dataset.d === dView));
-    const n = pending(); const bd = $('#reqBadge'); bd.textContent = n; bd.style.display = n ? '' : 'none';
+    const nav = { review: 'requests', edit: dBuf && (dBuf.kind === 'ride' ? 'drivers' : 'housing') }[dView] || dView;
+    $$('#dSide button').forEach(b => b.classList.toggle('on', b.dataset.d === nav));
+    const n = pendingSubs().length, bd = $('#reqBadge'); bd.textContent = n; bd.style.display = n ? '' : 'none';
+    const k = S.bookings.filter(b => b.status === 'new').length, bk = $('#bkBadge'); bk.textContent = k; bk.style.display = k ? '' : 'none';
   }
+  const dGo = (v, sel) => { dView = v; dSel = sel ?? null; renderDash(); const m = $('#tab-dash .browser'); if (m && m.getBoundingClientRect().top < 0) m.scrollIntoView({ block: 'start' }); };
+  listeners.push(() => { if (!['add', 'edit', 'review', 'notify'].includes(dView) && !(dView === 'bookings' && dSel)) renderDash(); else { const n = pendingSubs().length, bd = $('#reqBadge'); bd.textContent = n; bd.style.display = n ? '' : 'none'; } });
   $('.dash').addEventListener('click', e => {
-    const el = e.target.closest('[data-d],[data-ok],[data-no],[data-t],[data-sw]'); if (!el) return;
+    const el = e.target.closest('[data-d],[data-review],[data-decide],[data-hide],[data-edit],[data-add],[data-dsave],[data-rm-ph],[data-bk],[data-bk-set],[data-bk-close],[data-bk-wa],[data-notify],[data-uni-sw]'); if (!el) return;
     const d = el.dataset;
-    if (d.d) { dView = d.d; return renderDash(); }
-    if (d.ok || d.no) {
-      const r = requests.find(x => x.id === +(d.ok || d.no)); r.status = d.ok ? 'ok' : 'off';
-      dToast(d.ok ? `✓ تم قبول ${r.name} وأصبح ظاهراً في التطبيق` : `تم رفض طلب ${r.name}`);
-      return renderDash();
+    if (d.d) { if (d.d === 'add') dBuf = { kind: 'ride', id: null, data: emptyData('ride'), photos: [], verified: false }; return dGo(d.d); }
+    if (d.review) return dGo('review', +d.review);
+    if (d.decide) {
+      const s = S.subs.find(x => x.id === dSel); if (!s || s.status !== 'pending') return;
+      const reason = $('#rvReason').value.trim().replace(/\s+/g, ' ');
+      if (d.decide !== 'approve' && reason.length < 5) return showErrors($('#dMain'), { reason: 'اكتب السبب (5 أحرف على الأقل) — سيظهر لصاحب الطلب.' });
+      if (d.decide === 'approve') {
+        if (Object.keys(vListing(s.kind, s.data, true)).length) return showErrors($('#dMain'), { reason: 'بيانات الإعلان غير مكتملة؛ استخدم «طلب تعديل».' });
+        const edit = !!s.publishedId;
+        approveSub(s, $('#rvVer').checked);
+        dGo('requests');
+        return dToast(edit ? `✓ نُشر التعديل على «${subTitle(s)}» دون تكرار الإعلان` : `✓ اعتُمد «${subTitle(s)}» وظهر الآن في التطبيق ومنصة الويب`);
+      }
+      s.status = d.decide === 'changes' ? 'changes' : 'rejected'; s.note = reason.slice(0, 300);
+      emit(); dGo('requests');
+      return dToast(d.decide === 'changes' ? `أُرسل طلب التعديل إلى صاحب «${subTitle(s)}»` : `رُفض طلب «${subTitle(s)}» وأُبلغ صاحبه بالسبب`);
     }
-    if (d.sw !== undefined) { el.classList.toggle('offs'); return dToast(el.classList.contains('offs') ? 'تم إخفاء العنصر من التطبيق' : 'أصبح العنصر ظاهراً في التطبيق'); }
-    if (d.t) dToast(d.t);
+    if (d.hide) { const [k, id] = d.hide.split(':'), L = findL(k, +id); L.hidden = !L.hidden; emit(); renderDash(); return dToast(L.hidden ? 'أُخفي الإعلان من التطبيق ومنصة الويب' : 'أصبح الإعلان ظاهراً في التطبيق ومنصة الويب'); }
+    if (d.edit) { const [k, id] = d.edit.split(':'), L = findL(k, +id), r = rawOf(k, L); dBuf = { kind: k, id: L.id, data: r.data, photos: r.photos, verified: L.verified }; return dGo('edit'); }
+    if (d.add) { dBuf = { kind: d.add, id: null, data: emptyData(d.add), photos: [], verified: false }; return dGo('add'); }
+    if (d.rmPh) { dBuf.photos = dBuf.photos.filter(p => String(p.id) !== d.rmPh); return renderDash(); }
+    if (d.dsave !== undefined) {
+      const E = vListing(dBuf.kind, dBuf.data, true);
+      if (Object.keys(E).length) return showErrors($('#dMain'), E);
+      dBuf.verified = $('#dVer').checked;
+      const L = dBuf.id && findL(dBuf.kind, dBuf.id);
+      publish(dBuf.kind, dBuf.data, dBuf.photos, dBuf.verified, dBuf.id, L ? L.subId : undefined);
+      if (L && L.subId) { const s = S.subs.find(x => x.id === L.subId); if (s) { const wasSynced = same(s.data, s.publishedData); s.publishedData = clone(dBuf.data); s.publishedPhotos = dBuf.photos.slice(); if (wasSynced && s.status === 'approved') { s.data = clone(dBuf.data); s.photos = dBuf.photos.slice(); } } }
+      const kind = dBuf.kind; dBuf = null; emit(); dGo(kind === 'ride' ? 'drivers' : 'housing');
+      return dToast('✓ حُفظ الإعلان ونُشر في التطبيق ومنصة الويب');
+    }
+    if (d.bk) return dGo('bookings', +d.bk);
+    if (d.bkClose !== undefined) return dGo('bookings');
+    if (d.bkWa !== undefined) return dToast('يفتح واتساب مع الطالب (خارج المحاكي) — لا يغيّر حالة الطلب');
+    if (d.bkSet) {
+      const b = S.bookings.find(x => x.id === dSel), note = $('#bkNote').value.trim().replace(/\s+/g, ' ').slice(0, 200);
+      if (d.bkSet === 'declined' && note.length < 5) return showErrors($('#dMain'), { bknote: 'اكتب سبب الاعتذار (5 أحرف على الأقل) — سيظهر للطالب.' });
+      b.status = d.bkSet; b.adminNote = note || { contacted: 'تم التواصل معك.', confirmed: 'تم تأكيد طلبك.' }[d.bkSet];
+      emit(); dGo('bookings');
+      return dToast(`تحدّثت حالة الطلب إلى «${BK_LABEL[b.status]}»${b.studentId ? ' وظهرت للطالب في التطبيق' : ''}`);
+    }
+    if (d.notify !== undefined) {
+      const t = $('#nTitle').value.trim(), body = $('#nBody').value.trim(), E = {};
+      if (t.length < 3) E.ntitle = 'العنوان قصير جداً'; if (body.length < 5) E.nbody = 'النص قصير جداً';
+      if (Object.keys(E).length) return showErrors($('#dMain'), E);
+      const target = $('#nTarget').value;
+      S.notices.push({ id: nid(), target, title: t.slice(0, 60), body: body.slice(0, 200), at: Date.now() });
+      emit(); renderDash();
+      return dToast(`✓ أُرسل الإشعار إلى ${target === 'all' ? 'كل الطلاب' : 'طلاب ' + target} داخل المحاكي`);
+    }
+    if (d.uniSw) { uniOff.has(d.uniSw) ? uniOff.delete(d.uniSw) : uniOff.add(d.uniSw); if (wst.uni === d.uniSw) wst.uni = 'الكل'; emit(); renderDash(); return dToast(uniOff.has(d.uniSw) ? `أُخفيت «${d.uniSw}» من فلاتر التطبيق والمنصة` : `أُعيدت «${d.uniSw}» إلى الفلاتر`); }
+  });
+  $('#dMain').addEventListener('input', e => { if (dBuf && (e.target.dataset.f || e.target.dataset.fm)) bindField(e.target, dBuf.data); });
+  $('#dMain').addEventListener('change', e => {
+    if (e.target.id === 'dKind') { dBuf = { kind: e.target.value, id: null, data: emptyData(e.target.value), photos: [], verified: false }; return renderDash(); }
+    if (dBuf && (e.target.dataset.f || e.target.dataset.fm)) bindField(e.target, dBuf.data);
+    if (e.target.dataset.up === 'photos' && dBuf) {
+      const v = $('#dVer'); if (v) dBuf.verified = v.checked;
+      const errs = takeFiles([...e.target.files], { into: dBuf.photos, max: MAX_PHOTOS, types: IMG_TYPES });
+      renderDash();
+      if (errs.length) { const row = $('.f-row[data-k="photos"]', $('#dMain')); row.classList.add('bad'); $('.f-err', row).textContent = errs.join(' '); }
+    }
   });
   renderDash();
-
   /* ---------- public web platform simulator ---------- */
-  const wst = { page: 'home', type: 'rides', uni: 'الكل', id: null, sort: 'price', gal: 0, jt: 'driver', sent: false };
-  const wBg = (kind, x, i = 0) => kind === 'ride'
-    ? `linear-gradient(${135 + i * 45}deg,${x.color},${x.color}99)`
-    : `linear-gradient(${135 + i * 45}deg,${x.g[0]},${x.g[1]})`;
+  const wst = { page: 'home', type: 'rides', uni: 'الكل', id: null, sort: 'price', gal: 0 };
+  const wBg = (kind, x, i = 0) => media(x, kind, i);
   const wCard = (kind, x, i = 0) => kind === 'ride'
-    ? `<button class="w-card" style="--i:${i}" data-w-open="ride:${x.id}"><div class="img" style="background:${wBg('ride', x)}"><svg><use href="#i-bus"/></svg><em>${x.female ? 'طالبات فقط' : 'موثّق ✓'}</em></div><div class="bd2"><b>${x.name} · ${x.car}</b><small>${x.route} · ${x.uni}</small><div class="ft"><span>${fmt(x.price)} د.ع / شهر</span><i>★ ${x.rating}</i></div></div></button>`
-    : `<button class="w-card" style="--i:${i}" data-w-open="house:${x.id}"><div class="img" style="background:${wBg('house', x)}"><svg><use href="#i-building"/></svg><em>${x.type}</em></div><div class="bd2"><b>${x.title}</b><small>${x.area} · ${x.dist} عن ${x.unis[0]}</small><div class="ft"><span>${fmt(x.price)} د.ع / شهر</span><i>★ ${x.rating}</i></div></div></button>`;
+    ? `<button class="w-card" style="--i:${i}" data-w-open="ride:${x.id}"><div class="img" style="background:${wBg('ride', x)}"><svg><use href="#i-bus"/></svg><em>${x.female ? 'طالبات فقط' : x.verified ? 'موثّق ✓' : 'جديد'}</em></div><div class="bd2"><b>${x.name} · ${x.car}</b><small>${x.route} · ${x.uni}</small><div class="ft"><span>${fmt(x.price)} د.ع / شهر</span><i>★ ${rt(x)}</i></div></div></button>`
+    : `<button class="w-card" style="--i:${i}" data-w-open="house:${x.id}"><div class="img" style="background:${wBg('house', x)}"><svg><use href="#i-building"/></svg><em>${x.type}</em></div><div class="bd2"><b>${x.title}</b><small>${x.area} · ${x.dist} عن ${x.unis[0]}</small><div class="ft"><span>${fmt(x.price)} د.ع / شهر</span><i>★ ${rt(x)}</i></div></div></button>`;
   const wSkel = n => Array.from({ length: n }, (_, i) => `<div class="w-card w-skel" style="--i:${i}"><div class="img"></div><div class="bd2"><i></i><i></i><i class="s"></i></div></div>`).join('');
   const wApp = `<div class="w-app"><div class="w-app-l"><span class="w-phone">${ic('cap', 18)}</span><div><b>حمّل تطبيق مشوار</b><small>احجز مقعدك، احفظ المفضلة، وقيّم السواق والسكن.</small></div></div><div class="w-stores"><button data-w-t="يفتح صفحة التطبيق في App Store">App Store</button><button data-w-t="يفتح صفحة التطبيق في Google Play">Google Play</button></div></div>`;
-  const wFilter = list => list.filter(x => wst.uni === 'الكل' || x.uni === wst.uni || (x.unis && x.unis.includes(wst.uni)));
-  const wSorted = list => [...list].sort((a, b) => wst.sort === 'price' ? a.price - b.price : b.rating - a.rating);
+  const wFilter = list => list.filter(x => !x.hidden).filter(x => wst.uni === 'الكل' || x.uni === wst.uni || (x.unis && x.unis.includes(wst.uni)));
+  const wSorted = list => [...list].sort((a, b) => wst.sort === 'price' ? a.price - b.price : (b.rating || 0) - (a.rating || 0));
   const wCrumb = (...parts) => `<div class="w-crumb"><button data-w-page="home">الرئيسية</button>${parts.map(p => ' / ' + p).join('')}</div>`;
   const rotWords = ['جامعة بغداد', 'الجامعة المستنصرية', 'الجامعة التكنولوجية', 'جامعة النهرين', 'الجامعة العراقية'];
 
   function wGallery(kind, x) {
-    const n = kind === 'ride' ? 3 : 4, caps = kind === 'ride' ? ['السيارة', 'من الداخل', 'المقاعد'] : ['الواجهة', 'الغرفة', 'المطبخ', 'الحمّام'];
-    return `<div class="w-big" id="wBig" style="background:${wBg(kind, x, wst.gal)}"><svg><use href="#i-${kind === 'ride' ? 'bus' : 'building'}"/></svg><span id="wCap">${caps[wst.gal]} · ${wst.gal + 1}/${n}</span></div>
+    const n = x.photos.length || (kind === 'ride' ? 3 : 4), caps = x.photos.length ? x.photos.map((_, i) => `صورة ${i + 1}`) : kind === 'ride' ? ['السيارة', 'من الداخل', 'المقاعد'] : ['الواجهة', 'الغرفة', 'المطبخ', 'الحمّام'];
+    if (wst.gal >= n) wst.gal = 0;
+    return `<div class="w-big" id="wBig" style="background:${wBg(kind, x, wst.gal)}">${x.photos.length ? '' : `<svg><use href="#i-${kind === 'ride' ? 'bus' : 'building'}"/></svg>`}<span id="wCap">${caps[wst.gal]} · ${wst.gal + 1}/${n}</span></div>
       <div class="w-thumbs">${Array.from({ length: n }, (_, i) => `<button class="${i === wst.gal ? 'on' : ''}" style="background:${wBg(kind, x, i)}" data-w-gal="${i}" data-cap="${caps[i]} · ${i + 1}/${n}" aria-label="${caps[i]}"></button>`).join('')}</div>`;
   }
   const wSimilar = (kind, id) => {
-    const list = (kind === 'ride' ? drivers : housing).filter(x => x.id !== id).slice(0, 3);
+    const list = visible(kind === 'ride' ? drivers : housing).filter(x => x.id !== id).slice(0, 3);
     return `<div class="w-sec" style="padding-top:0"><div class="w-sec-h"><b>قد يعجبك أيضاً</b></div><div class="w-grid">${list.map((x, i) => wCard(kind, x, i)).join('')}</div></div>`;
   };
 
@@ -1520,31 +2215,33 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
         <h5>خطوط النقل والسكن الطلابي<br>قرب <span class="w-rot" id="wRot">${rotWords[0]}</span></h5>
         <p>ابحث حسب جامعتك ومنطقتك، قارن الأسعار، وتواصل مباشرة مع السائق أو صاحب السكن.</p>
         <div class="w-search"><div class="w-type ${wst.type === 'housing' ? 'h' : ''}"><span class="ind"></span><button class="${wst.type === 'rides' ? 'on' : ''}" data-w-type="rides">${ic('bus', 15)} خطوط</button><button class="${wst.type === 'housing' ? 'on' : ''}" data-w-type="housing">${ic('building', 15)} سكن</button></div>
-          <select id="wUni" aria-label="الجامعة">${unis.map(u => `<option ${u === wst.uni ? 'selected' : ''}>${u === 'الكل' ? 'كل الجامعات' : u}</option>`).join('')}</select>
+          <select id="wUni" aria-label="الجامعة">${activeUnis().map(u => `<option ${u === wst.uni ? 'selected' : ''}>${u === 'الكل' ? 'كل الجامعات' : u}</option>`).join('')}</select>
           <button class="w-go" data-w-go>${ic('search', 15)} بحث</button></div>
-        <div class="w-stats"><span><b data-count="126">0</b> خط نقل</span><span><b data-count="85">0</b> سكن طلابي</span><span><b data-count="${unis.length - 1}">0</b> جامعات</span></div></div>
-      <div class="w-marq"><div class="w-marq-in">${[0, 1, 2, 3].map(() => unis.slice(1).map(u => `<span>${ic('cap', 14)} ${u}</span>`).join('')).join('')}</div></div>
+        <div class="w-stats"><span><b data-count="126">0</b> خط نقل</span><span><b data-count="85">0</b> سكن طلابي</span><span><b data-count="${activeUnis().length - 1}">0</b> جامعات</span></div></div>
+      <div class="w-marq"><div class="w-marq-in">${[0, 1, 2, 3].map(() => activeUnis().slice(1).map(u => `<span>${ic('cap', 14)} ${u}</span>`).join('')).join('')}</div></div>
       <div class="w-sec"><div class="w-sec-h"><b>كيف تعمل المنصة؟</b></div><div class="w-steps">
         ${[['search', 'ابحث حسب جامعتك', 'اختر الجامعة والمنطقة لتظهر لك الخطوط والسكن الأقرب.'], ['grid', 'قارن التفاصيل', 'الأسعار، نوع السيارة أو السكن، الصور، والتقييمات في صفحة واحدة.'], ['chat', 'تواصل مباشرة', 'اتصال أو واتساب بضغطة، أو أكمل الحجز من التطبيق.']].map(([i, t, d], k) => `<div class="w-step" style="--i:${k}"><span class="n">0${k + 1}</span><span class="ic2">${ic(i, 20)}</span><b>${t}</b><small>${d}</small></div>`).join('')}
       </div></div>
-      <div class="w-sec"><div class="w-sec-h"><b>أحدث الخطوط</b><button data-w-list="rides">عرض الكل ←</button></div><div class="w-grid">${drivers.slice(0, 3).map((d, i) => wCard('ride', d, i)).join('')}</div></div>
-      <div class="w-sec"><div class="w-sec-h"><b>سكن قريب من الجامعات</b><button data-w-list="housing">عرض الكل ←</button></div><div class="w-grid">${housing.slice(0, 3).map((h, i) => wCard('house', h, i)).join('')}</div></div>
+      <div class="w-sec"><div class="w-sec-h"><b>أحدث الخطوط</b><button data-w-list="rides">عرض الكل ←</button></div><div class="w-grid">${visible(drivers).slice(0, 3).map((d, i) => wCard('ride', d, i)).join('')}</div></div>
+      <div class="w-sec"><div class="w-sec-h"><b>سكن قريب من الجامعات</b><button data-w-list="housing">عرض الكل ←</button></div><div class="w-grid">${visible(housing).slice(0, 3).map((h, i) => wCard('house', h, i)).join('')}</div></div>
       ${wApp}`,
     list: () => {
       const isR = wst.type === 'rides';
       return `<div class="w-sec">${wCrumb(isR ? 'خطوط النقل' : 'السكن الطلابي')}
         <div class="w-sec-h"><div><b>${isR ? 'خطوط النقل' : 'السكن الطلابي'}</b><small class="w-count" id="wCount"></small></div><button class="w-sort" data-w-sort>${ic('chart', 14)} <span id="wSortL"></span></button></div>
-        <div class="w-chips" id="wChips">${unis.map(u => `<button class="${u === wst.uni ? 'on' : ''}" data-w-uni="${u}">${u}</button>`).join('')}</div>
+        <div class="w-chips" id="wChips">${activeUnis().map(u => `<button class="${u === wst.uni ? 'on' : ''}" data-w-uni="${u}">${u}</button>`).join('')}</div>
         <div class="w-grid" id="wGrid"></div></div>${wApp}`;
     },
     ride: () => {
-      const d = drivers.find(x => x.id === wst.id), url = `mishwar.iq/rides/${d.id}`;
+      const d = drivers.find(x => x.id === wst.id);
+      if (!d || d.hidden) return `<div class="w-sec">${wCrumb('غير متاح')}<div class="w-box"><h6>هذا الإعلان غير متاح حالياً</h6><p style="color:#6b7290;font-size:13px">قد يكون مخفياً من الإدارة أو لم يُعتمد بعد.</p><button class="w-btn o" style="max-width:220px" data-w-page="home">العودة للرئيسية</button></div></div>`;
+      const url = `mishwar.iq/rides/${d.id}`;
       return `<div class="w-sec">${wCrumb('<button data-w-list="rides">خطوط النقل</button>', d.name)}
         <div class="w-detail"><div class="w-box">${wGallery('ride', d)}
           <h6>${d.name} · ${d.car}</h6><small style="color:#8a91a8">${d.route}</small>
           <div class="w-kv"><div><small>الجامعة</small><b>${d.uni}</b></div><div><small>المنطقة</small><b>${d.area}</b></div><div><small>وقت الانطلاق</small><b>${d.time}</b></div><div><small>المقاعد المتاحة</small><b>${d.free} من ${d.seats}</b></div></div>
-          <div class="w-feat">${d.female ? '<span>خط طالبات فقط</span>' : ''}<span>سائق موثّق</span><span>ذهاب وإياب</span></div></div>
-        <div class="w-sticky"><div class="w-box"><div class="w-price">${fmt(d.price)} <small>د.ع / شهرياً</small></div><small style="color:#b97700;font-weight:700">★ ${d.rating} · ${d.reviews} تقييم</small>
+          <div class="w-feat">${d.female ? '<span>خط طالبات فقط</span>' : ''}${d.verified ? '<span>سائق موثّق</span>' : ''}<span>ذهاب وإياب</span></div>${d.desc ? `<p style="color:#545b70;font-size:13px;margin-top:12px">${d.desc}</p>` : ''}</div>
+        <div class="w-sticky"><div class="w-box"><div class="w-price">${fmt(d.price)} <small>د.ع / شهرياً</small></div><small style="color:#b97700;font-weight:700">★ ${rt(d)}${d.reviews ? ` · ${d.reviews} تقييم` : ''}</small>
           <button class="w-btn p" data-w-t="يفتح شاشة الاتصال برقم ${d.name}">${ic('phone', 16)} اتصال</button>
           <button class="w-btn g" data-w-t="يفتح واتساب برسالة جاهزة">${ic('chat', 16)} واتساب</button>
           <button class="w-btn o" data-w-t="يفتح التطبيق أو صفحة التحميل لإكمال الحجز">احجز من التطبيق</button>
@@ -1553,35 +2250,29 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
         ${wSimilar('ride', d.id)}${wApp}`;
     },
     house: () => {
-      const h = housing.find(x => x.id === wst.id), url = `mishwar.iq/housing/${h.id}`;
+      const h = housing.find(x => x.id === wst.id);
+      if (!h || h.hidden) return `<div class="w-sec">${wCrumb('غير متاح')}<div class="w-box"><h6>هذا الإعلان غير متاح حالياً</h6><p style="color:#6b7290;font-size:13px">قد يكون مخفياً من الإدارة أو لم يُعتمد بعد.</p><button class="w-btn o" style="max-width:220px" data-w-page="home">العودة للرئيسية</button></div></div>`;
+      const url = `mishwar.iq/housing/${h.id}`;
       return `<div class="w-sec">${wCrumb('<button data-w-list="housing">السكن الطلابي</button>', h.title)}
         <div class="w-detail"><div class="w-box">${wGallery('house', h)}
           <h6>${h.title}</h6><small style="color:#8a91a8">${h.area} · ${h.type}</small>
-          <div class="w-kv"><div><small>نوع الغرفة</small><b>${h.room}</b></div><div><small>الأماكن الشاغرة</small><b>${h.vacant}</b></div><div><small>الجامعات القريبة</small><b>${h.unis.join('، ')}</b></div><div><small>المسافة</small><b>${h.dist}</b></div></div>
-          <div class="w-feat">${h.feats.map(f => `<span>${f}</span>`).join('')}</div></div>
-        <div class="w-sticky"><div class="w-box"><div class="w-price">${fmt(h.price)} <small>د.ع / شهرياً</small></div><small style="color:#b97700;font-weight:700">★ ${h.rating}</small>
+          <div class="w-kv"><div><small>نوع الغرفة</small><b>${h.room}</b></div><div><small>الأماكن الشاغرة</small><b>${h.vacant}</b></div><div><small>الجامعات القريبة</small><b>${h.unis.join('، ')}</b></div><div><small>${h.estDist ? 'المسافة (تقديرية)' : 'المسافة'}</small><b>${h.dist}</b></div>${h.estDist ? `<div style="grid-column:1/-1"><small>العنوان</small><b>${h.address}</b></div>` : ''}</div>
+          <div class="w-feat">${h.verified ? '<span>سكن موثّق</span>' : ''}${h.feats.map(f => `<span>${f}</span>`).join('')}</div>${h.desc ? `<p style="color:#545b70;font-size:13px;margin-top:12px">${h.desc}</p>` : ''}</div>
+        <div class="w-sticky"><div class="w-box"><div class="w-price">${fmt(h.price)} <small>د.ع / شهرياً</small></div><small style="color:#b97700;font-weight:700">★ ${rt(h)}</small>
           <button class="w-btn p" data-w-t="يفتح شاشة الاتصال برقم صاحب السكن">${ic('phone', 16)} اتصال</button>
           <button class="w-btn g" data-w-t="يفتح واتساب برسالة جاهزة">${ic('chat', 16)} واتساب</button>
-          <button class="w-btn o" data-w-t="يفتح الموقع في خرائط Google">${ic('pin', 16)} الموقع على الخريطة</button>
+          <button class="w-btn o" data-w-t="يفتح الإحداثيات ${h.lat.toFixed(4)}, ${h.lng.toFixed(4)} في خرائط Google">${ic('pin', 16)} الموقع على الخريطة</button>
           <div class="w-share"><span>${url}</span><button data-w-copy="${url}">نسخ الرابط</button></div></div>
           <div class="w-seo"><small>mishwar.iq › housing › ${h.area}</small><b>${h.title} – ${h.type} قرب ${h.unis[0]} | مشوار</b><p>${h.room} في ${h.area}، ${h.dist} عن ${h.unis[0]}، ${fmt(h.price)} د.ع شهرياً…</p></div></div></div></div>
         ${wSimilar('house', h.id)}${wApp}`;
     },
-    join: () => {
-      const dr = wst.jt === 'driver';
-      const form = wst.sent
-        ? `<div class="w-done"><svg class="w-ok" viewBox="0 0 52 52"><circle cx="26" cy="26" r="24"/><path d="M15 27l7 7 15-15"/></svg><h6>وصل طلبك للإدارة</h6><p>ستتم مراجعة البيانات والمستمسكات، وبعد التوثيق يظهر ${dr ? 'خطك' : 'سكنك'} في التطبيق والمنصة.</p><button class="w-btn o" style="max-width:220px;margin:0 auto" data-w-reset>تقديم طلب آخر</button></div>`
-        : `<h6>انضم إلى مشوار</h6><p style="color:#6b7290;font-size:13px;margin-bottom:12px">يصل طلبك إلى الإدارة للمراجعة والتوثيق، ثم يظهر في التطبيق والمنصة.</p>
-          <div class="w-seg2"><button class="${dr ? 'on' : ''}" data-w-jt="driver">${ic('bus', 14)} سائق خط</button><button class="${dr ? '' : 'on'}" data-w-jt="house">${ic('building', 14)} صاحب سكن</button></div>
-          <div class="w-form"><div><label>${dr ? 'الاسم الكامل' : 'اسم السكن'}</label><div class="in">—</div></div><div><label>رقم الهاتف</label><div class="in mono" style="justify-content:flex-end">07XX XXX XXXX</div></div>
-            <div><label>المنطقة</label><div class="in">اختر المنطقة ▾</div></div><div><label>${dr ? 'الجامعة' : 'الجامعات القريبة'}</label><div class="in">اختر ▾</div></div>
-            <div><label>${dr ? 'نوع السيارة' : 'نوع السكن'}</label><div class="in">${dr ? '—' : 'سكن طالبات ▾'}</div></div><div><label>${dr ? 'عدد المقاعد' : 'السعر الشهري'}</label><div class="in">—</div></div>
-            <div class="full"><label>${dr ? 'صور المستمسكات والسيارة' : 'صور السكن'}</label><div class="w-up">اسحب الصور هنا أو اضغط للرفع</div></div></div>
-          <button class="w-btn p" style="max-width:220px" data-w-submit>إرسال الطلب</button>`;
-      return `<div class="w-sec">${wCrumb('انضم إلينا')}
-        <div class="w-detail"><div class="w-box">${form}</div>
-        <div class="w-box"><b style="font-family:var(--head)">لماذا تنضم إلى مشوار؟</b><ul class="checks" style="margin-top:10px">${['يصلك الطلاب من جامعتك ومنطقتك مباشرة', 'شارة «موثّق» تزيد ثقة الطلاب بك', 'صفحة خاصة بك برابط تشاركه في واتساب', 'تواصل مباشر دون وسيط'].map(t => `<li style="color:#3d445e">${t}</li>`).join('')}</ul></div></div></div>`;
-    },
+    join: () => `
+      <div class="w-sec">${wCrumb('انضم إلينا')}
+        <div class="w-detail"><div class="w-box"><h6>انضم إلى مشوار</h6><p style="color:#6b7290;font-size:13px;margin-bottom:12px">التسجيل ورفع المستمسكات وبيانات الإعلان يتم من تطبيق مشوار. يراجع فريق الإدارة الطلب، ولا يظهر الإعلان هنا أو في التطبيق إلا بعد الاعتماد.</p>
+          <div class="w-steps" style="grid-template-columns:1fr;gap:8px">${['إنشاء الحساب', 'رفع المستمسكات الخاصة', 'بيانات الإعلان والصور', 'المراجعة والنشر'].map((t, k) => `<div class="w-step" style="--i:${k};padding:12px 14px"><span class="n" style="font-size:15px;top:12px">0${k + 1}</span><b>${t}</b></div>`).join('')}</div>
+          <div class="w-seg2" style="margin-top:14px"><button data-w-role="driver">${ic('bus', 14)} جرّب مسار السائق</button><button data-w-role="owner">${ic('building', 14)} جرّب مسار صاحب السكن</button></div>
+          <p style="color:#8a91a8;font-size:12px">يفتح المسار في تبويب «تطبيق مشوار» داخل المحاكي.</p></div>
+        <div class="w-box"><b style="font-family:var(--head)">لماذا تنضم إلى مشوار؟</b><ul class="checks" style="margin-top:10px">${['يصلك الطلاب من جامعتك ومنطقتك مباشرة', 'شارة «موثّق» تمنحها الإدارة بعد التحقق', 'صفحة خاصة بك برابط تشاركه في واتساب', 'تواصل مباشر دون وسيط'].map(t => `<li style="color:#3d445e">${t}</li>`).join('')}</ul></div></div></div>`,
   };
   const wUrls = { home: () => 'mishwar.iq', list: () => `mishwar.iq/${wst.type}`, ride: () => `mishwar.iq/rides/${wst.id}`, house: () => `mishwar.iq/housing/${wst.id}`, join: () => 'mishwar.iq/join' };
   let wInit = false;
@@ -1635,7 +2326,7 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
     wRender();
   }
   function wGo(page, extra = {}) {
-    Object.assign(wst, { page, gal: 0, sent: false }, extra);
+    Object.assign(wst, { page, gal: 0 }, extra);
     wRender();
     const b = $('#tab-web .browser'); if (b.getBoundingClientRect().top < 0) b.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
@@ -1644,7 +2335,8 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
     r._i = ((r._i || 0) + 1) % rotWords.length;
     r.classList.remove('in'); void r.offsetWidth; r.textContent = rotWords[r._i]; r.classList.add('in');
   }, 2400);
-  $('#webMain').addEventListener('change', e => { if (e.target.id === 'wUni') wst.uni = unis[e.target.selectedIndex]; });
+  $('#webMain').addEventListener('change', e => { if (e.target.id === 'wUni') wst.uni = activeUnis()[e.target.selectedIndex]; });
+  listeners.push(() => { if (wInit && $('#tab-web').classList.contains('on')) wRender(false); });
   $('#webMain').addEventListener('click', e => {
     const el = e.target.closest('button'); if (!el) return;
     const d = el.dataset;
@@ -1670,9 +2362,7 @@ footer{padding:36px 0 50px;color:var(--dim);font-size:13px;text-align:center}
       clearTimeout(el._t); el._t = setTimeout(() => { el.textContent = 'نسخ الرابط'; el.classList.remove('ok'); }, 1800);
       return;
     }
-    if (d.wJt) { wst.jt = d.wJt; return wRender(false); }
-    if (d.wSubmit !== undefined) { wst.sent = true; return wRender(false); }
-    if (d.wReset !== undefined) { wst.sent = false; return wRender(false); }
+    if (d.wRole) { showTab('app'); app.setRole(d.wRole); app.go(S.me[d.wRole] ? 'status' : 'start'); return $('#tab-app').scrollIntoView({ behavior: 'smooth', block: 'start' }); }
     if (d.wList) return wGo('list', { type: d.wList });
     if (d.wNav) return (d.wNav === 'rides' || d.wNav === 'housing') ? wGo('list', { type: d.wNav }) : wGo(d.wNav);
     if (d.wPage) return wGo(d.wPage);
